@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人中心</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_lqjqpvqtwl.css"/>
+		<style>
+			body {
+				background-color: #E8E8E8;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.page-header-wrap {
+				height: 120px;
+				padding: 10px;
+				background: orangered;
+			}
+			.page-header-wrap .header-wrap {
+				height: 100px;
+			}
+			.header-wrap {
+				display: flex;
+			}
+			.header-wrap .avatar-wrap {
+				flex: 1;
+			}
+			.avatar-wrap .avatar {
+				height: 70px;
+				width: 70px;
+				border-radius: 50%;
+				margin-top: 15px;
+				margin-left: 15px;
+			}
+			.header-wrap .user-info-wrap {
+				flex: 3;
+			}
+			.user-info-wrap {
+				margin-top: 15px;
+				margin-left: 20px;
+			}
+			.user-info-wrap .nickname {
+				font-size: 18px;
+				font-weight: 500;
+				color: #FFFFFF;
+			}
+			.user-info-wrap .member-number-wrap {
+				color: #FFFFFF;
+			}
+			.menu-container {
+				background-color: #FFFFFF;
+			}
+			.menu-line-container .menu-item {
+				position: relative;
+				padding: 15px 15px;
+				display: flex;
+			}
+			.menu-line-container .menu-item .name {
+				flex: 1;
+			}
+			.menu-line-container .menu-item .arrow {
+				position: relative;
+			}
+			.menu-line-container .menu-item .arrow:after {
+				display: inline-block;
+				content: "";
+				padding: 5px;
+				border: solid #CCCCCC;
+				border-width: 0 2px 2px 0;
+				transform: rotate(-45deg);
+				-webkit-transform: rotate(-45deg);
+			}
+			.menu-line-container .menu-item:not(last-child) {
+				border-bottom: .5px solid #F0F0F0;
+			}
+			
+			.order-item-wrap {
+				padding: 15px;
+			}
+			.order-item-list {
+				display: flex;
+			}
+			.order-item-list li {
+				flex: 1;
+				text-align: center;
+				position: relative;
+			}
+			.order-item-list li .iconfont {
+				display: block;
+				font-size: 1.6rem;
+			}
+			.order-item-list li span {
+				display: inline-block;
+				margin-top: 5px;
+			}
+			.order-item-list li .edge {
+				display: inline-block;
+				position: absolute;
+				top: -8px;
+				right: 5px;
+				height: 20px;
+				width: 20px;
+				font-size: 12px;
+				line-height: 20px;
+				border-radius: 50%;
+				background-color: #F5222D;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page-header-wrap">
+			<div class="header-wrap">
+				<div class="avatar-wrap">
+					<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/oYJUJiaahiavicBD7ibyfPlMeM5KfYZoxsa0EnRlrhBW6yuMeXe4vV4S6ibwhgns9yD3YzcyNRCg1ic6W3icyFYibNTibLhzlogTApL5T/132" />
+				</div>
+				<div class="user-info-wrap">
+					<div class="name-wrap">
+						<span class="nickname">zero</span>
+					</div>
+					<div class="member-number-wrap mt-10">
+						134****4033
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="menu-container">
+			<div class="order-item-wrap">
+				<ul class="order-item-list">
+					<li>
+						<i class="iconfont icondaifukuan"></i>
+						<span>待付款</span>
+					</li>
+					<li>
+						<i class="iconfont icondaishouhuo"></i>
+						<span>待收货</span>
+						<span class="edge">13</span>
+					</li>
+					<li>
+						<i class="iconfont icondaipingjia"></i>
+						<span>待评价</span>
+					</li>
+					<li>
+						<i class="iconfont icontuikuan"></i>
+						<span>退换/售后</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="menu-container menu-line-container mt-10">
+			<div class="menu-item">
+				<span class="name">设置</span>
+				<span class="arrow"></span>
+			</div>
+			<div class="menu-item">
+				<span class="name">收藏</span>
+				<span class="arrow"></span>
+			</div>
+		</div>
+	</body>
+</html>

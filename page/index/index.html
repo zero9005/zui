@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta name="viewport" content="width=device-width, initial-width=1.0" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+		<style>
+			body {
+				background-color: #E8E8E8;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			.swiper-container img {
+				max-width: 100%;
+			}
+
+			.goods-container {}
+
+			.goods-container .container-title {
+				text-align: center;
+				line-height: 2rem;
+			}
+
+			.goods-list li {
+				width: 50%;
+				float: left;
+				padding-bottom: 4px;
+			}
+			.goods-list li:nth-child(2n+1) {
+				padding-right: 2px;
+			}
+			.goods-list li:nth-child(2n) {
+				padding-left: 2px;
+			}
+			.goods-list .goods-wrap {
+				display: block;
+				background-color: #FFFFFF;
+			}
+			.goods-list .img-wrap img {
+				width: 100%;
+			}
+
+			.goods-list .info-wrap .name {
+				height: 31px;
+				margin: 5px 4px 3px;
+				font-size: 13px;
+				line-height: 16px;
+				color: #000;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				word-break: break-word;
+			}
+			.goods-list .info-wrap .price {
+				height: 25px;
+				font-size: 16px;
+				line-height: 25px;
+				color: #F5222D;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- https://3.swiper.com.cn -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/carousel/banner_01.jpg" />
+				</div>
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/carousel/banner_02.jpg" />
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<div class="goods-container" id="goods-container">
+			<div class="container-title">
+				<span>商品列表</span>
+			</div>
+			<div class="goods-list-wrap">
+				<ul class="goods-list clearfix">
+					<li>
+						<a class="goods-wrap">
+							<div class="img-wrap">
+								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+							</div>
+							<div class="info-wrap">
+								<span class="name">
+									700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
+								</span>
+								<span class="price">
+									￥408
+								</span>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a class="goods-wrap">
+							<div class="img-wrap">
+								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+							</div>
+							<div class="info-wrap">
+								<span class="name">
+									700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
+								</span>
+								<span class="price">
+									￥408
+								</span>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a class="goods-wrap">
+							<div class="img-wrap">
+								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+							</div>
+							<div class="info-wrap">
+								<span class="name">
+									700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
+								</span>
+								<span class="price">
+									￥408
+								</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+		<script>
+			var mySwiper = new Swiper('.swiper-container', {
+				autoplay: 5000, //可选选项，自动滑动
+				pagination: '.swiper-pagination',
+				loop: true
+			})
+
+			<!-- 商品列表 -->
+			var goodsList = [{
+					name: '700ml  轩尼诗v·s·o·p干邑白兰地  40%vol(法国)原瓶进口',
+					price: 408,
+					imgUrl: 'http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg'
+				},
+				{
+					name: '(澳大利亚)布琅兄弟森娜甜红葡萄酒【新年贺岁版】 7.5%vol  原瓶进口',
+					price: 138,
+					imgUrl: 'http://imgwm.dddingjiu.com/uploads/images/wine/%E6%A3%AE%E5%A8%9C%E4%B8%BB%E5%9B%BE.jpg'
+				},
+				{
+					name: '(澳大利亚)布琅兄弟诶尔顿红标设拉子红葡萄酒 13.5%vol  原瓶进口',
+					price: 88,
+					imgUrl: 'http://imgwm.dddingjiu.com/uploads/images/wine/%E8%AE%BE%E6%8B%89%E5%AD%90%E4%B8%BB%E5%9B%BE.jpg'
+				},
+				{
+					name: '(澳大利亚) 奔富Penfolds BIN389 赤霞珠设拉子红葡萄酒 14.5% vol  750ml 原瓶进口',
+					price: 568,
+					imgUrl: 'http://imgwm.dddingjiu.com/uploads/images/%E5%A5%94%E5%AF%8Cbin389/%E4%B8%BB%E5%9B%BE.jpg'
+				}
+			]
+		</script>
+	</body>
+</html>

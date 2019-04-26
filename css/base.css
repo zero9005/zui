@@ -1,0 +1,49 @@
+* {
+	box-sizing: border-box;
+}
+html, body, ul, li, div, p {
+	padding: 0;
+	margin: 0;
+}
+ul,li {
+	list-style: none;
+}
+.clearfix:after {
+	content:' ';
+	clear: both;
+	visibility: hidden;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.mt-10 {
+	margin-top: 10px;
+}
+.mt-20 {
+	margin-top: 20px;
+}
+.arrow0 {
+	display: inline-block;
+	border: solid #CCCCCC;
+	border-width: 0 1px 1px 0;
+	padding: 5px;
+}
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
