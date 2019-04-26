@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>商品详情页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_m730m80tba8.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+		<style>
+			body {
+				background-color: #E8E8E8;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.swiper-container img {
+				max-width: 100%;
+			}
+			.swiper-slide {
+				font-size:0;
+			}
+			.goods-info-wrap {
+				background-color: #FFFFFF;
+				padding: 10px;
+				font-size: 14px;
+			}
+			.goods-info-wrap .price-wrap {
+				padding: 10px 0;
+				font-weight: 600;
+			}
+			.sku-select-wrap {
+				background-color: #FFFFFF;
+				position: relative;
+				padding: 10px 15px 10px 50px;
+				margin-top: 5px;
+				font-size: 12px;
+			}
+			.sku-select-wrap .title {
+				position: absolute;
+				left: 10px;
+				color: #999;
+			}
+			.sku-select-wrap .iconfont {
+				color: #999;
+			}
+			.page-footer-wrap {
+				position: fixed;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 50px;
+				background-color: #FFFFFF;
+				display: flex;
+			}
+			.page-footer-wrap .btn-wrap {
+				flex: 1;
+				display: flex;
+			}
+			.page-footer-wrap .btn-wrap span, .popup-layer-btn-wrap .btn-wrap span {
+				flex: 1;
+				font-size: 14px;
+				color: #FFFFFF;
+				line-height: 50px;
+				text-align: center;
+			}
+			.btn-wrap .btn-addCart {
+				background-color: #ff9600;
+			}
+			.btn-wrap .btn-buyNow {
+				background-color: #F5222D;
+			}
+			.page-footer-wrap .icon-btn-wrap {
+				display: flex;
+			}
+			.page-footer-wrap .icon-btn-wrap .icon-btn {
+				flex: 1;
+				padding: 5px;
+				color: #999;
+				text-align: center;
+			}
+			.page-footer-wrap .icon-btn-wrap .iconfont {
+				display: block;
+				font-size: 16px;
+			}
+			.page-footer-wrap .icon-btn-wrap span {
+				font-size: 12px;
+			}
+			
+			.operate-mask-wrap .operate-mask {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 1500;
+				background-color: rgb(0, 0, 0);
+				opacity: 0.5;
+			}
+			.popup-layer {
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: #FFFFFF;
+				z-index: 1501;
+			}
+			.popup-layer .goods-info-header {
+				display: flex;
+				padding: 10px 10px 0;
+			}
+			.popup-layer .goods-info-header .img-wrap {
+				height: 80px;
+				width: 80px;
+				border-radius: 5px;
+				border: 1px solid #ccc;
+				box-shadow: 0 1px 4px #aeaeae;
+			}
+			.popup-layer .goods-info-header .img-wrap img {
+				width: 100%;
+			}
+			.popup-layer .goods-info-header .info-wrap {
+				margin-left: 15px;
+			}
+			.popup-layer .goods-info-header .info-wrap span {
+				display: block;
+				font-size: 14px;
+				margin-top: 10px;
+			}
+			.popup-layer .popup-layer-btn-wrap .btn-wrap {
+				display: flex;
+			}
+			.quantity-operate-wrap {
+				display: flex;
+				padding: 20px 10px;
+			}
+			.quantity-operate-wrap .operate-wrap {
+				flex: 1;
+				text-align: right;
+			}
+			.quantity-operate-wrap .operate-wrap input {
+				width: 2rem;
+				text-align: center;
+				border: none;
+				border-bottom: 1px solid #5d5d5d;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- https://3.swiper.com.cn -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE1(1).jpg" />
+				</div>
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE5_0(1).jpg" />
+				</div>
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE3_0(1).jpg" />
+				</div>
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE4_0(1).jpg" />
+				</div>
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE6_0(1).jpg" />
+				</div>
+				<div class="swiper-slide">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE2(1).jpg" />
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		<div class="goods-info-wrap">
+			<div class="goods-name">(智利)巴斯克精选红葡萄酒14%vol 750ml原瓶进口</div>
+			<div class="price-wrap"><span class="price">￥408.00</span></div>
+		</div>
+		<div class="sku-select-wrap">
+			<span class="title">已选</span>
+			<span>数量: 1</span>
+			<i class="iconfont iconenter fr"></i>
+		</div>
+		
+		<div class="page-footer-wrap">
+			<div class="icon-btn-wrap">
+				<div class="icon-btn">
+					<i class="iconfont icongouwuche"></i>
+					<span>购物车</span>
+				</div>
+			</div>
+			<div class="btn-wrap">
+				<span class="btn-addCart">加入购物车</span>
+				<span class="btn-buyNow">立即购买</span>
+			</div>
+		</div>
+		
+		<div class="operate-mask-wrap">
+			<div class="operate-mask">
+			</div>
+			<div class="popup-layer">
+				<div class="popup-content-wrap">
+					<div class="goods-info-header">
+						<div class="img-wrap">
+							<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE1(1).jpg" />
+						</div>
+						<div class="info-wrap">
+							<span>价格: <i class="price">￥311.12</i></span>
+							<span>库存: <i>99</i></span>
+						</div>
+					</div>
+					<div class="quantity-operate-wrap">
+						<label>数量</label>
+						<div class="operate-wrap">
+							<button class="btn-minus">-</button>
+							<input value="1" />
+							<button class="btn-plus">+</button>
+						</div>
+					</div>
+					<div class="popup-layer-btn-wrap">
+						<div class="btn-wrap">
+							<span class="btn-addCart">加入购物车</span>
+							<span class="btn-buyNow">立即购买</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+		<script src="../../js/jquery-2.1.3.min.js"></script>
+		<script>
+			var mySwiper = new Swiper('.swiper-container', {
+				autoplay: 5000, //可选选项，自动滑动
+				pagination: '.swiper-pagination',
+				loop: true
+			})
+			
+			var quantity = 1
+			var maxQuantity = 10
+			
+			$(".sku-select-wrap").click(function() {
+				console.log("sku-select-wrap clicked.")
+			})
+			
+			$(".btn-plus").click(function() {
+				if (quantity >= maxQuantity) return
+				quantity = quantity + 1
+				$(".quantity-operate-wrap .operate-wrap input")[0].value = quantity
+			})
+			$(".btn-minus").click(function() {
+				if (quantity <= 1) return
+				quantity = quantity - 1
+				$(".quantity-operate-wrap .operate-wrap input")[0].value = quantity
+			})
+			$(".operate-wrap input").change(function() {
+				var inputValue = this.value
+				if (isNaN(inputValue) || inputValue < 1) {
+					this.value = 1
+					return
+				}
+				var maxValue = maxQuantity
+				if (inputValue > maxValue) {
+					this.value = maxValue
+				}
+			})
+		</script>
+	</body>
+</html>

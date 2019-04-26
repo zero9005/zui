@@ -7,31 +7,71 @@
 		<link rel="stylesheet" href="../../css/base.css" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_ze0mq2ftxk.css" />
 		<style>
+			body {
+				background-color: #E8E8E8;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
 			img {
 				width: 100%;
+			}
+
+			.cart-page {
+				position: fixed;
+				height: 100%;
 			}
 
 			.item-wrap {
 				display: flex;
 				padding: 5px;
 				position: relative;
+				background-color: #FFFFFF;
 			}
 
-			.item-wrap .select-wrap {
+			.item-wrap:not(:first-child) {
+				margin-top: 5px;
+			}
+
+			.item-wrap .select-wrap,
+			.cart-status-wrap .select-wrap {
 				flex: 0 0 40px;
 				position: relative;
 			}
 
-			.item-wrap .select-wrap .iconfont {
+			.item-wrap .select-wrap .iconfont,
+			.cart-status-wrap .select-wrap .select-status-wrap1 {
 				position: absolute;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 			}
 
+			.item-wrap .select-wrap.selected .unselect-icon,
+			.cart-status-wrap .select-wrap.selected .unselect-icon {
+				display: none;
+			}
+
+			.item-wrap .select-wrap.selected .selected-icon,
+			.cart-status-wrap .select-wrap.selected .selected-icon {
+				display: inline-block;
+				color: #F5222D;
+			}
+
+			.item-wrap .select-wrap .selected-icon,
+			.cart-status-wrap .select-wrap .selected-icon {
+				display: none;
+				color: #F5222D;
+			}
+
 			.item-wrap .img-wrap {
-				flex: 0 0 100px;
-				padding: 8px;
+				flex: 0 0 70px;
+				padding: 8px 0;
+			}
+
+			.item-wrap .img-wrap img {
+				height: 70px;
+				width: 70px;
 			}
 
 			.item-wrap .info-wrap {
@@ -41,9 +81,9 @@
 			}
 
 			.item-wrap .info-wrap .name {
-				display: inline-block;
 				margin-top: 5px;
-				font-size: 14px;
+				font-size: 13px;
+				font-weight: 500;
 			}
 
 			.item-wrap .info-wrap .props {
@@ -63,40 +103,81 @@
 				height: 25px;
 				font-size: 16px;
 				line-height: 25px;
-				color: #F5222D;
 			}
-
 			.operate-wrap {
 				display: inline-block;
 			}
-
 			.operate-wrap input {
 				width: 2rem;
 				text-align: center;
 				border: none;
 				border-bottom: 1px solid #5d5d5d;
 			}
+			.cart-status-wrap {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				height: 40px;
+				line-height: 40px;
+				display: flex;
+				background-color: #FFFFFF;
+			}
+			.cart-status-wrap .select-wrap {
+				flex: 0 0 80px;
+				position: relative;
+				padding-left: 17px;
+			}
+			.cart-status-wrap .select-wrap span {
+				font-size: 12px;
+				color: #5D5D5D;
+				position: absolute;
+				left: 35px;
+				height: 40px;
+				line-height: 40px;
+			}
+			.cart-status-wrap .price-console-wrap {
+				flex: 1;
+				margin-right: 10px;
+				text-align: right;
+			}
+			.cart-status-wrap .btn-wrap {
+				flex: 0 0 90px;
+			}
+			.cart-status-wrap .btn-wrap span {
+				display: block;
+				background-color: #CCC;
+				font-size: 14px;
+				text-align: center;
+				color: #ffffff;
+				pointer-events: none;
+			}
+			.cart-status-wrap .btn-wrap.selected span {
+				background-color: #F5222D;
+				pointer-events: inherit;
+			}
 		</style>
 	</head>
 	<body>
-		<div>
+		<div class="cart-page">
 			<div class="item-wrap">
 				<div class="select-wrap">
-					<i class="iconfont iconRaidobox-weixuan"></i>
+					<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
+					<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
 				</div>
 				<div class="img-wrap">
 					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
 				</div>
 				<div class="info-wrap">
-					<span class="name">
+					<span class="name ellipsis-2">
 						700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
 					</span>
 					<span class="props">
 						规格：1支
 					</span>
 					<div class="goods-line">
-						<span class="price">￥408</span>
-						<div class="operate-wrap" data-id="2" data-max="10">
+						<span class="price">￥311.12</span>
+						<div class="operate-wrap" data-id="1" data-max="8" data-price = "311.12">
 							<button class="btn-minus">-</button>
 							<input value="1" />
 							<button class="btn-plus">+</button>
@@ -104,25 +185,130 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="item-wrap">
+				<div class="select-wrap">
+					<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
+					<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
+				</div>
+				<div class="img-wrap">
+					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+				</div>
+				<div class="info-wrap">
+					<span class="name ellipsis-2">
+						700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
+					</span>
+					<span class="props">
+					</span>
+					<div class="goods-line">
+						<span class="price">￥408.88</span>
+						<div class="operate-wrap" data-id="2" data-max="10" data-price="408.88">
+							<button class="btn-minus">-</button>
+							<input value="1" />
+							<button class="btn-plus">+</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="cart-status-wrap">
+				<div class="select-wrap">
+					<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
+					<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
+					<span>
+						全选
+					</span>
+				</div>
+				<div class="price-console-wrap">
+					<span class="fs-14">合计:<i class="price">￥0.00</i></span>
+				</div>
+				<div class="btn-wrap">
+					<span class="btn-submit">去结算<i></i></span>
+				</div>
+			</div>
+
 		</div>
-		
+
 		<script src="../../js/jquery-2.1.3.min.js"></script>
 		<script>
 			$(function() {
 				$(".btn-plus").click(function() {
 					var id = this.parentNode.dataset.id
-					console.log("data-id: " + id)
 					var oldValue = parseInt(this.parentNode.children[1].value)
 					var maxValue = parseInt(this.parentNode.dataset.max)
 					if (oldValue + 1 > maxValue) {
 						return
 					}
 					this.parentNode.children[1].value = oldValue + 1
+					checkCartSelectedStatus()
 				})
 				$(".btn-minus").click(function() {
 					var id = this.parentNode.dataset.id
-					console.log("data-id: " + id)
+					var oldValue = parseInt(this.parentNode.children[1].value)
+					var maxValue = parseInt(this.parentNode.dataset.max)
+					if (oldValue <= 1) {
+						return
+					}
+					this.parentNode.children[1].value = oldValue - 1
+					checkCartSelectedStatus()
 				})
+
+				$(".item-wrap .select-wrap").click(function() {
+					if (this.classList.contains("selected")) {
+						this.classList.remove("selected")
+					} else {
+						this.classList.add("selected")
+					}
+					checkCartSelectedStatus()
+				})
+
+				$(".operate-wrap input").change(function() {
+					var inputValue = this.value
+					if (isNaN(inputValue) || inputValue < 1) {
+						this.value = 1
+						return
+					}
+					var maxValue = parseInt(this.parentNode.dataset.max)
+					if (inputValue > maxValue) {
+						this.value = maxValue
+					}
+					checkCartSelectedStatus()
+				})
+				
+				$(".cart-status-wrap .btn-submit").click(function() {
+					console.log("点击了 去结算")
+				})
+				
+				function checkCartSelectedStatus() {
+					var selectItems = $(".item-wrap .select-wrap")
+					var selectedItems = $(".item-wrap .select-wrap.selected")
+					if (selectItems.length == selectedItems.length) {
+						$(".cart-status-wrap .select-wrap")[0].classList.add("selected")
+					} else {
+						$(".cart-status-wrap .select-wrap")[0].classList.remove("selected")
+					}
+					if (selectedItems.length > 0) {
+						$(".cart-status-wrap .btn-wrap")[0].classList.add("selected")
+					} else {
+						$(".cart-status-wrap .btn-wrap")[0].classList.remove("selected")
+					}
+					var total = 0.00
+					var quantity = 0
+					for (var i = 0; i < selectedItems.length; i++) {
+						var selectedItem = selectedItems[i]
+						var itemPrice = parseFloat($(selectedItem.parentNode).find('.operate-wrap')[0].dataset.price)
+						var itemQuantity = parseInt($(selectedItem.parentNode).find('.operate-wrap input')[0].value)
+						total = total + itemPrice * itemQuantity
+						quantity = quantity + itemQuantity
+					}
+					$(".price-console-wrap .price").text("￥" + total.toFixed(2))
+					if (quantity > 0) {
+						$(".cart-status-wrap .btn-submit i").text("(" +  quantity + ")")
+					} else {
+						$(".cart-status-wrap .btn-submit i").text("")
+					}
+				}
+
 			})
 		</script>
 	</body>

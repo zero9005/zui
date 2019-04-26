@@ -8,6 +8,18 @@ html, body, ul, li, div, p {
 ul,li {
 	list-style: none;
 }
+i,em {
+	font-style: normal;
+}
+.fs-12 {
+	font-size: 12px;
+}
+.fs-14 {
+	font-size: 14px;
+}
+.fs-16 {
+	font-size: 16px;
+}
 .clearfix:after {
 	content:' ';
 	clear: both;
@@ -46,4 +58,15 @@ ul,li {
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+}
+.ellipsis-2 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	word-break: break-word;
+}
+.price {
+	color: #F5222D;
 }
