@@ -98,6 +98,50 @@
 				font-size: 12px;
 				color: #999;
 			}
+			
+			.tab-header ul {
+				display: flex;
+				line-height: 40px;
+				border-bottom: 1px solid #e8e8e8;
+			}
+			.tab-header ul li {
+				flex: 1;
+				text-align: center;
+				font-size: 14px;
+				border-left: 1px solid #ddd;
+				background-color: #fff;
+			}
+			.tab-header ul li:first-child {
+				border-left: none;
+			}
+			.tab-header ul li.cur {
+				color: #F5222D;
+			}
+			.tab-content-wrap {
+				overflow: hidden;
+				position: relative;
+				background: #fff;
+			}
+			.tab-content-wrap .tab-content {
+				position: absolute;
+				padding: 0;
+				top: 0;
+				width: 100%;
+				max-width: 640px;
+			}
+			.tab-content-wrap .tab-content:nth-child(1) {
+				left: 0;
+			}
+			.tab-content-wrap .tab-content:nth-child(2) {
+				left: 100%;
+			}
+			.tab-content-wrap .tab-content:nth-child(3) {
+				left: 200%;
+			}
+			.tab-content-wrap .tab-content img {
+				border: 0 none;
+				vertical-align: top;
+			}
 			.page-footer-wrap {
 				position: fixed;
 				left: 0;
@@ -202,6 +246,16 @@
 				border: none;
 				border-bottom: 1px solid #5d5d5d;
 			}
+			
+			.logo-footer {
+				padding: 25px 0 75px 0;
+				text-align: center;
+				background-color: #FFF;
+			}
+			.logo-footer span {
+				font-size: 36px;
+				font-weight: 600;
+			}
 		</style>
 	</head>
 	<body>
@@ -248,7 +302,7 @@
 				<div class="evalute">
 					<div class="evalute-info-wrap">
 						<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
-						<span class="nickname ellipsis">celery123123123123124124213423</span>
+						<span class="nickname ellipsis">celery</span>
 						<span class="rate-container">
 							<i class="iconfont iconiconfontxingxing"></i>
 							<i class="iconfont iconiconfontxingxing"></i>
@@ -265,7 +319,7 @@
 				<div class="evalute">
 					<div class="evalute-info-wrap">
 						<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
-						<span class="nickname ellipsis">celery123123123123124124213423</span>
+						<span class="nickname ellipsis">celery</span>
 						<span class="rate-container">
 							<i class="iconfont iconiconfontxingxing"></i>
 							<i class="iconfont iconiconfontxingxing"></i>
@@ -283,17 +337,28 @@
 			</div>
 		</div>
 		
-		<div class="desc-wrap">
-			<div class="desc-header">
+		<div class="desc-wrap mt-10">
+			<div class="tab-header">
 				<ul>
-					<li>商品介绍</li>
+					<li class="cur">商品介绍</li>
 					<li>规格参数</li>
-					<li>售后保障</li>
 				</ul>
+			</div>
+			<div class="tab-content-wrap">
+				<div style="transform: translate3d(0px, 0px, 0px);transition: all 0.3s ease 0s;width: 100%;">
+					<div class="tab-content">
+						tab1 内容
+					</div>
+					<div class="tab-content">
+						<span>tab2 内容</span>
+					</div>
+				</div>
 			</div>
 		</div>
 		
-		<div class="mb-50"></div>
+		<div class="logo-footer">
+			<span>logo</span>
+		</div>
 		
 		<div class="page-footer-wrap">
 			<div class="icon-btn-wrap">
@@ -355,6 +420,9 @@
 			$(".sku-select-wrap").click(function() {
 				$(".operate-mask-wrap").show()
 			})
+			$(".page-footer-wrap .btn-wrap .btn-addCart, .page-footer-wrap .btn-wrap .btn-buyNow").click(function() {
+				$(".operate-mask-wrap").show()
+			})
 			$(".operate-mask").click(function() {
 				$(".operate-mask-wrap").hide()
 			})
@@ -380,6 +448,33 @@
 					this.value = maxValue
 				}
 			})
+			
+			$(".tab-header>ul li").click(function() {
+				if (this.classList.contains("cur")) return
+				var index = $(".tab-header>ul li").index(this)
+				$(".tab-header>ul li.cur")[0].classList.remove("cur")
+				this.classList.add("cur")
+				var cur = $(".tab-content")[index]
+				$(".tab-content-wrap>div")[0].style.transform="translate3d(" + (-320 * index) +"px, 0px, 0px)"
+				$(".tab-content-wrap")[0].style.height = cur.clientHeight + "px"
+			})
+			
+			
+			var goodsDesc = '<p><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_01.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_02.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_03.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_04.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_05.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_06.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_07.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_08.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_09.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_10.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_11.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_12.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_13.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_14.jpg" style="width:100%" /><img alt="" src="http://imgwm.dddingjiu.com/uploads/images/wine/%E5%B7%B4%E6%96%AF%E5%85%8B_15.jpg" style="width:100%" /></p>'
+			<!-- 这一步是内容详情加载完之后的运行，接入实际项目有可能需要调整 -->
+			var $content = $(".tab-content")[0]
+			$content.innerHTML = goodsDesc 
+			/*var descImgs = Array.from($content.getElementsByTagName('img'))
+			descImgs.forEach(function(item , i) {
+				item.onload = function() {
+					console.log('ok')
+				}
+				
+			})*/
+			// $(".tab-content-wrap")[0].style.height =  $content.clientHeight + "px";
+			window.onload = function(){
+				$(".tab-content-wrap")[0].style.height =  $content.clientHeight + "px";
+			}
 		</script>
 	</body>
 </html>

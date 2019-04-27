@@ -37,7 +37,6 @@
 				color: #F5222D;
 			}
 			.tab-content-wrap {
-				height: 400px;
 				overflow: hidden;
 				position: relative;
 				background: #fff;
@@ -71,18 +70,36 @@
 				</ul>
 			</div>
 			<div class="tab-content-wrap">
-				<div style="transform: translate3d(-320px, 0px, 0px);transition: all 0.3s ease 0s;width: 100%;">
-					<div class="tab-content">
+				<div style="transform: translate3d(0px, 0px, 0px);transition: all 0.3s ease 0s;width: 100%;">
+					<div class="tab-content" style="height: 200px;">
 						tab1 内容
 					</div>
-					<div class="tab-content">
+					<div class="tab-content" style="height: 300px;">
 						<span>tab2 内容</span>
 					</div>
-					<div class="tab-content">
+					<div class="tab-content" style="height: 400px;">
 						tab3 内容
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script src="../js/jquery-2.1.3.min.js"></script>
+		<script>
+			$(function() {
+				var cur = $(".tab-content")[0]
+				$(".tab-content-wrap")[0].style.height = cur.clientHeight + "px"
+				
+				$(".tab-header>ul li").click(function() {
+					if (this.classList.contains("cur")) return
+					var index = $(".tab-header>ul li").index(this)
+					$(".tab-header>ul li.cur")[0].classList.remove("cur")
+					this.classList.add("cur")
+					var cur = $(".tab-content")[index]
+					$(".tab-content-wrap>div")[0].style.transform="translate3d(" + (-320 * index) +"px, 0px, 0px)"
+					$(".tab-content-wrap")[0].style.height = cur.clientHeight + "px"
+				})
+			})
+		</script>
 	</body>
 </html>
