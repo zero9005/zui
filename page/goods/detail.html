@@ -5,7 +5,7 @@
 		<title>商品详情页</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../../css/base.css" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_m730m80tba8.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_t61mqbg0xo.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
 		<style>
 			body {
@@ -50,6 +50,7 @@
 			.evalute-wrap .evalute-header {
 				padding: 10px;
 				line-height: 16px;
+				border-bottom: 1px solid #ccc;
 			}
 			.evalute-wrap .evalute-header label {
 				font-size: 14px;
@@ -57,6 +58,45 @@
 			.evalute-header span {
 				display: inline-block;
 				margin-right: 10px;
+			}
+			.evalute-wrap .evalute {
+				padding: 10px;
+				border-bottom: 1px solid #ccc;
+			}
+			.evalute-wrap .evalute-info-wrap {
+				display: flex;
+				line-height: 30px;
+			}
+			.evalute-wrap .evalute-info-wrap .avatar {
+				flex: 0 0 30px;
+				height: 30px;
+				width: 30px;
+				border-radius: 50%;
+				border: 1px solid rgba(7,17,27,0.1);
+				vertical-align: middle;
+			}
+			.evalute-wrap .evalute-info-wrap .nickname {
+				font-size: 12px;
+				max-width: 3rem;
+				margin: 0 6px 0 8px;
+			}
+			.evalute-wrap .evalute-info-wrap .rate-container {
+				flex: 1;
+			}
+			.evalute-wrap .evalute-info-wrap .time {
+				line-height: 30px;
+			}
+			.evalute-wrap .evalute-info-wrap .rate-container .iconfont {
+				color: rgb(255, 181, 74)
+			}
+			.evalute-wrap .content {
+				padding: 8px 0;
+				font-size: 14px;
+			}
+			.evalute-wrap .time {
+				text-align: right;
+				font-size: 12px;
+				color: #999;
 			}
 			.page-footer-wrap {
 				position: fixed;
@@ -204,7 +244,56 @@
 				<i class="iconfont iconenter fr"></i>
 				<span class="fs-12 fr">共<i>100</i>条</span>
 			</div>
+			<div class="evalute-list">
+				<div class="evalute">
+					<div class="evalute-info-wrap">
+						<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
+						<span class="nickname ellipsis">celery123123123123124124213423</span>
+						<span class="rate-container">
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+						</span>
+						<span class="time">2019-04-27</span>
+					</div>
+					<div class="content">
+						这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+					</div>
+				</div>
+				<div class="evalute">
+					<div class="evalute-info-wrap">
+						<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
+						<span class="nickname ellipsis">celery123123123123124124213423</span>
+						<span class="rate-container">
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+							<i class="iconfont iconiconfontxingxing"></i>
+						</span>
+						<span class="time">2019-04-27</span>
+					</div>
+					<div class="content">
+						这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+					</div>
+					<!-- <div class="time">2019-04-27 11:15</div> -->
+				</div>
+			</div>
 		</div>
+		
+		<div class="desc-wrap">
+			<div class="desc-header">
+				<ul>
+					<li>商品介绍</li>
+					<li>规格参数</li>
+					<li>售后保障</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="mb-50"></div>
 		
 		<div class="page-footer-wrap">
 			<div class="icon-btn-wrap">
@@ -219,7 +308,7 @@
 			</div>
 		</div>
 		
-		<div class="operate-mask-wrap hide">
+		<div class="operate-mask-wrap" style="display: none;">
 			<div class="operate-mask">
 			</div>
 			<div class="popup-layer">

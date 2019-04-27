@@ -40,6 +40,12 @@ i,em {
 .mt-20 {
 	margin-top: 20px;
 }
+.mb-40 {
+	margin-bottom: 40px;
+}
+.mb-50 {
+	margin-bottom: 50px;
+}
 .arrow0 {
 	display: inline-block;
 	border: solid #CCCCCC;
@@ -61,6 +67,11 @@ i,em {
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+}
+.ellipsis {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .ellipsis-2 {
 	overflow: hidden;
