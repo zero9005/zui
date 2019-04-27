@@ -261,6 +261,21 @@
 					}
 					checkCartSelectedStatus()
 				})
+				
+				$(".cart-status-wrap .select-wrap").click(function() {
+					var isSelectedAll = !this.classList.contains("selected")
+					var selectItems = $(".item-wrap .select-wrap")
+					for (var i=0; i < selectItems.length; i++) {
+						var selectItem = selectItems[i]
+						if (isSelectedAll && !selectItem.classList.contains("selected")) {
+							selectItem.classList.add("selected")
+						}
+						if (!isSelectedAll && selectItem.classList.contains("selected")) {
+							selectItem.classList.remove("selected")
+						}
+					}
+					checkCartSelectedStatus()
+				})
 
 				$(".operate-wrap input").change(function() {
 					var inputValue = this.value
