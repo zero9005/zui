@@ -96,7 +96,7 @@
 					$(".tab-header>ul li.cur")[0].classList.remove("cur")
 					this.classList.add("cur")
 					var cur = $(".tab-content")[index]
-					$(".tab-content-wrap>div")[0].style.transform="translate3d(" + (-320 * index) +"px, 0px, 0px)"
+					$(".tab-content-wrap>div")[0].style.transform="translate3d(" + (-cur.offsetWidth * index) +"px, 0px, 0px)"
 					$(".tab-content-wrap")[0].style.height = cur.clientHeight + "px"
 				})
 			})

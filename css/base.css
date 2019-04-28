@@ -11,6 +11,10 @@ ul,li {
 i,em {
 	font-style: normal;
 }
+a, a:hover {
+	text-decoration: none;
+	color: #333;
+}
 .hide {
 	display: none;
 }
