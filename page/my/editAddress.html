@@ -38,6 +38,9 @@
 				height: 60px;
 				line-height: 14px;
 			}
+			.btn-wrap {
+				margin: 15px;
+			}
 		</style>
 	</head>
 	<body>
@@ -71,7 +74,26 @@
 			</div>
 			<div class="form-cell">
 				<label>默认地址</label>
+				<div style="flex: 1;text-align: right;">
+					<input type="checkbox" class="m-switch" />
+				</div>
+			</div>
+			<div class="btn-wrap">
+				<button class="btn large" type="button" id="btn_submit">按钮</button>
 			</div>
 		</div>
+		
+		<script>
+			var btn_submit = document.getElementById('btn_submit');
+			btn_submit.addEventListener('click', function() {
+				this.classList.add('disable')
+				this.innerText = '正在提交中...'
+				var that = this
+				setTimeout(function() {
+					that.classList.remove('disable')
+					that.innerText = '按钮'
+				}, 1000)
+			})
+		</script>
 	</body>
 </html>

@@ -8,23 +8,67 @@
 			input[type=checkbox] {
 				vertical-align: middle;
 			}
-			.switch {
+			.m-switch:checked {
 				border-color: #4CD864;
 				background-color: #4CD864;
 			}
-			.switch {
-				outline: none;
-				height: 32px;
+			.m-switch {
+				position: relative;
+				display: inline-block;
 				width: 52px;
-				border-radius: 16px;
+				height: 32px;
+				left: 0;
 				border: 1px solid #DFDFDF;
+				border-radius: 16px;
 				background-color: #DFDFDF;
+				z-index: 2;
+				-webkit-appearance: none;
+				outline: none;
+			}
+			.m-switch:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 30px;
+				border-radius: 15px;
+				-webkit-transition: -webkit-transform .3s;
+				transition: -webkit-transform .3s;
+				transition: transform .3s;
+				transition: transform .3s, -webkit-transform .3s;
+			}
+			.m-switch:before {
+				width: 50px;
+				background-color: #FDFDFD;
+			}
+			.m-switch:checked:before {
+				transform: scale(0);
+			}
+			.m-switch:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 30px;
+				border-radius: 15px;
+				-webkit-transition: -webkit-transform .3s;
+				transition: -webkit-transform .3s;
+				transition: transform .3s;
+				transition: transform .3s, -webkit-transform .3s;
+			}
+			.m-switch:after {
+				width: 30px;
+				background-color: #FFF;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);				
+			}
+			.m-switch:checked:after {
+				transform: translateX(20px);
 			}
 		</style>
 	</head>
 	<body>
 		<div>
-			<input type="checkbox" class="switch" />
+			<input type="checkbox" class="m-switch" />
 		</div>
 	</body>
 </html>
