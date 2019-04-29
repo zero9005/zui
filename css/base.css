@@ -122,3 +122,26 @@ a, a:hover {
 	word-break: break-all;
 
 }
+.page-header-navbar {
+	height: 45px;
+	line-height: 45px;
+	background: #FFFFFF;
+	border-bottom: 1px solid #e8e8e8;
+	display: flex;
+}
+.page-header-navbar .center {
+	width: 50%;
+	text-align: center;
+	font-size: 14px;
+}
+.page-header-navbar .navbar-item {
+	flex: 0 0 25%;
+	padding-right: 10px;
+	font-size: 12px;
+}
+.page-header-navbar .navbar-item:first-child {
+	padding-left: 10px;
+}
+.page-header-navbar .navbar-item:last-child {
+	text-align: right;
+}
