@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			html, body, div, ul, li, p{
+				margin: 0;
+				padding: 0;
+			}
+			ul, li {
+				list-style: none;
+			}
+			.page-container div {
+				padding: 10px;
+				border-bottom: 1px solid #E8E8E8;
+			}
+			.page-container .load-tip {
+				text-align: center;
+				border-bottom: none;
+			}
+			.page-container .load-tip span {
+				font-size: 12px;
+				color: #999999;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page-container">
+			
+		</div>
+		
+		<script>
+			var parentEle = document.getElementsByClassName("page-container")[0]
+			
+			var isRefreshing = false
+			
+			function createElement(parent, content) {
+				var ele = document.createElement('div')
+				ele.innerHTML = '<span>' + content + '</span>'
+				parent.appendChild(ele)
+			}
+			
+		</script>
+	</body>
+</html>
