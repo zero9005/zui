@@ -101,7 +101,35 @@
 				bottom: 12px;
 			}
 			.goods-list-wrap .goods-item .cartcontrol {
-				
+				display: flex;
+				align-items: center;
+			}
+			.goods-list-wrap .goods-item .cartcontrol .cart-decrease {
+				display: inline-block;
+				padding: 6px;
+				opacity: 1;
+			}
+			.goods-list-wrap .goods-item .cartcontrol .cart-decrease .inner {
+				display: inline-block;
+				line-height: 24px;
+				font-size: 24px;
+				color: #00A0DC;
+				transition: all 0.4s linear;
+				transform: rotate(0);
+			}
+			.goods-list-wrap .goods-item .cartcontrol .cart-count {
+				width: 12px;
+				line-height: 24px;
+				text-align: center;
+				font-size: 10px;
+				color: #666;
+			}
+			.goods-list-wrap .goods-item .cartcontrol .cart-add {
+				display: inline-block;
+				padding: 6px;
+				line-height: 24px;
+				font-size: 24px;
+				color: #00a0dc;
 			}
 		</style>
 	</head>
@@ -140,7 +168,7 @@
 											<span class="inner iconfont iconjian"></span>
 										  </div>
 										</transition>
-										<div class="cart-count" v-show="food.count>0">{{food.count}}</div>
+										<div class="cart-count" v-show="food.count>0">1</div>
 										<div class="cart-add iconfont iconaddcircle" @click.stop="add"></div>
 									</div>
 								</div>
