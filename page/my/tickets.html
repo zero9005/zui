@@ -4,52 +4,54 @@
 		<meta charset="utf-8">
 		<title>卡券</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../../css/base.css" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_lqjqpvqtwl.css"/>
 		<style>
-			* {
-				box-sizing: border-box;
+			html, body {
+				margin: 0;
+				padding: 0;
 			}
-			.tickets-container {
-				
+			
+			.hollow-two-circles {
+				width: 300px;
+				height: 100px;
+				background: radial-gradient(circle at right top, transparent 10px, #00adb5 0) top left / 60px 51% no-repeat,
+					radial-gradient(circle at right bottom, transparent 10px, #00adb5 0) bottom left /60px 51% no-repeat,
+					radial-gradient(circle at left top, transparent 10px, #eeeeee 0) top right /240px 51% no-repeat,
+					radial-gradient(circle at left bottom, transparent 10px, #eeeeee 0) bottom right /240px 51% no-repeat;
+				filter: drop-shadow(2px 2px 2px rgba(0,0,0,.2));
+			}
+			.tickets-wrap .ticket-wrap {
+				margin: 10px auto 0;
 			}
 			.ticket-wrap {
 				display: flex;
-				padding: 5px;
 			}
-			.ticket-left {
-				flex: 0 0 40px;
-				border: 1px solid rgba(7, 17, 27, .1);
-				padding: 16px;
+			.ticket-wrap .ticket-left {
+				flex: 0 0 60px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 			.ticket-left span {
-				display: inline-block;
-				text-align: center;
-				font-size: 12px;
-				line-height: 18px;
-				height: 18px;
-				width: 18px;
-				background: #999999;
-				color: #FFFFFF;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 14px;
 				border-radius: 50%;
-			}
-			.ticket-right {
+				color: #fff;
+				background: #eeeeee;
+				height: 24px;
+				width: 24px;
 				
 			}
 		</style>
 	</head>
 	<body>
-		
-		<div>
-			<div class="ticket-wrap">
+		<div class="tickets-wrap">
+			<div class="hollow-two-circles ticket-wrap">
 				<div class="ticket-left">
 					<span>兑</span>
 				</div>
-				<div class="ticket-right">
-					
-				</div>
 			</div>
 		</div>
-		
 	</body>
 </html>
