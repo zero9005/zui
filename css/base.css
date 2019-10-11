@@ -5,6 +5,9 @@ html, body, ul, li, div, p {
 	padding: 0;
 	margin: 0;
 }
+html {
+	font-size: 14px;
+}
 ul,li {
 	list-style: none;
 }
@@ -85,7 +88,7 @@ a, a:hover {
 	-webkit-box-orient: vertical;
 	word-break: break-word;
 }
-.price {
+.price, .price-wrap {
 	color: #F5222D;
 }
 .toast-layer {
