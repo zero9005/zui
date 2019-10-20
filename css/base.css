@@ -32,6 +32,7 @@ a, a:hover {
 }
 .clearfix:after {
 	content:' ';
+	display: block;
 	clear: both;
 	visibility: hidden;
 }
@@ -90,6 +91,9 @@ a, a:hover {
 }
 .price, .price-wrap {
 	color: #F5222D;
+}
+.price .price-label {
+	font-size: 10px;
 }
 .toast-layer {
 	background-color: rgba(0, 0, 0, 0);
