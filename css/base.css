@@ -5,6 +5,9 @@ html, body, ul, li, div, p {
 	padding: 0;
 	margin: 0;
 }
+html {
+	font-size: 14px;
+}
 ul,li {
 	list-style: none;
 }
@@ -29,6 +32,7 @@ a, a:hover {
 }
 .clearfix:after {
 	content:' ';
+	display: block;
 	clear: both;
 	visibility: hidden;
 }
@@ -85,8 +89,11 @@ a, a:hover {
 	-webkit-box-orient: vertical;
 	word-break: break-word;
 }
-.price {
+.price, .price-wrap {
 	color: #F5222D;
+}
+.price .price-label {
+	font-size: 10px;
 }
 .toast-layer {
 	background-color: rgba(0, 0, 0, 0);

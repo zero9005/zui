@@ -24,7 +24,7 @@
 
 			.item-wrap {
 				display: flex;
-				padding: 5px;
+				padding: 5px 5px 5px 0;
 				position: relative;
 				background-color: #FFFFFF;
 			}
@@ -35,10 +35,16 @@
 
 			.item-wrap .select-wrap,
 			.cart-status-wrap .select-wrap {
-				flex: 0 0 40px;
+				flex: 0 0 30px;
 				position: relative;
 			}
-
+			.cart-status-wrap .select-wrap {
+				display: flex;
+			}
+			.cart-status-wrap .select-wrap>div {
+				flex: 0 0 30px;
+				text-align: center;
+			}
 			.item-wrap .select-wrap .iconfont,
 			.cart-status-wrap .select-wrap .select-status-wrap1 {
 				position: absolute;
@@ -82,7 +88,7 @@
 
 			.item-wrap .info-wrap .name {
 				margin-top: 5px;
-				font-size: 13px;
+				font-size: 12px;
 				font-weight: 500;
 			}
 
@@ -97,11 +103,11 @@
 				margin: 5px 10px 0 0;
 			}
 
-			.goods-line .price {
+			.goods-line .price-wrap {
 				flex: 1;
 				display: inline-block;
 				height: 25px;
-				font-size: 16px;
+				/* font-size: 16px; */
 				line-height: 25px;
 			}
 			.operate-wrap {
@@ -126,13 +132,13 @@
 			.cart-status-wrap .select-wrap {
 				flex: 0 0 80px;
 				position: relative;
-				padding-left: 17px;
+				/* padding-left: 17px; */
 			}
 			.cart-status-wrap .select-wrap span {
 				font-size: 12px;
 				color: #5D5D5D;
 				position: absolute;
-				left: 35px;
+				left: 23px;
 				height: 40px;
 				line-height: 40px;
 			}
@@ -176,7 +182,7 @@
 						规格：1支
 					</span>
 					<div class="goods-line">
-						<span class="price">￥311.12</span>
+						<span class="price-wrap"><span class="fs-12">￥</span>311.12</span>
 						<div class="operate-wrap" data-id="1" data-max="8" data-price = "311.12">
 							<button class="btn-minus">-</button>
 							<input value="1" />
@@ -201,7 +207,7 @@
 					<span class="props">
 					</span>
 					<div class="goods-line">
-						<span class="price">￥408.88</span>
+						<span class="price-wrap"><span class="fs-12">￥</span>408.88</span>
 						<div class="operate-wrap" data-id="2" data-max="10" data-price="408.88">
 							<button class="btn-minus">-</button>
 							<input value="1" />
@@ -213,14 +219,16 @@
 
 			<div class="cart-status-wrap">
 				<div class="select-wrap">
-					<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
-					<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
+					<div>
+						<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
+						<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
+					</div>
 					<span>
 						全选
 					</span>
 				</div>
 				<div class="price-console-wrap">
-					<span class="fs-14">合计:<i class="price">￥0.00</i></span>
+					<span class="fs-14">总计: <i class="price-wrap"><span class="fs-12">￥</span><span class="price">0.00</span></i></span>
 				</div>
 				<div class="btn-wrap">
 					<span class="btn-submit">去结算<i></i></span>
@@ -316,7 +324,7 @@
 						total = total + itemPrice * itemQuantity
 						quantity = quantity + itemQuantity
 					}
-					$(".price-console-wrap .price").text("￥" + total.toFixed(2))
+					$(".price-console-wrap .price").text(total.toFixed(2))
 					if (quantity > 0) {
 						$(".cart-status-wrap .btn-submit i").text("(" +  quantity + ")")
 					} else {
