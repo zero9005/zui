@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>toast</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			.toast-wrap {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				max-width: 130px;
+				min-width: 80px;
+				background: rgba(40, 40, 40, 0.8);
+				text-align: center;
+				border-radius: 3px;
+				color: #FFF;
+			}
+			.toast-wrap .content {
+				display: inline-block;
+				font-size: 15px;
+				padding: 5px 10px;
+				line-height: 22px;
+				word-break: break-all;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div>
+			<button id="btnToast">toast</button>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var toast = {
+				
+				isInit : false,
+				
+				hideTimeout: null,
+				
+				init: function() {
+					var toastWrap = document.createElement('div')
+					toastWrap.innerHTML = '<div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%,-50%);'
+							+ 'max-width: 180px;min-width: 80px;background: rgba(40,40,40,0.8);text-align: center;border-radius: 3px;color: #fff;">'
+							+ '<span id="toastContent" style="display: inline-block;font-size: 15px;line-height: 22px; padding: 5px 10px;word-break: break-all;">'
+							+ '</span></div>';
+					
+					toastWrap.id = "toastWrap"
+					toastWrap.style.display = 'none'
+					document.body.appendChild(toastWrap)
+				},
+				
+				show: function(text, duration) {
+					
+					if (!this.isInit) {
+						this.init()
+						this.isInit = true
+					}
+					
+					if (this.hideTimeout) {
+						clearTimeout(hideTimeout)
+						this.hideTimeout = null
+					}
+					if (!text || text.trim() == '') {
+						console.error("text 不能为空！")
+						return
+					}
+					
+					var toastWrap = document.querySelector("#toastWrap")
+					var toastTextNode = toastWrap.querySelector('#toastContent')
+					
+					toastTextNode.innerText = text
+					
+					toastWrap.style.display = 'block'
+					
+					var context = this
+					
+					this.hideTimeout = setTimeout(function() {
+						toastWrap.style.display = 'none'
+						context.hideTimeout = null
+					}, duration || 2000)
+					
+				}
+				
+			}
+			
+			var btnToast = document.querySelector('#btnToast')
+			btnToast.addEventListener('click', function() {
+				toast.show("测试一段很长很长很长很长很长很长的toast信息")
+			})
+		
+		</script>
+	</body>
+</html>
