@@ -43,13 +43,30 @@
 				
 				init: function() {
 					var toastWrap = document.createElement('div')
-					toastWrap.innerHTML = '<div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%,-50%);'
-							+ 'max-width: 180px;min-width: 80px;background: rgba(40,40,40,0.8);text-align: center;border-radius: 3px;color: #fff;">'
-							+ '<span id="toastContent" style="display: inline-block;font-size: 15px;line-height: 22px; padding: 5px 10px;word-break: break-all;">'
-							+ '</span></div>';
 					
 					toastWrap.id = "toastWrap"
+					toastWrap.style.position = "fixed"
+					toastWrap.style.top = "50%";
+					toastWrap.style.left = "50%";
+					toastWrap.style.transform = "translate(-50%, -50%)";
+					toastWrap.style.maxWidth = "180px"
+					toastWrap.style.minWidth = "80px"
+					toastWrap.style.background = "rgba(40,40,40,0.8)";
+					toastWrap.style.textAlign = "center";
+					toastWrap.style.borderRadius = "3px"
+					toastWrap.style.color = "#fff"
 					toastWrap.style.display = 'none'
+					
+					var toastSpan = document.createElement('span');
+					toastSpan.id = "toastContent"
+					toastSpan.style.display = 'inline-block'
+					toastSpan.style.fontSize = "15px"
+					toastSpan.style.lineHeight = "22px"
+					toastSpan.style.padding = "5px 10px"
+					toastSpan.style.wordBreak = "break-all"
+					
+					toastWrap.appendChild(toastSpan)
+					
 					document.body.appendChild(toastWrap)
 				},
 				
@@ -80,6 +97,7 @@
 					
 					this.hideTimeout = setTimeout(function() {
 						toastWrap.style.display = 'none'
+						toastTextNode.innerText = null
 						context.hideTimeout = null
 					}, duration || 2000)
 					
