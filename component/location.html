@@ -1,3 +1,4 @@
+<!-- https://lbs.qq.com/guides/place_search.html -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,8 +9,14 @@
 		<style>
 			.search-input-wrap {
 				padding: 5px;
+				display: flex;
+			}
+			.search-input-wrap label {
+				padding: 5px;
+				margin-right: 10px;
 			}
 			.search-input-wrap input {
+				flex: 1;
 				border: none;
 				border-bottom: 1px solid #ccc;
 			}
@@ -32,17 +39,63 @@
 			var key = 'XXSBZ-DUAEX-XYR4Y-TKLAY-EHJEQ-2TB34'
 			function searchInputEvent(event) {
 				var keyword = event.target.value
+				if (keyword.trim() == '') return
 				var url = `https://apis.map.qq.com/ws/place/v1/suggestion?key=${key}&region=${region}&keyword=${keyword}`
 				// $.get(url, function(res) {
 				// 	console.log(res)
 				// })
-				$.ajax({
+				ajax({
 					url: url,
-					dataType: 'jsonp',
+					headers: {
+						'Access-Control-Allow-Origin': '*'
+					},
 					success: function(res) {
 						console.log(res)
 					}
 				})
+			}
+			
+			function ajax(options) {
+				var xhr = new XMLHttpRequest()
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						options.success(xhr.responseText)
+					} else if (xhr.readyState == 4 && xhr.status != 200) {
+						options.error()
+					}
+				}
+				
+				var urlStr = ''
+				for (var key in options.data) {
+					urlStr = key + '=' + options.data[key] + '&'
+				}
+				urlStr = urlStr.substring(0, urlStr.length - 1)
+				
+				var type = options.type || 'get'
+				type = type.toLocaleLowerCase()
+				var async = options.async || true
+				
+				var url = options.url
+				
+				if (type === 'get') {
+					url = url + '?' + urlStr
+				} else if (type === 'post') {
+					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+				}
+				
+				xhr.open(type, url, async)
+				
+				if (options.headers) {
+					for (var key in options.headers) {
+						xhr.setRequestHeader(key, options.headers[key])
+					}
+				}
+				
+				if (type === 'get') {
+					xhr.send()
+				} else {
+					xhr.send(urlStr)
+				}
 			}
 		</script>
 		
