@@ -42,6 +42,7 @@
 				hideTimeout: null,
 				
 				init: function() {
+					this.isInit = true
 					var toastWrap = document.createElement('div')
 					
 					toastWrap.id = "toastWrap"
@@ -78,7 +79,7 @@
 					}
 					
 					if (this.hideTimeout) {
-						clearTimeout(hideTimeout)
+						clearTimeout(this.hideTimeout)
 						this.hideTimeout = null
 					}
 					if (!text || text.trim() == '') {

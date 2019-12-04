@@ -12431,19 +12431,9 @@
 		}
 	],
 	"hot_city": [{
-			"city_name": "北京",
-			"city_pinyin": "beijing",
-			"city_id": 110100
-		},
-		{
-			"city_name": "成都",
-			"city_pinyin": "chengdu",
-			"city_id": 510100
-		},
-		{
-			"city_name": "重庆",
-			"city_pinyin": "chongqing",
-			"city_id": 500100
+			"city_name": "东莞",
+			"city_pinyin": "dongguan",
+			"city_id": 441900
 		},
 		{
 			"city_name": "广州",
@@ -12451,44 +12441,9 @@
 			"city_id": 440100
 		},
 		{
-			"city_name": "杭州",
-			"city_pinyin": "hangzhou",
-			"city_id": 330100
-		},
-		{
-			"city_name": "南京",
-			"city_pinyin": "nanjing",
-			"city_id": 320100
-		},
-		{
-			"city_name": "上海",
-			"city_pinyin": "shanghai",
-			"city_id": 310100
-		},
-		{
 			"city_name": "深圳",
 			"city_pinyin": "shenzhen",
 			"city_id": 440300
-		},
-		{
-			"city_name": "苏州",
-			"city_pinyin": "suzhou",
-			"city_id": 320500
-		},
-		{
-			"city_name": "天津",
-			"city_pinyin": "tianjin",
-			"city_id": 120100
-		},
-		{
-			"city_name": "武汉",
-			"city_pinyin": "wuhan",
-			"city_id": 420100
-		},
-		{
-			"city_name": "西安",
-			"city_pinyin": "xian",
-			"city_id": 610100
 		}
 	]
 }

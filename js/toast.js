@@ -1,60 +1,70 @@
 var Toast = {
-	hideTimeOut: null,
+
 	isInit: false,
 
+	hideTimeout: null,
+
 	init: function() {
-		
-		var toastLayer = document.createElement('div')
-		toastLayer.innerHTML = '<div class="toast-layer">'
-					+ '<div class="toast">'
-					+ '<span class="text">测试Toast</span>'
-					+ '</div>'
-					+ '</div>'
-		
-		
-		toastLayer.id = "toastNode"
-		toastLayer.setAttribute("class", "toast");
-		toastLayer.style.display = 'none';
-		document.body.appendChild(toastLayer)
-		isInit = true
+		this.isInit = true
+		var toastWrap = document.createElement('div')
+
+		toastWrap.id = "toastWrap"
+		toastWrap.style.position = "fixed"
+		toastWrap.style.top = "50%";
+		toastWrap.style.left = "50%";
+		toastWrap.style.transform = "translate(-50%, -50%)";
+		toastWrap.style.maxWidth = "180px"
+		toastWrap.style.minWidth = "80px"
+		toastWrap.style.background = "rgba(40,40,40,0.8)";
+		toastWrap.style.textAlign = "center";
+		toastWrap.style.borderRadius = "3px"
+		toastWrap.style.color = "#fff"
+		toastWrap.style.display = 'none'
+
+		var toastSpan = document.createElement('span');
+		toastSpan.id = "toastContent"
+		toastSpan.style.display = 'inline-block'
+		toastSpan.style.fontSize = "15px"
+		toastSpan.style.lineHeight = "22px"
+		toastSpan.style.padding = "5px 10px"
+		toastSpan.style.wordBreak = "break-all"
+
+		toastWrap.appendChild(toastSpan)
+
+		document.body.appendChild(toastWrap)
 	},
 
 	show: function(text, duration) {
+
 		if (!this.isInit) {
 			this.init()
+			this.isInit = true
 		}
-		if (this.hideTimeOut) {
-			clearTimeout(this.hideTimeOut)
-			this.hideTimeOut = null
+
+		if (this.hideTimeout) {
+			clearTimeout(this.hideTimeout)
+			this.hideTimeout = null
 		}
-		if (!text) {
+		if (!text || text.trim() == '') {
 			console.error("text 不能为空！")
 			return
 		}
-		var domToastNode = document.getElementById('toastNode')
-		if (!domToastNode) {
-			console.error("toastNode不存在！")
-			return
-		}
-		var domToastText = domToastNode.querySelector('.text')
-		domToastText.innerText = text || ''
-		domToastNode.style.display = 'block'
-		
-		var that = this
-		that.hideTimeOut = setTimeout(function() {
-			domToastNode.style.display = 'none'
-			that.hideTimeOut = null
-		}, duration || 2000)
-	},
 
-	hide: function() {
-		if (this.hideTimeOut) {
-			clearTimeout(this.hideTimeOut)
-			this.hideTimeOut = null
-		}
-		var domToastNode = document.getElementById('toastNode')
-		if (domToastNode) {
-			domToastNode.style.display = 'none'
-		}
+		var toastWrap = document.querySelector("#toastWrap")
+		var toastTextNode = toastWrap.querySelector('#toastContent')
+
+		toastTextNode.innerText = text
+
+		toastWrap.style.display = 'block'
+
+		var context = this
+
+		this.hideTimeout = setTimeout(function() {
+			toastWrap.style.display = 'none'
+			toastTextNode.innerText = null
+			context.hideTimeout = null
+		}, duration || 2000)
+
 	}
+
 }

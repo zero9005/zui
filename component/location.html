@@ -6,20 +6,71 @@
 		<title>选择收货地址</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/base.css" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_rytcudyfuyi.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_740loedctnl.css" />
 		<style>
+			html {
+				font-family: "Hiragino Sans GB", Arial, Helvetica, '\5B8B\4F53', sans-serif;
+				-webkit-font-smoothing: antialiased;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
 			.search-input-wrap {
-				padding: 5px;
 				display: flex;
-				border-bottom: 1px solid #ccc;
+				position: relative;
+				height: 45px;
+				font-size: 14px;
+				padding: 8px 15px 8px 10px;
+				background: #fff;
+				width: 100%;
+				box-sizing: border-box;
+				top: 0;
+				left: 0;
+				align-items: center;
+			}
+			.search-input-wrap:after {
+				content: ' ';
+				width: 100%;
+				height: 1px;
+				background: #e4e4e4;
+				transform-origin: 0 0;
+				transform: scaleY(0.5);
+				position: absolute;
+				left: 0;
+				bottom: 0;
 			}
 			.search-input-wrap label {
-				padding: 5px;
-				margin-right: 10px;
+				padding: 4px 2px 4px 5px;
 			}
-			.search-input-wrap input {
+			.search-input-wrap .a-label {
+				position: relative;
+				padding: 4px 5px;
+				line-height: 22px;
+				display: flex;
+				align-items: center;
+				flex-direction: row;
+				color: #ffb000;
+			}
+			.search-input-wrap .input-wrap {
+				display: flex;
+				margin-left: 8px;
+				flex: 1;
+				justify-content: start;
+				align-items: center;
+				position: relative;
+			}
+			.search-input-wrap .input-cell {
 				flex: 1;
 				border: none;
+				margin-left: 4px;
+				display: flex;
+				align-items: center;
+			}
+			.search-input-wrap .input-cell input {
+				width: 100%;
+				border: none;
+				outline: none;
+				font-size: 14px;
+				line-height: 22px;
+				margin: 4px 0;
 			}
 			#app {
 			}
@@ -64,82 +115,367 @@
 				width: 38px;
 				text-align: center;
 			}
-			.city-picker .city-container {
+			.city-picker .city-list-container {
 				width: 90%;
 			}
-			
+			.city-alpha-side {
+				position: fixed;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 10%;
+			}
+			.city-alpha-side span, .city-alpha-side a {
+				display: block;
+				width: 100%;
+				text-align: center;
+				color: #999;
+				font-size: 12px;
+				line-height: 16px;
+			}
+			.city-container .hot-city-container {
+				padding: 15px 0 15px 15px;
+			}
+			.city-container .hot-city-container p {
+				color: #999;
+			}
+			.txt-block {
+				display: inline-block;
+				width: 22.73%;
+				text-align: center;
+				border: 1px solid #eee;
+				border-radius: 2px;
+				font-size: 14px;
+				line-height: 35px;
+				box-sizing: border-box;
+			}
+			.city-list-container .hot-city-container span {
+				margin: 10px 1.13% 0 1.13%;
+			}
+			.nav_alpha_wrap {
+				width: 100%;
+			}
+			.nav_alpha_wrap>div {
+				background: #fff;
+				width: 100%;
+			}
+			.nav_alpha_wrap .alpha_line {
+				font-size: 14px;
+				background: #eee;
+				padding-left: 15px;
+				line-height: 25px;
+			}
+			.nav_alpha_wrap ul {
+				padding-left: 15px;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			.nav_alpha_wrap ul li {
+				position: relative;
+				font-size: 16px;
+				line-height: 42px;
+				list-style: none;
+			}
+			.nav_alpha_wrap ul li:after, .search-result-wrap ul li:after {
+				content: ' ';
+				width: 100%;
+				height: 1px;
+				background: #e4e4e4;
+				transform-origin: 0 0;
+				transform: scaleY(0.5);
+				position: absolute;
+				left: 0;
+				bottom: 0;
+			}
+			.city-picker .city-container {
+				position: relative;
+				overflow: auto;
+			}
+			.city-picker .city-tips-wrap {
+				background: #fff;
+				width: 100%;
+			}
+			.city-picker .city-tips-wrap ul {
+				width: 100%;
+				padding-left: 15px;
+				box-sizing: border-box;
+			}
+			.city-picker .city-tips-wrap ul li {
+				padding: 10px 0;
+				margin-right: 30px;
+				position: relative;
+				font-size: 16px;
+				color: #333;
+			}
+			.icons {
+				font-size: 14px;
+				color: #999;
+			}
+			.tips-wrap {
+				width: 100%;
+				margin-top: 25px;
+				text-align: center;
+			}
+			.tips-wrap p {
+				margin-bottom: 8px;
+				font-size: 14px;
+				color: #666;
+			}
+			.input-tips-wrap {
+				background: #fccf4b;
+				height: 31px;
+				line-height: 31px;
+				padding: 0 8px;
+				color: #333;
+				border-radius: 5px;
+				position: absolute;
+				top: 40px;
+				left: 98px;
+			}
+			.input-tips-wrap:after, {
+				content: ' ';
+				display: inline-block;
+				border-style: solid;
+				border-width: 0 5px 5px 5px;
+				border-color: transparent transparent #fccf4b transparent;
+				position: absolute;
+				top: -5px;
+				left: 18px;
+			}
+			.cancel-btn-wrap {
+				position: relative;
+				line-height: 14px;
+				padding-left: 10px;
+				text-align: center;
+				color: #999;
+			}
+			.cancel-btn-wrap:before {
+				content: ' ';
+				background: #e4e4e4;
+				transform-origin: 0 0;
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 1px;
+				height: 100%;
+				transform: scaleX(0.5);
+			}
+			.search-result-wrap {
+				background-color: #fff;
+				width: 100%;
+			}
+			.search-result-wrap ul {
+				width: 100%;
+				padding-left: 15px;
+				box-sizing: border-box;
+			}
+			.search-result-wrap ul li {
+				position: relative;
+				padding: 10px 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.search-result-wrap ul li .name {
+				overflow: hidden;
+				font-size: 16px;
+			}
+			.search-result-wrap ul li .name span {
+				display: inline-block;
+				max-width: 80%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.search-result-wrap ul li .name span strong {
+				font-weight: normal;
+				color: #ffb000;
+			}
+			.search-result-wrap ul li .address {
+				font-size: 12px;
+				color: #999;
+				margin-top: 6px;
+				max-width: 80%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="app">
-			<div class="search-input-wrap">
-				<label class="fs-12" @click="selectCity">
-					<i class="iconfont icondizhi" style="font-size: 13px;"></i>
-					{{region}}<i class="iconfont iconunfold" style="font-size: 12px;"></i>
-				</label>
-				<input class="fs-12" placeholder="请输入关键字" v-model="keyword" />
+			<div>
+				<div class="search-input-wrap">
+					<div style="display: flex; flex-direction: row; flex: 1; align-items: center;">
+						<i class="iconfont icondizhi" style=""  v-if="region != ''"></i>
+						<label class="" @click="selectCityFlag = true"  v-if="region != ''">{{region}}<i class="iconfont iconunfold icons" style=""></i></label>
+						<div v-if="region == ''"  @click="selectCityFlag = true" class="a-label">选择城市<i class="iconfont iconunfold icons" style=""></i></div>
+						<div class="input-wrap">
+							<i class="iconfont iconsearch icons" style="color: #999;" v-if="region != ''"></i>
+							<div class="input-cell">
+								<input placeholder="小区/街道/大厦/学校名称" v-model="keyword" @focus="searchInputFocus" />
+								<i class="iconfont iconguanbi2fill" style="color: #999;" v-if="isSearchInput && keyword != ''" @click="keyword = ''"></i>
+							</div>
+						</div>
+					</div>
+					<div class="cancel-btn-wrap" v-show="isSearchInput" @click="cancelSearchInput">取消</div>
+					<span class="input-tips-wrap" v-show="showInputTips || (isSearchInput && keyword == '')">
+						例如：全民酒仓、会展酒店
+					</span>
+				</div>
+				<div class="tips-wrap" v-show="!isSearchInput && !showInputTips">
+					<p>请选择城市，并输入送货地址</p>
+				</div>
+				<div class="search-result-wrap" v-show="searchResults.length > 0">
+					<ul>
+						<li v-for="result in searchResults">
+							<div class="name"><span>{{result.title}}</span></div>
+							<div class="address">{{result.address}}</div>
+						</li>
+					</ul>
+				</div>
+				
 			</div>
 			
-			<div class="city-picker">
+			<div class="city-picker" v-show="selectCityFlag">
 				<div class="search-wrap">
 					<i class="iconfont iconsearch"></i>
 					<div class="input-wrap">
-						<input type="text" placeholder="城市中文或者拼音" />
+						<input type="text" placeholder="城市中文或者拼音" v-model="cityKeyword" />
 					</div>
-					<div class="right-btn">取消</div>
+					<div class="right-btn" @click="selectCityFlag = false">取消</div>
 				</div>
-				<div class="city-container">
-					<div class="hot-city-container">
-						<p>热门城市</p>
+				<div class="city-tips-wrap">
+					<ul>
+						<li v-for="city in resultCities" @click="selectCity(city)">{{city.city_name}}</li>
+					</ul>
+				</div>
+				<div class="city-container" v-show="selectCityFlag && resultCities.length == 0">
+					<div class="city-alpha-side">
+						<span>#</span>
+						<a v-for="alpha in opencity.classify_nav" @click="toAlpha(alpha.idx)">{{alpha.idx}}</a>
+					</div>
+					<div class="city-list-container">
+						<div class="hot-city-container">
+							<p>热门城市</p>
+							<div style="font-size: 0;">
+								<span class="txt-block" v-for="city in opencity.hot_city" @click="selectCity(city)">{{city.city_name}}</span>
+							</div>
+						</div>
+						<div v-for="city_nav in opencity.city_nav" :id="city_nav.idx" class="nav_alpha_wrap">
+							<div>
+								<p class="alpha_line">{{city_nav.idx}}</p>
+								<ul>
+									<li v-for="city in city_nav.cities" @click="selectCity(city)">{{city.city_name}}</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			
 		</div>
 		
 		<script src="../js/vue.js"></script>
 		<script src="../js/app.js"></script>
+		<script src="../js/toast.js"></script>
 		<script>
 			
-			var opencity
-			
-			App.http({
-				url: '../js/opencity.js',
-				success: function(res) {
-					opencity = res
-				}
-			})
-			
-			new Vue({
+			var app = new Vue({
 				el: '#app',
 				data() {
 					return {
 						keyword: '',
-						region: '东莞市'
+						region: '',
+						selectCityFlag: false,
+						showInputTips: false,
+						isSearchInput: false,
+						searchResults: [],
+						opencity: {},
+						resultCities: [],
+						cityKeyword: ''
 					}
 				},
+				created() {
+					this.listOpencity()
+					
+					// 计算 city_list_container 的高度
+					var screenHeight = window.screen.height
+					var cityListContainerHeight = screenHeight - 45
+					document.querySelector('.city-container').style.height = cityListContainerHeight + 'px'
+				},
 				methods: {
+					listOpencity() {
+						var _this = this
+						App.http({
+							url: '../js/opencity.js',
+							success: function(res) {
+								_this.opencity = JSON.parse(res)
+							}
+						})
+					},
 					listSearchTips(kw) {
 						if (!kw && kw.trim() == '') return
+						if (this.region.trim() == '') {
+							Toast.show('请先选择城市')
+							return
+						}
 						var data = {
 							region: this.region,
 							kw: kw
 						}
+						var _this = this
 						App.http({
 							url: "http://localhost:8095/rest/mapsearch/tm",
 							data: data,
 							success: function(res) {
-								console.log(res)
+								if (res.resultCode == 0 && res.data.status == 0) {
+									_this.searchResults = res.data.data
+								}
 							}
 						})
 					},
-					selectCity() {
-						console.log("click selectCity")
+					selectCity(city) {
+						console.log("click selectCity : " + city.city_name)
+						this.region = city.city_name
+						this.selectCityFlag = false
+					},
+					toAlpha(alpha) {
+						console.log("click: " + alpha)
+					},
+					searchCity(keyword) {
+						keyword = keyword.toLowerCase()
+						this.resultCities = []
+						if (!this.selectCityFlag || keyword.trim() == '') return
+						for (var idx in this.opencity.city_nav) {
+							var city_nav = this.opencity.city_nav[idx]
+							for (var cidx in city_nav.cities) {
+								var city = city_nav.cities[cidx]
+								 if ((city.city_pinyin.indexOf(keyword[0]) == 0 && city.city_pinyin.indexOf(keyword) > -1) || (city.city_name.indexOf(keyword[0]) == 0 && city.city_name.indexOf(keyword) > -1)) {
+									this.resultCities.push(city)
+								} 
+							}
+						}
+					},
+					searchInputFocus() {
+						if (!this.isSearchInput) {
+							this.isSearchInput = true
+							this.showInputTips = true
+						}
+					},
+					cancelSearchInput() {
+						this.isSearchInput = false
+						this.showInputTips = false
 					}
 				},
 				watch:{
 					keyword(newVal) {
+						if (newVal.trim() != '') {
+							this.showInputTips = false
+						}
 						this.listSearchTips(newVal)
+					},
+					cityKeyword(newVal) {
+						this.searchCity(newVal)
 					}
 				}
 			})

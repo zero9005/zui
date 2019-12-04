@@ -7,7 +7,12 @@
 		var xhr = new XMLHttpRequest()
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				options.success(xhr.responseText)
+				var contentType = xhr.getResponseHeader('Content-Type')
+				var response = xhr.responseText
+				if (contentType && contentType.indexOf('json') > -1) {
+					response = JSON.parse(response)
+				} 
+				options.success(response)
 			} else if (xhr.readyState == 4 && xhr.status != 200) {
 				options.error()
 			}
