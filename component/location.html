@@ -326,10 +326,10 @@
 				<div class="tips-wrap" v-show="!isSearchInput && !showInputTips">
 					<p>请选择城市，并输入送货地址</p>
 				</div>
-				<div class="search-result-wrap" v-show="searchResults.length > 0">
+				<div class="search-result-wrap" v-show="isSearchInput && searchResults.length > 0">
 					<ul>
-						<li v-for="result in searchResults">
-							<div class="name"><span>{{result.title}}</span></div>
+						<li v-for="result in searchResults" @click="selectLocationAddress(result)">
+							<div class="name"><span>{{result.prefixTitle}}<strong>{{result.strongTitle}}</strong>{{result.suffixTitle}}</span></div>
 							<div class="address">{{result.address}}</div>
 						</li>
 					</ul>
@@ -430,6 +430,22 @@
 							success: function(res) {
 								if (res.resultCode == 0 && res.data.status == 0) {
 									_this.searchResults = res.data.data
+									for (var idx in _this.searchResults) {
+										var searchResult = _this.searchResults[idx]
+										if (searchResult.title.indexOf(kw) == 0) {
+											searchResult.prefixTitle = ''
+											searchResult.strongTitle = searchResult.title.substr(searchResult.title.indexOf(kw), kw.length)
+											searchResult.suffixTitle = searchResult.title.substr(kw.length)
+										} else if (searchResult.title.indexOf(kw) > 0) {
+											searchResult.prefixTitle = searchResult.title.substr(0, searchResult.title.indexOf(kw))
+											searchResult.strongTitle = searchResult.title.substr(searchResult.title.indexOf(kw), kw.length)
+											searchResult.suffixTitle = searchResult.title.substr(kw.length)
+										} else {
+											searchResult.prefixTitle = searchResult.title
+											searchResult.strongTitle = ''
+											searchResult.suffixTitle = ''
+										}
+									}
 								}
 							}
 						})
@@ -465,12 +481,17 @@
 					cancelSearchInput() {
 						this.isSearchInput = false
 						this.showInputTips = false
+					},
+					selectLocationAddress(address) {
+						console.log(`select address: ${address.title}, address: ${address.address}, location: ${address.location.lat},${address.location.lng}`)
 					}
 				},
 				watch:{
 					keyword(newVal) {
 						if (newVal.trim() != '') {
 							this.showInputTips = false
+						} else {
+							this.searchResults = []
 						}
 						this.listSearchTips(newVal)
 					},
