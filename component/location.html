@@ -456,7 +456,8 @@
 						this.selectCityFlag = false
 					},
 					toAlpha(alpha) {
-						console.log("click: " + alpha)
+						if (alpha == '#') alpha = 'A'
+						document.getElementById(alpha).scrollIntoView()
 					},
 					searchCity(keyword) {
 						keyword = keyword.toLowerCase()

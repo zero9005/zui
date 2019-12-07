@@ -28,10 +28,21 @@
 				flex: 1;
 				text-align: center;
 				font-size: 14px;
-				border-left: 1px solid #ddd;
+				position: relative;
+				/* border-left: 1px solid #ddd; */
 			}
-			.tab-header ul li:first-child {
+			/* .tab-header ul li:first-child {
 				border-left: none;
+			} */
+			.tab-header ul li:not(:first-child)::before {
+				content: ' ';
+				height: 60%;
+				width: 1px;
+				background: #e4e4e4;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
 			}
 			.tab-header ul li.cur {
 				color: #F5222D;
