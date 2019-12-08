@@ -6,7 +6,7 @@ html, body, ul, li, div, p {
 	margin: 0;
 }
 html {
-	font-size: 14px;
+	font-size: 16px;
 }
 ul,li {
 	list-style: none;
@@ -14,7 +14,7 @@ ul,li {
 i,em {
 	font-style: normal;
 }
-a, a:hover {
+a, a:hover, a:visited, a:active, a:hover {
 	text-decoration: none;
 	color: #333;
 }

@@ -5,7 +5,7 @@
 		<title>我的</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../../css/base.css" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_lqjqpvqtwl.css"/>
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_aptwasu8wsr.css"/>
 		<style>
 			html {
 				padding: 0;
@@ -102,7 +102,7 @@
 				display: inline-block;
 				position: absolute;
 				top: -8px;
-				right: 5px;
+				right: 8px;
 				height: 1rem;
 				width: 1rem;
 				font-size: 10px;
@@ -122,9 +122,58 @@
 				background: #fff;
 				z-index: -1;
 			}
+			.menu-panel {
+				
+			}
+			.menu-panel .menu-panel-wrap{
+				margin: 0 0.625rem;
+				background: #fff;
+				padding: 0.5rem 0;
+				border-radius: 5px;
+			}
+			.menu-panel .menu-panel-wrap .title {
+				font-size: 0.875rem;
+				font-weight: 600;
+				margin-left: .5rem;
+			}
+			.opt-btn {
+				font-size: .75rem;
+				color: #999!important;
+				font-weight: normal;
+				float: right;
+			}
+			.opt-btn .iconfont {
+				font-size: .75rem;
+			}
+			.menu-panel .menu-panel-wrap ul li {
+				flex: 1;
+				text-align: center;
+				padding: .5rem;
+			}
+			.menu-panel .menu-panel-wrap ul li a {
+				display: block;
+			}
+			.menu-panel .menu-panel-wrap ul li span {
+				display: block;
+				font-size: 0.75rem;
+				margin-top: 5px;
+			}
+			.menu-panel.data-wrap .data {
+				font-size: 1rem;
+				font-weight: 600;
+			}
+			.grids-4 .grid-item {
+				width: 25%;
+				box-sizing: border-box;
+			}
+			.grid-item {
+				float: left;
+				text-align: center;
+			}
 		</style>
 	</head>
 	<body>
+		<!-- page-header-wrap start -->
 		<div class="page-header-wrap">
 			<div class="header-wrap">
 				<div class="avatar-wrap">
@@ -136,6 +185,9 @@
 				</div>
 			</div>
 		</div>
+		<!-- page-header-wrap end -->
+		
+		<!-- order-panel start -->
 		<div class="order-panel">
 			<div class="order-item-wrap">
 				<ul class="order-item-list ui-flex">
@@ -167,5 +219,89 @@
 				</ul>
 			</div>
 		</div>
+		<!-- order-panel end -->
+		
+		<!-- data-wrap start -->
+		<div class="menu-panel mt-10 data-wrap">
+			<div class="menu-panel-wrap">
+				<div class="title">
+					我的酒仓
+					<a href="#" class="opt-btn">进入酒仓<i class="iconfont iconenter"></i></a>
+				</div>
+				
+				<ul class="menu-list-wrap ui-flex">
+					<li>
+						<a href="#">
+							<i class="data">123</i>
+							<span>关联客户</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="data">1601.30</i>
+							<span>待结算</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="data">10000.00</i>
+							<span>余额</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- data-wrap end -->
+		
+		<!-- data-wrap start -->
+		<div class="menu-panel mt-10 data-wrap">
+			<div class="menu-panel-wrap">
+				<div class="title">
+					我的功能
+				</div>
+				
+				<ul class="menu-list-wrap grids-4 clearfix">
+					<li class="grid-item">
+						<a href="#">
+							<i class="iconfont icondizhi"></i>
+							<span>我的地址</span>
+						</a>
+					</li>
+					<li class="grid-item">
+						<a href="#">
+							<i class="iconfont iconyouhuiquan1"></i>
+							<span>优惠券</span>
+						</a>
+					</li>
+					<li class="grid-item">
+						<a href="#">
+							<i class="iconfont iconshezhi"></i>
+							<span>账户设置</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- data-wrap end -->
+		
+		<!-- data-wrap start -->
+		<div class="menu-panel mt-10 data-wrap">
+			<div class="menu-panel-wrap">
+				<div class="title">
+					我的服务
+				</div>
+				
+				<ul class="menu-list-wrap grids-4 clearfix">
+					<li class="grid-item">
+						<a href="#">
+							<i class="iconfont icondaishouhuo"></i>
+							<span>配送列表</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- data-wrap end -->
+		
 	</body>
 </html>
