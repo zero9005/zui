@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>订单确认</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scale=no" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_aptwasu8wsr.css"/>
+		<style>
+			body {
+				background-color: #F5F5F5;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.address-wrap {
+				padding: 0.625rem;
+				background: #fff;
+			}
+			.address-wrap {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				z-index: 99;
+				border-bottom: 1px solid #e4e4e4;
+			}
+			.address-wrap .address-info {
+				font-size: .75rem;
+				line-height: 1.2rem;
+			}
+			.address-wrap .address-info .address {
+				font-size: 1rem;
+				font-weight: 600;
+			}
+			.address-info .edit-wrap {
+				display: flex;
+				align-items: center;
+				color: #999;
+			}
+			.items-box {
+				background: #fff;
+			}
+			.wrap-line {
+				padding: 0 .625rem;
+				font-size: .75rem;
+				line-height: 2.4rem;
+				position: relative;
+				background: #fff;
+			}
+			.wrap-line input {
+				width: 100%;
+				padding-left: .5rem;
+				outline: none;
+			}
+			.wrap-line .line-right {
+				flex: 1;
+				color: #666;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+			}
+			.wrap-line::after, .items-wrap::after {
+				content: ' ';
+				height: 1px;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #e4e4e4;
+				transform-origin: 0 0;
+				transform: scaleY(.5);
+			}
+			.items-box .items-wrap {
+				padding: 0 0.625rem;
+				position: relative;
+			}
+			.items-box .img-wrap {
+				flex: 0 0 4.5rem;
+				margin: .5rem .5rem .5rem 0;
+			}
+			.items-box .img-wrap img {
+				width: 100%;
+			}
+			.items-box .info-wrap {
+				margin: .625rem 0;
+				font-size: .75rem;
+				position: relative;
+			}
+			.box-bottom {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+			}
+			.cal-panel {
+				background: #fff;
+			}
+			.cal-panel .wrap-line {
+				line-height: 1.1rem;
+				padding: .75rem;
+				font-size: .625rem;
+			}
+			.cal-panel .cal-result {
+				text-align: right;
+				font-size: .875rem;
+				padding: .625rem;
+			}
+			.btns-wrap {
+				padding: .625rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- address-wrap start -->
+			<div class="address-wrap">
+				<div class="address-info ui-flex">
+					<div class="flex-1" v-if="address != null">
+						<div class="address">东莞市南城街道第一国际全民酒仓1栋</div>
+						<div class="mt-5">
+							<span>张先生</span>
+							<span>13412834033</span>
+						</div>
+					</div>
+					<div class="flex-1 tac color-666" v-if="address == null">
+						<i class="iconfont icondizhi"></i>
+						<div>还没有收货地址，点击这里添加</div>
+					</div>
+					<div class="edit-wrap">
+						<i class="iconfont iconenter"></i>
+					</div>
+				</div>
+			</div>
+			<!-- address-wrap end -->
+			
+			<!-- items-box start -->
+			<div class="items-box mt-10" style="margin-top: 4.63rem;">
+				<div class="wrap-line ui-flex">
+					<div class="flex-1">全民酒仓南城店</div>
+					<div class="color-666">0m</div>
+				</div>
+				<!-- items-wrap start -->
+				<div class="items-wrap">
+					<div class="item-wrap ui-flex">
+						<div class="img-wrap">
+							<img src="http://imgwm.dddingjiu.com/uploads/images/%E4%BC%8A%E6%8B%89%E8%8B%8F%E9%85%BF%E9%85%92%E5%B8%88%E7%8F%8D%E8%97%8F%E7%BE%8E%E4%B9%90%E5%B9%B2%E7%BA%A2%E8%91%A1%E8%90%84%E9%85%92/1.png" />
+						</div>
+						<div class="info-wrap">
+							<div>(智利)伊拉苏酿酒师珍藏美乐干红葡萄酒 750ml 原瓶进口</div>
+							<div class="color-666">这里是规格</div>
+							<div class="ui-flex box-bottom">
+								<span class="flex-1 price">￥178</span>
+								<span>x 1</span>
+							</div>
+						</div>
+					</div>
+					<div class="item-wrap ui-flex">
+						<div class="img-wrap">
+							<img src="http://imgwm.dddingjiu.com/uploads/images/%E6%8B%89%E8%8F%B2%E7%BD%97%E6%96%AF%E6%9F%B4%E5%B0%94%E5%BE%B7%E5%B7%B4%E6%96%AF%E5%85%8B%E7%89%B9%E9%85%BF/1.png" />
+						</div>
+						<div class="info-wrap">
+							<div>(智利)巴斯克精选红葡萄酒14%vol 750ml原瓶进口 </div>
+							<div class="color-666">这里是规格</div>
+							<div class="ui-flex box-bottom">
+								<span class="flex-1 price">￥148</span>
+								<span>x 1</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- items-wrap end -->
+				<div class="wrap-line ui-flex">
+					<div>配送</div>
+					<div class="flex-1 tar">快速配送</div>
+				</div>
+				<div class="wrap-line ui-flex">
+					<div>备注</div>
+					<div class="flex-1">
+						<input placeholder="选填，50字内" />
+					</div>
+				</div>
+			</div>
+			<!-- items-box end -->
+			
+			<div class="mt-10">
+				<div class="wrap-line ui-flex">
+					<div>优惠券</div>
+					<div class="line-right">无可用<i class="iconfont iconenter"></i></div>
+				</div>
+			</div>
+			<div class="mt-10 cal-panel">
+				<div class="wrap-line" style="line-height: 1.1rem;">
+					<div class="ui-flex">
+						<div>总金额</div>
+						<div class="flex-1 tar price">￥326.00</div>
+					</div>
+					<div class="ui-flex">
+						<div>运费</div>
+						<div class="flex-1 tar price">+ ￥0.00</div>
+					</div>
+				</div>
+				<div class="cal-result">
+					实付金额：<span class="price">￥326.00</span>
+				</div>
+				<div class="btns-wrap">
+					<button class="btn large" style="background: #000;">余额支付</button>
+					<button class="btn large mt-10">微信支付</button>
+				</div>
+			</div>
+			<div class="tac mt-20" style="font-size: .875rem;margin-bottom: 50px;">
+				全民酒仓 | <span style="font-size: .75rem;">随时随地，想喝就喝</span>
+			</div>
+		</div>
+		
+		
+		<script src="../../js/vue.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data() {
+					return {
+						address: {}
+					}
+				},
+				created() {
+					
+				},
+				methods: {
+					
+				}
+			})
+		</script>
+		
+	</body>
+</html>

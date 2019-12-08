@@ -4,6 +4,7 @@
 html, body, ul, li, div, p {
 	padding: 0;
 	margin: 0;
+	--primary-color: #F5222D;
 }
 html {
 	font-size: 16px;
@@ -42,11 +43,17 @@ a, a:hover, a:visited, a:active, a:hover {
 .fr {
 	float: right;
 }
+.mt-5 {
+	margin-top: 5px;
+}
 .mt-10 {
 	margin-top: 10px;
 }
 .mt-20 {
 	margin-top: 20px;
+}
+.mt-30 {
+	margin-top: 30px;
 }
 .mb-40 {
 	margin-bottom: 40px;
@@ -223,11 +230,38 @@ input[type=checkbox] {
 }
 .btn.large {
 	width: 100%;
-	font-size: 16px;
-	line-height: 1.6;
+	font-size: 0.875rem;
+	line-height: 1.6rem;
 }
 .btn.disable {
 	background-color: #CCC;
 	color: #F0F0F0;
 	pointer-events: none;
+}
+.ui-flex {
+	display: flex;
+}
+.flex-1 {
+	flex: 1;
+}
+.tac {
+	text-align: center;
+}
+.tar {
+	text-align: right;
+}
+.color-000 {
+	color: #000;
+}
+.color-333 {
+	color: #333;
+}
+.color-666 {
+	color: #666;
+}
+.color-999 {
+	color: #999;
+}
+.price {
+	color: var(--primary-color);
 }
