@@ -55,11 +55,26 @@ a, a:hover, a:visited, a:active, a:hover {
 .mt-30 {
 	margin-top: 30px;
 }
+.mt-40 {
+	margin-top: 40px;
+}
+.mt-50 {
+	margin-top: 50px;
+}
 .mb-40 {
 	margin-bottom: 40px;
 }
 .mb-50 {
 	margin-bottom: 50px;
+}
+.mb-60 {
+	margin-bottom: 60px;
+}
+.mb-70 {
+	margin-bottom: 70px;
+}
+.mb-80 {
+	margin-bottom: 80px;
 }
 .arrow0 {
 	display: inline-block;
@@ -219,7 +234,7 @@ input[type=checkbox] {
 	transform: translateX(20px);
 }
 .btn {
-	padding: 5px 20px;
+	padding: 10px 20px;
 	background: #1AAD19;
 	/*border: 1px solid #1AAD19;*/
 	border: none;

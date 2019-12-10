@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>popup</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			html {
+				font-size: 18px;
+			}
+			body {
+				background-color: #F5F5F5;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.popup-shade {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background: rgba(7, 17, 27, 0.4);
+				z-index: 1;
+			}
+			.popup-modal {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 60%;
+				background: #fff;
+				display: none;
+				transition: linear 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<button id="btn_popup">popup</button>
+			<button id="btn_hide">hide</button>
+		</div>
+		<div class="popup-modal">
+			<div class="popup-layer">
+				<span>这里是内容</span>
+			</div>
+		</div>
+		<script>
+			var btnPopup = document.querySelector("#btn_popup")
+			btnPopup.addEventListener('click', function() {
+				document.querySelector(".popup-modal").style.display = 'block'
+			})
+			var btnHide = document.querySelector("#btn_hide")
+			btnHide.addEventListener('click', function() {
+				document.querySelector(".popup-modal").style.display = 'none'
+			})
+		</script>
+	</body>
+</html>
