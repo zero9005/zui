@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>popup</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
 		<style>
 			html {
 				font-size: 18px;
@@ -13,24 +13,57 @@
 				max-width: 600px;
 				margin: 0 auto;
 			}
-			.popup-shade {
+			* {
+				box-sizing: border-box;
+			}
+			.popup-modal {
 				position: fixed;
 				top: 0;
 				right: 0;
 				bottom: 0;
 				left: 0;
-				background: rgba(7, 17, 27, 0.4);
-				z-index: 1;
+				z-index: 1110;
+				opacity: 0;
+				outline: 0;
+				text-align: center;
+				-ms-transform: scale(1.185);
+				-webkit-transform: scale(1.185);
+				transform: scale(1.185);
+				-webkit-backface-visibility: hidden;
+				backface-visibility: hidden;
+				background: rgba(0, 0, 0, 0.6);
+				-webkit-transition: all 0.3s ease-in-out 0s;
+				transition: all 0.3s ease-in-out 0s;
+				pointer-events: none;
 			}
-			.popup-modal {
-				position: fixed;
-				bottom: 0;
-				left: 0;
+			.popup-modal.show {
+				opacity: 1;
+				-webkit-transition-duration: 0.3s;
+				transition-duration: 0.3s;
+				-ms-transform: scale(1);
+				-webkit-transform: scale(1);
+				transform: scale(1);
+				overflow-x: hidden;
+				overflow-y: auto;
+				pointer-events: auto;
+			}
+			.popup-modal::before {
+				content: " ";
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+			.popup-modal.bottom-modal::before {
+				vertical-align: bottom;
+			}
+			.modal-dialog {
+				background-color: #f8f8f8;
+				display: inline-block;
+				width: auto;
+				max-width: 100%;
+			}
+			.bottom-modal .modal-dialog {
 				width: 100%;
-				height: 60%;
-				background: #fff;
-				display: none;
-				transition: linear 1s;
 			}
 		</style>
 	</head>
@@ -39,20 +72,29 @@
 			<button id="btn_popup">popup</button>
 			<button id="btn_hide">hide</button>
 		</div>
-		<div class="popup-modal">
-			<div class="popup-layer">
-				<span>这里是内容</span>
+		<div class="popup-modal bottom-modal"><div class="modal-dialog">
+				<div style="padding: 25px;">
+					<div>标题1</div>
+					<div>标题2</div>
+					<div>标题3</div>
+					<div>标题4</div>
+				</div>
 			</div>
+			
 		</div>
+		
 		<script>
 			var btnPopup = document.querySelector("#btn_popup")
+			var popupModal = document.querySelector('.popup-modal')
 			btnPopup.addEventListener('click', function() {
-				document.querySelector(".popup-modal").style.display = 'block'
+				// document.querySelector(".popup-modal").style.height = '60%'
+				popupModal.classList.add('show');
 			})
-			var btnHide = document.querySelector("#btn_hide")
-			btnHide.addEventListener('click', function() {
-				document.querySelector(".popup-modal").style.display = 'none'
+			
+			popupModal.addEventListener('click', function() {
+				popupModal.classList.remove('show')
 			})
+			
 		</script>
 	</body>
 </html>
