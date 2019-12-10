@@ -51,6 +51,7 @@
 				width: 100%;
 				padding-left: .5rem;
 				outline: none;
+				border: none;
 			}
 			.wrap-line .line-right {
 				flex: 1;
@@ -222,10 +223,15 @@
 					}
 				},
 				created() {
-					
+					this.$nextTick(() => {
+						this.setItemBoxMarginTop()
+					})
 				},
 				methods: {
-					
+					setItemBoxMarginTop() {
+						var marginTop = document.querySelector('.address-wrap').offsetHeight + 10
+						document.querySelector('.items-box').style.marginTop = marginTop + 'px'
+					}
 				}
 			})
 		</script>
