@@ -22,12 +22,34 @@
 
 			.search-bar-wrap {
 				background: #f5222d;
-				padding: .625rem;
 			}
 			.search-bar-wrap {
 				position: sticky;
 				top: 0;
 				z-index: 99;
+			}
+			.search-bar-wrap .bar-left {
+				position: absolute;
+				top: 0;
+				left: 10px;
+				height: 2rem;
+				line-height: 2rem;
+			}
+			.search-bar-wrap .bar-right {
+				position: absolute;
+				top: 0;
+				right: 10px;
+				height: 2rem;
+				line-height: 2rem;
+			}
+			.search-bar-wrap .slogan {
+				text-align: center;
+				font-size: .75rem;
+				line-height: 2rem;
+				height: 2rem;
+			}
+			.search-bar-wrap .slogan a {
+				color: #fff;
 			}
 			.search-bar-wrap>.iconfont {
 				color: #fff;
@@ -38,17 +60,23 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				background: #f0f2f5;
+		
 			}
 			
 			.search-input-wrap {
 				padding: 0 .625rem;
-				background: #fff;
+				display: flex;
+				padding: 0 .5rem .5rem;
+				
 			}
 			
 			.search-input-wrap {
-				margin: 0 .5rem;
+				/* margin: 0 .5rem; */
 				border-radius: 3.4px;
+				line-height: 1.5rem;
+				font-size: 0.625rem;
+				transition: all 300ms ease 0ms;
+				transform: scaleX(1) translateY(0px);
 			}
 			
 			.search-input-wrap .iconfont {
@@ -59,6 +87,7 @@
 				flex: 1;
 				margin-left: 6px;
 				height: 100%;
+				
 			}
 			.search-input-wrap .input-wrap input {
 				width: 100%;
@@ -157,20 +186,136 @@
 				position: relative;
 				height: 1.2rem;
 			}
+			.c1 {
+				border: 0px solid black;
+				position: sticky;
+				box-sizing: border-box;
+				display: flex;
+				-webkit-box-orient: vertical;
+				flex-direction: column;
+				align-content: flex-start;
+				flex-shrink: 0;
+				top: 0px;
+				z-index: 99;
+				-webkit-box-align: center;
+				align-items: center;
+				overflow: hidden;
+				visibility: visible;
+				opacity: 1;
+			}
+			.c2 {
+				    border: 0px solid black;
+				    position: relative;
+				    box-sizing: border-box;
+				    display: flex;
+				    -webkit-box-orient: vertical;
+				    flex-direction: column;
+				    align-content: flex-start;
+				    flex-shrink: 0;
+				    width: 320px;
+				    height: 76.8px;
+				    align-self: center;
+				    background-color: rgb(255, 0, 54);
+			}
+			.c3 {
+				border: 0px solid black;
+				    position: absolute;
+				    box-sizing: border-box;
+				    display: flex;
+				    -webkit-box-orient: vertical;
+				    flex-direction: column;
+				    align-content: flex-start;
+				    flex-shrink: 0;
+				    width: 25.6px;
+				    overflow: hidden;
+				    left: 10.24px;
+				    top: 0px;
+				    padding: 5.97333px 0px;
+			}
+			.c4 {
+				    border: 0px solid black;
+				    position: absolute;
+				    box-sizing: border-box;
+				    display: flex;
+				    -webkit-box-orient: vertical;
+				    flex-direction: column;
+				    align-content: flex-start;
+				    flex-shrink: 0;
+				    width: 25.6px;
+				    overflow: hidden;
+				    right: 10.24px;
+				    top: 0px;
+				    line-height: 25.6px;
+				    padding: 5.97333px 0px;
+			}
+			.c5 {
+				border: 0px solid black;
+				    position: relative;
+				    box-sizing: border-box;
+				    display: flex;
+				    -webkit-box-orient: vertical;
+				    flex-direction: column;
+				    place-content: flex-start center;
+				    flex-shrink: 0;
+				    -webkit-box-align: center;
+				    align-items: center;
+				    height: 37.5467px;
+				    -webkit-box-pack: center;
+			}
+			.c6 {
+				text-decoration: none;
+				    box-sizing: border-box;
+				    align-self: center;
+				    padding: 0px 8.53333px 8.53333px;
+				    display: flex;
+				    -webkit-box-orient: horizontal;
+				    flex-direction: row;
+				    width: 320px;
+				    position: relative;
+				    min-height: 39.2533px;
+			}
 		</style>
 	</head>
 	<body>
+		
+		<div class="c1">
+			<div class="c2">
+				<div class="c5">
+					<span >随时随地，想喝就喝</span>
+				</div>
+				<a class="c6">
+					<i class="iconfont iconsearch"></i>
+					<div class="input-wrap">
+						<span>大家都在搜 巴斯克</span>
+					</div>
+				</a>
+			</div>
+			<div class="c3">
+				<i class="iconfont iconfenlei"></i>
+			</div>
+			<div class="c4">
+				<i class="iconfont iconweibiaoti2fuzhi12"></i>
+			</div>
+		</div>
 
 		<!-- search-input-wrap start -->
-		<div class="search-bar-wrap ui-flex">
-			<i class="iconfont iconfenlei"></i>
+		<div class="search-bar-wrap" style="display: none;">
+			<i class="iconfont iconfenlei bar-left"></i>
+				
+			<div class="slogan">
+				<a href="javascript:void(0);">随时随地，想喝就喝</a>
+			</div>
+
 			<a class="search-input-wrap flex-1" href="search.html">
-				<i class="iconfont iconsearch"></i>
-				<div class="input-wrap">
-					<span>大家都在搜 巴斯克</span>
+				<div style="background: #fff;padding: 0 .5rem;" class="flex-1 ui-flex">
+					<i class="iconfont iconsearch"></i>
+					<div class="input-wrap">
+						<span>大家都在搜 巴斯克</span>
+					</div>
 				</div>
 			</a>
-			<i class="iconfont iconweibiaoti2fuzhi12"></i>
+			
+			<i class="iconfont iconweibiaoti2fuzhi12 bar-right"></i>
 		</div>
 		<!-- search-input-wrap end -->
 
