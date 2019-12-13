@@ -47,6 +47,9 @@
 				overflow-y: auto;
 				pointer-events: auto;
 			}
+			.popup-modal {
+				font-size: 0;
+			}
 			.popup-modal::before {
 				content: " ";
 				display: inline-block;
@@ -61,6 +64,7 @@
 				display: inline-block;
 				width: auto;
 				max-width: 100%;
+				font-size: 1rem;
 			}
 			.bottom-modal .modal-dialog {
 				width: 100%;
@@ -72,7 +76,8 @@
 			<button id="btn_popup">popup</button>
 			<button id="btn_hide">hide</button>
 		</div>
-		<div class="popup-modal bottom-modal"><div class="modal-dialog">
+		<div class="popup-modal bottom-modal">
+			<div class="modal-dialog">
 				<div style="padding: 25px;">
 					<div>标题1</div>
 					<div>标题2</div>

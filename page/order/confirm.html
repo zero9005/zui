@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>订单确认</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scale=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../css/base.css" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_aptwasu8wsr.css"/>
 		<style>
@@ -27,6 +27,9 @@
 				z-index: 99;
 				border-bottom: 1px solid #e4e4e4;
 			}
+			.address-wrap.note {
+				background: linear-gradient(to right, #fefbea, #ebe0c1)
+			}
 			.address-wrap .address-info {
 				font-size: .75rem;
 				line-height: 1.2rem;
@@ -45,7 +48,7 @@
 			}
 			.wrap-line {
 				padding: 0 .625rem;
-				font-size: .75rem;
+				font-size: .875rem;
 				line-height: 2.4rem;
 				position: relative;
 				background: #fff;
@@ -205,6 +208,9 @@
 				<div class="cal-result">
 					实付金额：<span class="price">￥326.00</span>
 				</div>
+				<div style="font-size: .75rem; padding: 0 .625rem;" class="tar">
+					当前账户余额：<span >10000</span>
+				</div>
 				<div class="btns-wrap">
 					<button class="btn large" style="background: #000;">余额支付</button>
 					<button class="btn large mt-20">微信支付</button>
@@ -216,7 +222,7 @@
 		</div>
 		
 		
-		<script src="../../js/vue.js"></script>
+		<script src="../../js/vue.min.js"></script>
 		<script>
 			new Vue({
 				el: '#app',
@@ -237,6 +243,24 @@
 					}
 				}
 			})
+			
+			var needToNoteAddress = false
+			window.onscroll = function() {
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+				if (scrollTop > 50) {
+					if (needToNoteAddress) return
+					needToNoteAddress = true
+				} else {
+					if (!needToNoteAddress) return
+					needToNoteAddress = false
+				} 
+				if (needToNoteAddress) {
+					document.querySelector('.address-wrap').classList.add('note')
+				} else {
+					document.querySelector('.address-wrap').classList.remove('note')
+				}
+			}
+			
 		</script>
 		
 	</body>

@@ -164,7 +164,7 @@ a, a:hover, a:visited, a:active, a:hover {
 .page-header-navbar .center {
 	width: 50%;
 	text-align: center;
-	font-size: 14px;
+	font-size: .875rem;
 }
 .page-header-navbar .navbar-item {
 	flex: 0 0 25%;
