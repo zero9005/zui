@@ -12,12 +12,12 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				background: #f0f2f5;
+				background: #e4e4e4;
 				padding: 5px;
 			}
 			.search-input-wrap .iconfont {
 				color: #999;
-				font-size: .75rem;
+				font-size: .875rem;
 			}
 			.search-input-wrap .input-wrap {
 				flex: 1;
@@ -36,8 +36,8 @@
 				padding-left: 13px;
 			}
 			.recent-search p, .hot-search p {
-				font-size: .875rem;
-				line-height: .875rem;
+				font-size: 1rem;
+				line-height: 1rem;
 				color: #232326;
 				float: left;
 				width: 100px;
@@ -46,7 +46,7 @@
 			.recent-search .recent-search-tags, .hot-search .hot-search-tags {
 				padding-right: 2px;
 				overflow: hidden;
-				font-size: .75rem;
+				font-size: .875rem;
 				text-align: center;
 			}
 			.recent-search .recent-search-head, .hot-search .hot-search-head {
@@ -61,15 +61,15 @@
 				float: left;
 			}
 			.recent-search-tags span a, .hot-search-tags span a {
-				height: 23px;
-				line-height: 24px;
+				height: 2rem;
+				line-height: 2rem;
 				border-radius: 3px;
 				display: block;
 				width: 100%;
 				color: #686868;
 				white-space: nowrap;
 				text-overflow: ellipsis;
-				background-color: #f0f2f5;
+				background-color: #e4e4e4;
 				padding-left: 13px;
 				padding-right: 13px;
 				overflow: hidden;
@@ -90,7 +90,7 @@
 			.association-normal li a {
 				display: -webkit-box;
 				display: box;
-				height: 42px;
+				height: 2rem;
 				overflow: hidden;
 				-webkit-box-align: center;
 				box-align: center;
@@ -98,7 +98,7 @@
 			.association-normal li a .association-product-name {
 				display: block;
 				color: #232326;
-				font-size: 13px;
+				font-size: .875rem;
 				padding-top: 1px;
 				padding-bottom: 1px;
 				overflow: hidden;
@@ -109,14 +109,14 @@
 			}
 			.association-normal li a .association-product-btn {
 				color: #686868;
-				font-size: 12px;
+				font-size: .875rem;
 				display: block;
-				height: 23px;
+				height: 1.5rem;
 				padding-left: 10px;
 				padding-right: 10px;
-				background-color: #f0f2f5;
+				background-color: #e4e4e4;
 				border-radius: 3px;
-				line-height: 23px;
+				line-height: 1.5rem;
 				margin-right: 10px;
 			}		
 		</style>
@@ -130,7 +130,7 @@
 						<input placeholder="大家都在搜 巴斯克" id="searchInput" v-model="searchVal" />
 					</form>
 				</div>
-				<i class="iconfont iconguanbi2fill" style="font-size: 1rem; color: #b7b7b7;" v-if="searchVal.trim() != ''" @click="searchVal = ''"></i>
+				<i class="iconfont iconguanbi2fill" style="font-size: 1rem; color: #b7b7b7;margin-right: 5px;" v-if="searchVal.trim() != ''" @click="searchVal = ''"></i>
 			</div>
 			<div class="recent-search" v-show="searchTips.length == 0">
 				<div class="recent-search-head clearfix">
