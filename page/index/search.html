@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>搜索</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_740loedctnl.css" />
+		<style>
+			.search-input-wrap {
+				margin: .625rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				background: #f0f2f5;
+				padding: 5px;
+			}
+			.search-input-wrap .iconfont {
+				color: #999;
+				font-size: .75rem;
+			}
+			.search-input-wrap .input-wrap {
+				flex: 1;
+				margin-left: 6px;
+			}
+			.search-input-wrap .input-wrap input {
+				width: 100%;
+				border: none;
+				outline: none;
+				height: 1.3rem;
+				line-height: 1.3rem;
+				background: inherit;
+			}
+			.recent-search, .hot-search {
+				margin-top: 15px;
+				padding-left: 13px;
+			}
+			.recent-search p, .hot-search p {
+				font-size: .875rem;
+				line-height: .875rem;
+				color: #232326;
+				float: left;
+				width: 100px;
+				padding-left: 1px;
+			}
+			.recent-search .recent-search-tags, .hot-search .hot-search-tags {
+				padding-right: 2px;
+				overflow: hidden;
+				font-size: .75rem;
+				text-align: center;
+			}
+			.recent-search .recent-search-head, .hot-search .hot-search-head {
+				padding: 0 15px 11px 0;
+			}
+			.recent-search-tags span, .hot-search-tags span {
+				display: block;
+				max-width: 100%;
+				overflow: hidden;
+				padding-right: 10px;
+				padding-bottom: 10px;
+				float: left;
+			}
+			.recent-search-tags span a, .hot-search-tags span a {
+				height: 23px;
+				line-height: 24px;
+				border-radius: 3px;
+				display: block;
+				width: 100%;
+				color: #686868;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				background-color: #f0f2f5;
+				padding-left: 13px;
+				padding-right: 13px;
+				overflow: hidden;
+				box-sizing: border-box;
+			}
+			.association-normal {
+				list-style: none;
+				padding-left: 12px;
+				position: relative;
+			}
+			.association-normal li {
+				height: 42px;
+				display: block;
+				position: relative;
+				padding-right: 12px;
+				list-style: none;
+			}
+			.association-normal li a {
+				display: -webkit-box;
+				display: box;
+				height: 42px;
+				overflow: hidden;
+				-webkit-box-align: center;
+				box-align: center;
+			}
+			.association-normal li a .association-product-name {
+				display: block;
+				color: #232326;
+				font-size: 13px;
+				padding-top: 1px;
+				padding-bottom: 1px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				-webkit-box-flex: 1;
+				box-flex: 1;
+			}
+			.association-normal li a .association-product-btn {
+				color: #686868;
+				font-size: 12px;
+				display: block;
+				height: 23px;
+				padding-left: 10px;
+				padding-right: 10px;
+				background-color: #f0f2f5;
+				border-radius: 3px;
+				line-height: 23px;
+				margin-right: 10px;
+			}		
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="search-input-wrap">
+				<i class="iconfont iconsearch"></i>
+				<div class="input-wrap">
+					<form action="/search">
+						<input placeholder="大家都在搜 巴斯克" id="searchInput" v-model="searchVal" />
+					</form>
+				</div>
+				<i class="iconfont iconguanbi2fill" style="font-size: 1rem; color: #b7b7b7;" v-if="searchVal.trim() != ''" @click="searchVal = ''"></i>
+			</div>
+			<div class="recent-search" v-show="searchTips.length == 0">
+				<div class="recent-search-head clearfix">
+					<p>最近搜索</p>
+				</div>
+				<div class="recent-search-tags">
+					<span>
+						<a href="javascript:void(0);">标签1</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签2</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签3</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签4</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签5</a>
+					</span>
+				</div>
+			</div>
+			<div class="hot-search"  v-show="searchTips.length == 0">
+				<div class="hot-search-head clearfix">
+					<p>热门搜索</p>
+				</div>
+				<div class="hot-search-tags">
+					<span>
+						<a href="javascript:void(0);">标签1</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签2</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签3</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签4</a>
+					</span>
+					<span>
+						<a href="javascript:void(0);">标签5</a>
+					</span>
+				</div>
+			</div>
+			<ul class="association-normal"  v-show="searchTips.length > 0">
+				<li v-for="tip in searchTips">
+					<a href="javascript:void(0);">
+						<span class="association-product-name">{{tip}}</span>
+						<span class="association-product-btn">葡萄酒</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<script src="../../js/vue.js"></script>
+		<script>
+			//var searchInput = document.getElementById('searchInput')
+			// searchInput.onpropertychange = function(e) {
+			// 	console.log(searchInput.value)
+			// }
+			// searchInput.oninput = function() {
+			// 	console.log(searchInput.value)
+			// }
+			new Vue({
+				el: "#app",
+				data() {
+					return {
+						searchVal: '',
+						searchTips: []
+					}
+				},
+				watch:{
+					searchVal: function(newVal, oldVal) {
+						this.searchTips = []
+						if (newVal.trim() == '') return
+						var r = parseInt(Math.random() * 10)
+						for (var i = 0; i < r; i++) {
+							this.searchTips.push('休闲-' + (i+1))
+						}
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>
