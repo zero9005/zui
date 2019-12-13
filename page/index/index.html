@@ -5,6 +5,7 @@
 		<title>首页</title>
 		<meta name="viewport" content="width=device-width, initial-width=1.0" />
 		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_740loedctnl.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
 		<style>
 			html {
@@ -19,8 +20,39 @@
 				background: #f6f6f6;
 			}
 
+			.search-input-wrap {
+				margin: .625rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				background: #f0f2f5;
+				padding: 5px;
+			}
+			.search-input-wrap .iconfont {
+				color: #999;
+				font-size: .75rem;
+			}
+			.search-input-wrap .input-wrap {
+				flex: 1;
+				margin-left: 6px;
+			}
+			.search-input-wrap .input-wrap input {
+				width: 100%;
+				border: none;
+				outline: none;
+				height: 1.3rem;
+				line-height: 1.3rem;
+				background: inherit;
+			}
+
+
 			.swiper-container img {
 				max-width: 100%;
+				border-radius: 6px;
+			}
+			
+			.swiper-slide {
+				padding: .625rem;
 			}
 
 			.goods-container {}
@@ -99,6 +131,18 @@
 		</style>
 	</head>
 	<body>
+
+		<!-- search-input-wrap start -->
+		<div class="search-input-wrap">
+			<i class="iconfont iconsearch"></i>
+			<div class="input-wrap">
+				<form action="/search">
+					<input placeholder="大家都在搜 巴斯克" id="searchInput" v-model="searchVal" />
+				</form>
+			</div>
+			<i class="iconfont iconguanbi2fill" style="font-size: 1rem; color: #b7b7b7;" v-if="searchVal.trim() != ''" @click="searchVal = ''"></i>
+		</div>
+		<!-- search-input-wrap end -->
 
 		<!-- https://3.swiper.com.cn -->
 		<div class="swiper-container">
