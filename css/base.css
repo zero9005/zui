@@ -9,6 +9,9 @@ html, body, ul, li, div, p {
 html {
 	font-size: 16px;
 }
+body {
+	font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;;
+}
 ul,li {
 	list-style: none;
 }
