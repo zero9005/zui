@@ -13,6 +13,7 @@
 				margin: 0;
 				font-size: 18px;
 			}
+
 			body {
 				/* background-color: #F5F5F5; */
 				max-width: 600px;
@@ -23,11 +24,13 @@
 			.search-bar-wrap {
 				background: #f5222d;
 			}
+
 			.search-bar-wrap {
 				position: sticky;
 				top: 0;
 				z-index: 99;
 			}
+
 			.search-bar-wrap .bar-left {
 				position: absolute;
 				top: 0;
@@ -35,6 +38,7 @@
 				height: 2rem;
 				line-height: 2rem;
 			}
+
 			.search-bar-wrap .bar-right {
 				position: absolute;
 				top: 0;
@@ -42,15 +46,18 @@
 				height: 2rem;
 				line-height: 2rem;
 			}
+
 			.search-bar-wrap .slogan {
 				text-align: center;
 				font-size: .75rem;
 				line-height: 2rem;
 				height: 2rem;
 			}
+
 			.search-bar-wrap .slogan a {
 				color: #fff;
 			}
+
 			.search-bar-wrap>.iconfont {
 				color: #fff;
 				font-size: 1.3rem;
@@ -60,16 +67,16 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-		
+
 			}
-			
+
 			.search-input-wrap {
 				padding: 0 .625rem;
 				display: flex;
 				padding: 0 .5rem .5rem;
-				
+
 			}
-			
+
 			.search-input-wrap {
 				/* margin: 0 .5rem; */
 				border-radius: 3.4px;
@@ -78,17 +85,19 @@
 				transition: all 300ms ease 0ms;
 				transform: scaleX(1) translateY(0px);
 			}
-			
+
 			.search-input-wrap .iconfont {
 				color: #999;
 				font-size: .625rem;
 			}
+
 			.search-input-wrap .input-wrap {
 				flex: 1;
 				margin-left: 6px;
 				height: 100%;
-				
+
 			}
+
 			.search-input-wrap .input-wrap input {
 				width: 100%;
 				border: none;
@@ -97,7 +106,7 @@
 				line-height: 1.3rem;
 				background: inherit;
 			}
-			
+
 			.search-input-wrap .input-wrap span {
 				height: 1.3rem;
 				line-height: 1.3rem;
@@ -108,7 +117,7 @@
 			.swiper-container img {
 				max-width: 100%;
 			}
-			
+
 			.swiper-slide {
 				padding: .625rem;
 			}
@@ -134,22 +143,25 @@
 				float: left;
 				padding-bottom: 4px;
 			}
+
 			.goods-list li:nth-child(2n+1) {
 				padding-right: 2px;
 			}
+
 			.goods-list li:nth-child(2n) {
 				padding-left: 2px;
 			}
-			.goods-list li:nth-child(2n+1) {
-			}
-			.goods-list li:nth-child(2n) {
-				
-			}
+
+			.goods-list li:nth-child(2n+1) {}
+
+			.goods-list li:nth-child(2n) {}
+
 			.goods-list .goods-wrap {
 				display: block;
 				background-color: #FFFFFF;
 				border: 1px solid #e4e4e4;
 			}
+
 			.goods-list .img-wrap img {
 				width: 100%;
 			}
@@ -160,8 +172,9 @@
 				font-size: .75rem;
 				line-height: 1rem;
 				color: #000;
-				
+
 			}
+
 			.goods-list .info-wrap .price {
 				height: 1.4rem;
 				font-size: .875rem;
@@ -170,22 +183,24 @@
 				font-weight: 600;
 				margin: 5px 4px 3px;
 			}
-			
+
 			.goods-wrap {
 				/* margin: 5px;
 				border-radius: 8px; */
 			}
+
 			.goods-wrap .img-wrap img {
 				border-top-left-radius: 8px;
 				border-top-right-radius: 8px;
 			}
-			
+
 			.goods-list li .similar-layer {
 				font-size: 1rem;
 				overflow: hidden;
 				position: relative;
 				height: 1.2rem;
 			}
+
 			.c1 {
 				border: 0px solid black;
 				position: sticky;
@@ -203,91 +218,114 @@
 				visibility: visible;
 				opacity: 1;
 			}
+
 			.c2 {
-				    border: 0px solid black;
-				    position: relative;
-				    box-sizing: border-box;
-				    display: flex;
-				    -webkit-box-orient: vertical;
-				    flex-direction: column;
-				    align-content: flex-start;
-				    flex-shrink: 0;
-				    width: 320px;
-				    height: 76.8px;
-				    align-self: center;
-				    background-color: rgb(255, 0, 54);
-			}
-			.c3 {
 				border: 0px solid black;
-				    position: absolute;
-				    box-sizing: border-box;
-				    display: flex;
-				    -webkit-box-orient: vertical;
-				    flex-direction: column;
-				    align-content: flex-start;
-				    flex-shrink: 0;
-				    width: 25.6px;
-				    overflow: hidden;
-				    left: 10.24px;
-				    top: 0px;
-				    padding: 5.97333px 0px;
+				position: relative;
+				box-sizing: border-box;
+				display: flex;
+				-webkit-box-orient: vertical;
+				flex-direction: column;
+				align-content: flex-start;
+				flex-shrink: 0;
+				align-self: center;
+				background-color: rgb(255, 0, 54);
+				width: 100%;
+				transition: all 300ms ease 0ms;
+				transform: translateY(0px);
+			}
+
+			.c3, .c4 {
+				border: 0px solid black;
+				position: absolute;
+				box-sizing: border-box;
+				display: flex;
+				-webkit-box-orient: vertical;
+				flex-direction: column;
+				align-content: flex-start;
+				flex-shrink: 0;
+				overflow: hidden;
+				top: 0px;
+				transition: all 300ms ease 0ms;
+			}
+			
+			.c3 {
+				left: 0.652rem;
 			}
 			.c4 {
-				    border: 0px solid black;
-				    position: absolute;
-				    box-sizing: border-box;
-				    display: flex;
-				    -webkit-box-orient: vertical;
-				    flex-direction: column;
-				    align-content: flex-start;
-				    flex-shrink: 0;
-				    width: 25.6px;
-				    overflow: hidden;
-				    right: 10.24px;
-				    top: 0px;
-				    line-height: 25.6px;
-				    padding: 5.97333px 0px;
+				right: .625rem;
 			}
+
 			.c5 {
 				border: 0px solid black;
-				    position: relative;
-				    box-sizing: border-box;
-				    display: flex;
-				    -webkit-box-orient: vertical;
-				    flex-direction: column;
-				    place-content: flex-start center;
-				    flex-shrink: 0;
-				    -webkit-box-align: center;
-				    align-items: center;
-				    height: 37.5467px;
-				    -webkit-box-pack: center;
+				position: relative;
+				box-sizing: border-box;
+				display: flex;
+				-webkit-box-orient: vertical;
+				flex-direction: column;
+				place-content: flex-start center;
+				flex-shrink: 0;
+				-webkit-box-align: center;
+				align-items: center;
+				height: 40px;
+				-webkit-box-pack: center;
+				transition: all 300ms ease 0ms;
+				transform: scale(1);
 			}
+
 			.c6 {
 				text-decoration: none;
-				    box-sizing: border-box;
-				    align-self: center;
-				    padding: 0px 8.53333px 8.53333px;
-				    display: flex;
-				    -webkit-box-orient: horizontal;
-				    flex-direction: row;
-				    width: 320px;
-				    position: relative;
-				    min-height: 39.2533px;
+				box-sizing: border-box;
+				align-self: center;
+				padding: 0px .625rem .625rem;;
+				display: flex;
+				-webkit-box-orient: horizontal;
+				flex-direction: row;
+				width: 100%;
+				position: relative;
+				min-height: 40px;
+				transition: all 300ms ease 0ms;
+				transform: scaleX(1) translateY(0px);
+			}
+
+			.c3 .iconfont,
+			.c4 .iconfont {
+				color: #fff;
+				font-size: 1.2rem;
+			}
+
+			.c6>div {
+				color: #999;
+				background: #fff;
+				width: 100%;
+				align-items: center;
+				padding: 0 .625rem;
+				font-size: .625rem !important;
+				
+			}
+			.c6>div .iconfont {
+				font-size: .625rem;
+			}
+			.c6>div .input-wrap {
+				margin-left: .5rem;
 			}
 		</style>
 	</head>
 	<body>
-		
+
 		<div class="c1">
 			<div class="c2">
 				<div class="c5">
-					<span >随时随地，想喝就喝</span>
+					<span style="font-size: .875rem;color: #fff;font-weight: 600;">全民酒仓</span>
 				</div>
-				<a class="c6">
-					<i class="iconfont iconsearch"></i>
-					<div class="input-wrap">
-						<span>大家都在搜 巴斯克</span>
+				<a class="c6" href="search.html">
+					<div class="ui-flex">
+						<i class="iconfont iconsearch"></i>
+						<div class="input-wrap">
+							<span>大家都在搜 巴斯克</span>
+						</div>
 					</div>
+
 				</a>
 			</div>
 			<div class="c3">
@@ -301,7 +339,7 @@
 		<!-- search-input-wrap start -->
 		<div class="search-bar-wrap" style="display: none;">
 			<i class="iconfont iconfenlei bar-left"></i>
-				
+
 			<div class="slogan">
 				<a href="javascript:void(0);">随时随地，想喝就喝</a>
 			</div>
@@ -314,7 +352,7 @@
 					</div>
 				</div>
 			</a>
-			
+
 			<i class="iconfont iconweibiaoti2fuzhi12 bar-right"></i>
 		</div>
 		<!-- search-input-wrap end -->
@@ -437,6 +475,72 @@
 					imgUrl: 'http://imgwm.dddingjiu.com/uploads/images/%E5%A5%94%E5%AF%8Cbin389/%E4%B8%BB%E5%9B%BE.jpg'
 				}
 			]
+			
+			
+			
+			
+			var c2 = document.querySelector('.c2')
+			var c3 = document.querySelector('.c3')
+			var c4 = document.querySelector('.c4')
+			var c5 = document.querySelector('.c5')
+			var c6 = document.querySelector('.c6')
+			var c6Iconfont = document.querySelector('.c6 .iconfont')
+			var c6InputWrap = document.querySelector('.c6 .input-wrap')
+			
+			var searchBarHeight = document.documentElement.clientHeight * 0.135
+			var c5Height = searchBarHeight * 0.488
+			var c6Height = searchBarHeight - c5Height
+			c2.style.height = searchBarHeight + 'px'
+			c5.style.height = c5Height + 'px'
+			c6.style.height = c6Height + 'px'
+			
+			var c3Iconfont = document.querySelector('.c3 .iconfont')
+			var c4Iconfont = document.querySelector('.c4 .iconfont')
+			
+			var c3Padding = (c5Height - c3Iconfont.clientHeight) / 2
+			var c4Padding = (c5Height - c4Iconfont.clientHeight) / 2
+			c3Iconfont.style.padding = c3Padding + "px 0"
+			c4Iconfont.style.padding = c4Padding + "px 0"
+			
+			var c6Padding = c6Height * 0.217
+			c6.style.padding = `0 ${c6Padding}px ${c6Padding}px`
+			
+			
+			var c2TranslateY = c5Height - c6Padding
+			
+			var c34TranslateY = (c6Height - c5Height) * 2
+			
+			var searchBar2 = true, searchBar1 = false
+			window.onscroll = function() {
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+				if (scrollTop > 80) {
+					if (searchBar1) return
+					searchBar1 = true
+					searchBar2 = false
+				} else {
+					if (searchBar2) return
+					searchBar2 = true
+					searchBar1 = false
+				} 
+				if (searchBar1) {
+					c5.style.transform = 'scale(0)'
+					c6.style.transform = 'scaleX(.8) translateY(0px)'
+					c2.style.transform = `translateY(-${c2TranslateY}px)`
+					c6InputWrap.style.transform = 'scaleX(1.2) translateX(10px)'
+					c6Iconfont.style.transform = 'scaleX(1.2)'
+					c3.style.transform = `translateY(${c34TranslateY}px)`
+					c4.style.transform = `translateY(${c34TranslateY}px)`
+				} else  if (searchBar2) {
+					c5.style.transform = 'scale(1)'
+					c6.style.transform = 'scaleX(1)'
+					c2.style.transform = 'translateY(0)'
+					c6InputWrap.style.transform = 'scaleX(1) translateX(0)'
+					c6Iconfont.style.transform = 'scaleX(1)'
+					c3.style.transform = `translateY(0px)`
+					c4.style.transform = `translateY(0px)`
+				}
+			}
+			
 		</script>
 	</body>
 </html>
