@@ -4,7 +4,7 @@
 html, body, ul, li, div, p {
 	padding: 0;
 	margin: 0;
-	--primary-color: #F5222D;
+	--primary-color: rgb(255, 0, 54);
 }
 html {
 	font-size: 16px;
