@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>订单详情页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_s2ccd3zktl.css"/>
+		<style>
+			html {
+				font-size: 18px;
+			}
+			body {
+				background-color: #F5F5F5;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.status-box {
+				padding: .625rem;
+				background: var(--primary-color);
+				color: #fff;
+				font-size: .875rem;
+			}
+			.status-box .icon-wrap {
+				display: flex;
+				align-items: center;
+			}
+			.status-box .icon-wrap .iconfont {
+			}
+			.status-box .status-wrap {
+				margin-left: .5rem;
+			}
+			.status-box .desc {
+				font-size: .75rem;
+			}
+			.status-wrap .status {
+				/* font-weight: 700; */
+			}
+			
+			.address-wrap {
+				padding: 0.625rem;
+				background: #fff;
+				position: relative;
+			}
+			.address-info {
+				font-size: .75rem;
+			}
+			.address-info .icon-wrap {
+				display: flex;
+				align-items: center;
+			}
+			
+			.items-box {
+				background: #fff;
+			}
+			.wrap-line {
+				padding: 0 .625rem;
+				font-size: .875rem;
+				line-height: 2.4rem;
+				position: relative;
+				background: #fff;
+			}
+			.wrap-line input {
+				width: 100%;
+				padding-left: .5rem;
+				outline: none;
+				border: none;
+			}
+			.wrap-line .line-right {
+				flex: 1;
+				color: #666;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+			}
+			.wrap-line::after, .items-wrap::after {
+				content: ' ';
+				height: 1px;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #e4e4e4;
+				transform-origin: 0 0;
+				transform: scaleY(.5);
+			}
+			.items-box .items-wrap {
+				padding: 0 0.625rem;
+				position: relative;
+			}
+			.items-box .img-wrap {
+				flex: 0 0 4rem;
+				margin: .5rem .5rem .5rem 0;
+			}
+			.items-box .img-wrap img {
+				width: 100%;
+			}
+			.items-box .info-wrap {
+				margin: .625rem 0;
+				font-size: .75rem;
+				position: relative;
+			}
+			.items-box .info-wrap .props {
+				font-size: .625rem;
+			}
+			.box-bottom {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+			}
+			
+			.info-box .wrap-line {
+				padding: .625rem;
+				font-size: .75rem;
+			}
+			.info-box .info-item span {
+				/* margin-left: 5px; */
+			}
+			
+			.cal-panel {
+				background: #fff;
+			}
+			.cal-panel .wrap-line {
+				line-height: 1.1rem;
+				padding: .625rem;
+				font-size: .625rem;
+			}
+			.cal-panel .cal-result {
+				text-align: right;
+				font-size: .875rem;
+				padding: 0 .625rem .625rem;
+			}
+			.cal-panel .wrap-line::after {
+				visibility: hidden;
+			}
+			
+			.btns-bottom-wrap {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				padding: .625rem;
+				background: #fff;
+			}
+			.btns-bottom-wrap::before {
+				content: ' ';
+				height: 1px;
+				width: 100%;
+				background: #e4e4e4;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: scaleY(0.5);
+			}
+			.btns-bottom-wrap button {
+				border: 1px solid #e4e4e4;
+				background: #fff;
+				padding: 5px 10px;
+				margin-left: .625rem;
+			}
+			.btns-bottom-wrap button.pay{
+				border-color: var(--primary-color);
+				background: var(--primary-color);
+				color: #fff;
+			}
+			.btns-bottom-wrap button.again {
+				border-color: var(--primary-color);
+				color: var(--primary-color);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- status-box start -->
+		<div class="status-box ui-flex">
+			<div class="icon-wrap">
+				<i class="iconfont icontime"></i>
+			</div>
+			<div class="flex-1 status-wrap">
+				<div class="status">待付款</div>
+				<div class="desc">应付金额：￥<span>326.00</span></div>
+			</div>
+		</div>
+		<!-- status-box end -->
+		
+		<!-- address-wrap start -->
+		<div class="address-box">
+			<div class="address-wrap">
+				<div class="address-info ui-flex">
+					<div class="icon-wrap">
+						<i class="iconfont icondizhi"></i>
+					</div>
+					<div class="flex-1" style="margin-left: .5rem;">
+						<div>
+							<span>张先生</span>
+							<span style="margin-left: .5rem;">13412834033</span>
+						</div>
+						<div class="address">东莞市南城街道第一国际全民酒仓1栋</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- address-wrap end -->
+		
+		<!-- items-box start -->
+		<div class="items-box mt-10" >
+			<div class="wrap-line ui-flex">
+				<div class="flex-1">全民酒仓南城店</div>
+				<div class="color-666" style="font-size: .625rem;">共计2个商品</div>
+			</div>
+			<!-- items-wrap start -->
+			<div class="items-wrap">
+				<div class="item-wrap ui-flex">
+					<div class="img-wrap">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/%E4%BC%8A%E6%8B%89%E8%8B%8F%E9%85%BF%E9%85%92%E5%B8%88%E7%8F%8D%E8%97%8F%E7%BE%8E%E4%B9%90%E5%B9%B2%E7%BA%A2%E8%91%A1%E8%90%84%E9%85%92/1.png" />
+					</div>
+					<div class="info-wrap flex-1">
+						<div>(智利)伊拉苏酿酒师珍藏美乐干红葡萄酒 750ml 原瓶进口</div>
+						<div class="props color-666">这里是规格</div>
+						<div class="ui-flex box-bottom">
+							<span class="flex-1 price">￥178</span>
+							<span>x 1</span>
+						</div>
+					</div>
+				</div>
+				<div class="item-wrap ui-flex">
+					<div class="img-wrap">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/%E6%8B%89%E8%8F%B2%E7%BD%97%E6%96%AF%E6%9F%B4%E5%B0%94%E5%BE%B7%E5%B7%B4%E6%96%AF%E5%85%8B%E7%89%B9%E9%85%BF/1.png" />
+					</div>
+					<div class="info-wrap flex-1">
+						<div>(智利)巴斯克精选红葡萄酒14%vol 750ml原瓶进口 </div>
+						<div class="props color-666">这里是规格</div>
+						<div class="ui-flex box-bottom">
+							<span class="flex-1 price">￥148</span>
+							<span>x 1</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- items-box end  -->
+		
+		<!-- detail-info start -->
+		<div class="info-box">
+			<div class="wrap-line mt-10" style="line-height: 1.1rem;">
+				<div class="info-item">
+					<label>订单编号：</label>
+					<span>20191216021002</span>
+				</div>
+				<div class="info-item">
+					<label>下单时间：</label>
+					<span>2019-12-16 23:15:09</span>
+				</div>
+				<div class="info-item">
+					<label>付款时间：</label>
+					<span>2019-12-16 23:15:09</span>
+				</div>
+				<div class="info-item">
+					<label>完成时间：</label>
+					<span>2019-12-16 23:15:09</span>
+				</div>
+				<div class="info-item">
+					<label>取消时间：</label>
+					<span>2019-12-16 23:15:09</span>
+				</div>
+			</div>
+		</div>
+		<!-- detail-info end -->
+		
+		<!-- cal-panel start -->
+		<div class="mt-10 cal-panel">
+			<div class="wrap-line" style="line-height: 1.1rem;">
+				<div class="ui-flex">
+					<div>总金额</div>
+					<div class="flex-1 tar price">￥326.00</div>
+				</div>
+				<div class="ui-flex">
+					<div>运费</div>
+					<div class="flex-1 tar price">+ ￥0.00</div>
+				</div>
+			</div>
+			<div class="cal-result">
+				实付金额：<span class="price">￥326.00</span>
+			</div>
+		</div>
+		<!-- cal-panel end -->
+		
+		<div class="mb-80"></div>
+		
+		<!-- btns-bottom-wrap start  -->
+		<div class="btns-bottom-wrap tar">
+			<button class="pay">去付款</button>
+			<button class="again">再次购买</button>
+		</div>
+		<!-- btns-bottom-wrap end -->
+	</body>
+</html>

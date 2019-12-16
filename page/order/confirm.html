@@ -15,28 +15,40 @@
 				max-width: 600px;
 				margin: 0 auto;
 			}
-			.address-wrap {
-				padding: 0.625rem;
-				background: #fff;
-			}
-			.address-wrap {
-				position: fixed;
+			.address-box {
+				position: sticky;
+				position: -webkit-sticky;
 				top: 0;
 				left: 0;
 				right: 0;
 				z-index: 99;
 				border-bottom: 1px solid #e4e4e4;
 			}
+			.address-wrap {
+				padding: 0.625rem;
+				background: #fff;
+				position: relative;
+			}
+			.address-wrap::after {
+				content: '';
+				bottom: 0;
+				left: 0;
+				position: absolute;
+				width: 100%;
+				height: 2px !important;
+				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFIAAAAICAMAAABd51g4AAAAk1BMVEVcxOpdxOpgxetlx+xqyextyu10ze2B0e+H0/CO1vGV2fGk3vOt4fWx4/W85/bK7PnZ8fre8/vp9/3qcWjqcWnrdGvreXDtfnfthH3th4DujYfwmZPxoZzypaDy+v3zrqn1ubX2wb32xcL3/f74zsv52tj5/f775eT87Or98/L9/v/++fn+/Pz+/////f3//v7///89j6nHAAAAcUlEQVQYGW3BRQLDQBADQYUZJ8zM0P9/XXK1tVXibx1uRcKlItcmS8B1FGZ8I6EjVz6SJWAZbkvCpiTXJUdwDje5k9CSqz7IEd9FuB0Jw6JcjzxxCjd9ktCUq73J02sW7kDCoCDXx2gfbv4hoS7XwP0AbgpJG9sDiGAAAAAASUVORK5CYII=) repeat-x;
+				background-size: auto 4px !important;
+			}
 			.address-wrap.note {
-				background: linear-gradient(to right, #fefbea, #ebe0c1)
+				/* background: linear-gradient(to right, #fefbea, #ebe0c1) */
 			}
 			.address-wrap .address-info {
 				font-size: .75rem;
 				line-height: 1.2rem;
 			}
 			.address-wrap .address-info .address {
-				font-size: 1rem;
-				font-weight: 600;
+				font-size: .875rem;
+				font-weight: 700;
 			}
 			.address-info .edit-wrap {
 				display: flex;
@@ -82,7 +94,7 @@
 				position: relative;
 			}
 			.items-box .img-wrap {
-				flex: 0 0 4.5rem;
+				flex: 0 0 4rem;
 				margin: .5rem .5rem .5rem 0;
 			}
 			.items-box .img-wrap img {
@@ -92,6 +104,9 @@
 				margin: .625rem 0;
 				font-size: .75rem;
 				position: relative;
+			}
+			.items-box .info-wrap .props {
+				font-size: .625rem;
 			}
 			.box-bottom {
 				position: absolute;
@@ -103,7 +118,7 @@
 			}
 			.cal-panel .wrap-line {
 				line-height: 1.1rem;
-				padding: .75rem;
+				padding: .625rem;
 				font-size: .625rem;
 			}
 			.cal-panel .cal-result {
@@ -119,31 +134,34 @@
 	<body>
 		<div id="app">
 			<!-- address-wrap start -->
-			<div class="address-wrap">
-				<div class="address-info ui-flex">
-					<div class="flex-1" v-if="address != null">
-						<div class="address">东莞市南城街道第一国际全民酒仓1栋</div>
-						<div class="mt-5">
-							<span>张先生</span>
-							<span>13412834033</span>
+			<div class="address-box">
+				<div class="address-wrap">
+					<div class="address-info ui-flex">
+						<div class="flex-1" v-if="address != null">
+							<div class="address">东莞市南城街道第一国际全民酒仓1栋</div>
+							<div class="mt-5">
+								<span>张先生</span>
+								<span>13412834033</span>
+							</div>
 						</div>
-					</div>
-					<div class="flex-1 tac color-666" v-if="address == null">
-						<i class="iconfont icondizhi"></i>
-						<div>还没有收货地址，点击这里添加</div>
-					</div>
-					<div class="edit-wrap">
-						<i class="iconfont iconenter"></i>
+						<div class="flex-1 tac color-666" v-if="address == null">
+							<i class="iconfont icondizhi"></i>
+							<div>还没有收货地址，点击这里添加</div>
+						</div>
+						<div class="edit-wrap">
+							<i class="iconfont iconenter"></i>
+						</div>
 					</div>
 				</div>
 			</div>
 			<!-- address-wrap end -->
 			
 			<!-- items-box start -->
-			<div class="items-box mt-10" style="margin-top: 4.63rem;">
+			<!-- style="margin-top: 4.63rem;" -->
+			<div class="items-box mt-10" >
 				<div class="wrap-line ui-flex">
 					<div class="flex-1">全民酒仓南城店</div>
-					<div class="color-666">0m</div>
+					<div class="color-666" style="font-size: .625rem;">0m</div>
 				</div>
 				<!-- items-wrap start -->
 				<div class="items-wrap">
@@ -151,9 +169,9 @@
 						<div class="img-wrap">
 							<img src="http://imgwm.dddingjiu.com/uploads/images/%E4%BC%8A%E6%8B%89%E8%8B%8F%E9%85%BF%E9%85%92%E5%B8%88%E7%8F%8D%E8%97%8F%E7%BE%8E%E4%B9%90%E5%B9%B2%E7%BA%A2%E8%91%A1%E8%90%84%E9%85%92/1.png" />
 						</div>
-						<div class="info-wrap">
+						<div class="info-wrap flex-1">
 							<div>(智利)伊拉苏酿酒师珍藏美乐干红葡萄酒 750ml 原瓶进口</div>
-							<div class="color-666">这里是规格</div>
+							<div class="props color-666">这里是规格</div>
 							<div class="ui-flex box-bottom">
 								<span class="flex-1 price">￥178</span>
 								<span>x 1</span>
@@ -164,9 +182,9 @@
 						<div class="img-wrap">
 							<img src="http://imgwm.dddingjiu.com/uploads/images/%E6%8B%89%E8%8F%B2%E7%BD%97%E6%96%AF%E6%9F%B4%E5%B0%94%E5%BE%B7%E5%B7%B4%E6%96%AF%E5%85%8B%E7%89%B9%E9%85%BF/1.png" />
 						</div>
-						<div class="info-wrap">
+						<div class="info-wrap flex-1">
 							<div>(智利)巴斯克精选红葡萄酒14%vol 750ml原瓶进口 </div>
-							<div class="color-666">这里是规格</div>
+							<div class="props color-666">这里是规格</div>
 							<div class="ui-flex box-bottom">
 								<span class="flex-1 price">￥148</span>
 								<span>x 1</span>
@@ -233,7 +251,7 @@
 				},
 				created() {
 					this.$nextTick(() => {
-						this.setItemBoxMarginTop()
+						//this.setItemBoxMarginTop()
 					})
 				},
 				methods: {

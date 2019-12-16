@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>首页</title>
-		<meta name="viewport" content="width=device-width, initial-width=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../css/base.css" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_740loedctnl.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
@@ -202,6 +202,7 @@
 			.c1 {
 				border: 0px solid black;
 				position: sticky;
+				position: -webkit-sticky;
 				box-sizing: border-box;
 				display: flex;
 				-webkit-box-orient: vertical;
@@ -299,6 +300,7 @@
 				align-items: center;
 				padding: 0 .625rem;
 				font-size: .625rem !important;
+				border-radius: 5px;
 				
 			}
 			.c6>div .iconfont {
@@ -365,7 +367,7 @@
 		<div class="c1">
 			<div class="c2">
 				<div class="c5">
-					<span style="font-size: .875rem;color: #fff;font-weight: 600;">全民酒仓</span>
+					<span style="font-size: 1rem;color: #fff;font-weight: 700;">全民酒仓</span>
 				</div>
 				<a class="c6" href="search.html">
 					<div class="ui-flex">
@@ -498,7 +500,7 @@
 		<div class="tabbar-container">
 			<ul>
 				<li>
-					<a href="javascript:void(0);">
+					<a href="javascript:void(0);" class="cur">
 						<i class="iconfont iconshouye"></i>
 						<span>首页</span>
 					</a>
@@ -510,7 +512,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="javascript:void(0);" class="cur">
+					<a href="javascript:void(0);">
 						<i class="iconfont icongouwuche2"></i>
 						<span>购物车</span>
 					</a>
@@ -583,8 +585,8 @@
 			c4Iconfont.style.padding = c4Padding + "px 0"
 			
 			var c6Padding = c6Height * 0.217
-			c6.style.padding = `0 .625rem ${c6Padding}px`
-			
+			c6.style.padding = `0 .625rem 0.625rem`
+			//c6.style.padding = `0 .625rem ${c6Padding}px`			
 			
 			var c2TranslateY = c5Height - c6Padding
 			
