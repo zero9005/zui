@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我的订单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_s2ccd3zktl.css"/>
+		<style>
+			html {
+				font-size: 18px;
+			}
+			body {
+				background-color: #F5F5F5;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.search-input-wrap {
+				margin: .625rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				background: #e4e4e4;
+				padding: 5px;
+			}
+			.search-input-wrap .iconfont {
+				color: #999;
+				font-size: .875rem;
+			}
+			.search-input-wrap .input-wrap {
+				flex: 1;
+				margin-left: 6px;
+			}
+			.search-input-wrap .input-wrap input {
+				width: 100%;
+				border: none;
+				outline: none;
+				height: 1.3rem;
+				line-height: 1.3rem;
+				background: inherit;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="search-input-wrap">
+				<i class="iconfont iconsearch"></i>
+				<div class="input-wrap">
+					<form action="/search">
+						<input placeholder="商品名称/订单号" id="searchInput" v-model="searchVal" />
+					</form>
+				</div>
+				<i class="iconfont iconguanbi2fill" style="font-size: 1rem; color: #b7b7b7;margin-right: 5px;" v-if="searchVal.trim() != ''" @click="searchVal = ''"></i>
+			</div>
+			
+			<div>
+				
+			</div>
+			
+		</div>
+		
+		
+		<script src="../../js/vue.min.js"></script>
+		<script>
+			new Vue({
+				el: "#app",
+				data() {
+					return {
+						searchVal: '',
+						searchTips: []
+					}
+				},
+				watch:{
+					searchVal: function(newVal, oldVal) {
+						
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

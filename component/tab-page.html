@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>tab-page</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<style>
 			* {
 				box-sizing: border-box;
@@ -22,7 +22,18 @@
 			.tab-header ul {
 				display: flex;
 				line-height: 40px;
-				border-bottom: 1px solid #e8e8e8;
+				position: relative;
+				/* border-bottom: 1px solid #e8e8e8; */
+			}
+			.tab-header ul::after {
+				content: ' ';
+				height: 1px;
+				width: 100%;
+				background: #e8e8e8;
+				transform: scaleY(.5);
+				position: absolute;
+				bottom: 0;
+				left: 0;
 			}
 			.tab-header ul li {
 				flex: 1;
@@ -42,7 +53,7 @@
 				position: absolute;
 				left: 0;
 				top: 50%;
-				transform: translateY(-50%);
+				transform: scaleX(.5) translateY(-50%);
 			}
 			.tab-header ul li.cur {
 				color: #F5222D;
