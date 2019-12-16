@@ -5,21 +5,31 @@
 		<title>上拉加载更多</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<style>
-			html, body, div, ul, li, p{
+			html,
+			body,
+			div,
+			ul,
+			li,
+			p {
 				margin: 0;
 				padding: 0;
 			}
-			ul, li {
+
+			ul,
+			li {
 				list-style: none;
 			}
+
 			.page-container div {
 				padding: 10px;
 				border-bottom: 1px solid #E8E8E8;
 			}
+
 			.page-container .load-tip {
 				text-align: center;
 				border-bottom: none;
 			}
+
 			.page-container .load-tip span {
 				font-size: 12px;
 				color: #999999;
@@ -28,21 +38,21 @@
 	</head>
 	<body>
 		<div class="page-container">
-			
+
 		</div>
-		
+
 		<script>
-			
 			var parentEle = document.getElementsByClassName("page-container")[0]
-			
+
 			var curIndex = 1
 			var isLoading = false
 			var loadAllFlag = false
-			
+
 			var screenHeight = window.screen.height
-			
+
 			loadMore()
-			
+
+
 			function loadMore() {
 				removeLoadTipElement(parentEle)
 				if (loadAllFlag) {
@@ -54,27 +64,30 @@
 					curIndex++
 				}
 				if (curIndex >= 45) loadAllFlag = true
-				
+
 				isLoading = false
 			}
-			
+
+
 			function createElement(parent, content) {
 				var ele = document.createElement('div')
 				ele.innerHTML = '<span>' + content + '</span>'
 				parent.appendChild(ele)
 			}
+
 			function createLoadTipElement(parent) {
 				var ele = document.createElement('div')
 				ele.classList.add("load-tip")
 				ele.innerHTML = '<span>' + "正在加载中..." + '</span>'
 				parent.appendChild(ele)
 			}
+
 			function removeLoadTipElement(parent) {
 				var tipEle = document.getElementsByClassName("load-tip")[0]
 				if (!tipEle) return
 				tipEle.remove()
 			}
-			
+
 			window.onscroll = function() {
 				console.log("onscroll")
 				//document.documentElement.scrollTop
@@ -87,9 +100,27 @@
 					}, 2000)
 				}
 			}
-			
-			
+
+
+			var startX, startY, moveEndX, moveEndY
+
+
+			document.querySelector(".page-container").addEventListener("touchstart", function(e) {
+
+				e.preventDefault();
+				startX = e.changedTouches[0].pageX,
+					startY = e.changedTouches[0].pageY;
+			});
+			document.querySelector(".page-container").addEventListener("touchmove", function(e) {
+				e.preventDefault();
+				moveEndX = e.changedTouches[0].pageX,
+					moveEndY = e.changedTouches[0].pageY,
+					X = moveEndX - startX,
+					Y = moveEndY - startY;
+
+				console.log(`${X}, ${Y}`)
+			})
 		</script>
-		
+
 	</body>
 </html>
