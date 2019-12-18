@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>首页</title>
+		<title>随时随地，想喝就喝</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../css/base.css" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_740loedctnl.css" />
@@ -119,7 +119,8 @@
 			}
 
 			.swiper-slide {
-				padding: .625rem;
+				font-size: 0;
+				padding: .625rem .625rem 0;
 			}
 
 			.goods-container {}
@@ -160,13 +161,18 @@
 				border: 1px solid #e4e4e4;
 			}
 
+			.goods-list .goods-wrap .img-wrap {
+				padding: 15px;
+				background: rgba(0, 0, 0, 0.03);
+			}
+
 			.goods-list .img-wrap img {
 				width: 100%;
 			}
 
 			.goods-list .info-wrap .name {
 				height: 2rem;
-				margin: 5px 4px 3px;
+				margin: 10px 10px 10px;
 				font-size: .75rem;
 				line-height: 1rem;
 				color: #000;
@@ -197,6 +203,7 @@
 				overflow: hidden;
 				position: relative;
 				height: 1.2rem;
+				display: none;
 			}
 
 			.c1 {
@@ -359,6 +366,42 @@
 				font-size: .625rem;
 				line-height: 20px;
 			}
+			
+			.swiper-container-horizontal>.swiper-pagination-bullets {
+				bottom: 20px;
+			}
+			.swiper-pagination-bullet {
+				width: 16px;
+				height: 2px;
+				border-radius: 0;
+			}
+			.swiper-pagination-bullet-active {
+				background: #fff;
+			}
+			.swiper-footer {
+				border: 0px solid black;
+				position: relative;
+				box-sizing: border-box;
+				display: flex;
+				-webkit-box-orient: vertical;
+				flex-direction: column;
+				align-content: flex-start;
+				flex-shrink: 0;
+			}
+			.swiper-footer>div {
+				border: 0px solid black;
+				position: relative;
+				box-sizing: border-box;
+				display: flex;
+				-webkit-box-orient: vertical;
+				flex-direction: column;
+				align-content: flex-start;
+				flex-shrink: 0;
+			}
+			.swiper-footer img {
+				display: flex;
+				height: 14.5px;
+			}
 		</style>
 		
 	</head>
@@ -420,6 +463,11 @@
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
+		<div class="swiper-footer">
+			<div>
+				<img src="https://gw.alicdn.com/tfs/TB1NE5aawMPMeJjy1XcXXXpppXa-1500-58.png_790x10000.jpg_.webp">
+			</div>
+		</div>
 
 		<div class="goods-container" id="goods-container">
 			<div class="container-title">
@@ -430,7 +478,7 @@
 					<li>
 						<a class="goods-wrap">
 							<div class="img-wrap">
-								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+								<img src="../../static/goods/g_1_1.png" />
 							</div>
 							<div class="info-wrap">
 								<span class="name ellipsis-2">
@@ -446,7 +494,7 @@
 					<li>
 						<a class="goods-wrap">
 							<div class="img-wrap">
-								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+								<img src="../../static/goods/g_2_2.png" />
 							</div>
 							<div class="info-wrap">
 								<span class="name ellipsis-2">
@@ -462,7 +510,7 @@
 					<li>
 						<a class="goods-wrap">
 							<div class="img-wrap">
-								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+								<img src="../../static/goods/g_3_3.png" />
 							</div>
 							<div class="info-wrap">
 								<span class="name ellipsis-2">
@@ -478,7 +526,39 @@
 					<li>
 						<a class="goods-wrap">
 							<div class="img-wrap">
-								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+								<img src="../../static/goods/g_4_4.png" />
+							</div>
+							<div class="info-wrap">
+								<span class="name ellipsis-2">
+									700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
+								</span>
+								<span class="price">
+									<span class="price-label">￥</span>408
+								</span>
+							</div>
+							<div class="similar-layer"></div>
+						</a>
+					</li>
+					<li>
+						<a class="goods-wrap">
+							<div class="img-wrap">
+								<img src="../../static/goods/g_4_5.png" />
+							</div>
+							<div class="info-wrap">
+								<span class="name ellipsis-2">
+									700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
+								</span>
+								<span class="price">
+									<span class="price-label">￥</span>408
+								</span>
+							</div>
+							<div class="similar-layer"></div>
+						</a>
+					</li>
+					<li>
+						<a class="goods-wrap">
+							<div class="img-wrap">
+								<img src="../../static/goods/g_6_1.png" />
 							</div>
 							<div class="info-wrap">
 								<span class="name ellipsis-2">
@@ -530,7 +610,7 @@
 		<script src="../../js/vue.js"></script>
 		<script>
 			var mySwiper = new Swiper('.swiper-container', {
-				autoplay: 5000, //可选选项，自动滑动
+				//autoplay: 5000, //可选选项，自动滑动
 				pagination: '.swiper-pagination',
 				loop: true
 			})

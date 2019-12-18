@@ -41,6 +41,7 @@
 
 		</div>
 
+		<script src="../js/touch.js"></script>
 		<script>
 			var parentEle = document.getElementsByClassName("page-container")[0]
 
@@ -88,10 +89,25 @@
 				tipEle.remove()
 			}
 
-			window.onscroll = function() {
-				console.log("onscroll")
-				//document.documentElement.scrollTop
+			// window.onscroll = function() {
+			// 	console.log("onscroll")
+			// 	//document.documentElement.scrollTop
+			// 	if (screenHeight + document.body.scrollTop >= document.body.scrollHeight) {
+			// 		if (isLoading || loadAllFlag) return
+			// 		isLoading = true
+			// 		createLoadTipElement(parentEle)
+			// 		setTimeout(function() {
+			// 			loadMore()
+			// 		}, 2000)
+			// 	}
+			// }
+
+			
+			Touch.init(".page-container").up(callback)
+			
+			function callback() {
 				if (screenHeight + document.body.scrollTop >= document.body.scrollHeight) {
+				
 					if (isLoading || loadAllFlag) return
 					isLoading = true
 					createLoadTipElement(parentEle)
@@ -100,26 +116,7 @@
 					}, 2000)
 				}
 			}
-
-
-			var startX, startY, moveEndX, moveEndY
-
-
-			document.querySelector(".page-container").addEventListener("touchstart", function(e) {
-
-				e.preventDefault();
-				startX = e.changedTouches[0].pageX,
-					startY = e.changedTouches[0].pageY;
-			});
-			document.querySelector(".page-container").addEventListener("touchmove", function(e) {
-				e.preventDefault();
-				moveEndX = e.changedTouches[0].pageX,
-					moveEndY = e.changedTouches[0].pageY,
-					X = moveEndX - startX,
-					Y = moveEndY - startY;
-
-				console.log(`${X}, ${Y}`)
-			})
+			
 		</script>
 
 	</body>
