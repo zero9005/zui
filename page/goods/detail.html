@@ -5,9 +5,13 @@
 		<title>商品详情页</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../../css/base.css" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_t61mqbg0xo.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_gmsui192rfw.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+		<link rel="stylesheet" href="../../css/goodsdetail.css?t=2" />
 		<style>
+			html {
+				font-size: 18px;
+			}
 			body {
 				background-color: #F5F5F5;
 				max-width: 600px;
@@ -19,368 +23,131 @@
 			.swiper-slide {
 				font-size:0;
 			}
-			.goods-info-wrap {
-				background-color: #FFFFFF;
-				padding: 10px;
-				font-size: 14px;
-			}
-			.goods-info-wrap .price-wrap {
-				padding: 10px 0;
-				font-weight: 600;
-			}
-			.sku-select-wrap {
-				background-color: #FFFFFF;
-				position: relative;
-				padding: 10px 10px 10px 50px;
-				margin-top: 5px;
-				font-size: 12px;
-			}
-			.sku-select-wrap .title {
-				position: absolute;
-				left: 10px;
-				color: #999;
-			}
-			.sku-select-wrap .iconfont {
-				color: #999;
-			}
-			.evalute-wrap {
-				margin-top: 5px;
-				background-color: #FFFFFF;
-			}
-			.evalute-wrap .evalute-header {
-				padding: 10px;
-				line-height: 16px;
-				border-bottom: 1px solid #ccc;
-			}
-			.evalute-wrap .evalute-header label {
-				font-size: 14px;
-			}
-			.evalute-header span {
-				display: inline-block;
-				margin-right: 10px;
-			}
-			.evalute-wrap .evalute {
-				padding: 10px;
-				border-bottom: 1px solid #ccc;
-			}
-			.evalute-wrap .evalute-info-wrap {
-				display: flex;
-				line-height: 30px;
-			}
-			.evalute-wrap .evalute-info-wrap .avatar {
-				flex: 0 0 30px;
-				height: 30px;
-				width: 30px;
-				border-radius: 50%;
-				border: 1px solid rgba(7,17,27,0.1);
-				vertical-align: middle;
-			}
-			.evalute-wrap .evalute-info-wrap .nickname {
-				font-size: 12px;
-				max-width: 3rem;
-				margin: 0 6px 0 8px;
-			}
-			.evalute-wrap .evalute-info-wrap .rate-container {
-				flex: 1;
-			}
-			.evalute-wrap .evalute-info-wrap .time {
-				line-height: 30px;
-			}
-			.evalute-wrap .evalute-info-wrap .rate-container .iconfont {
-				color: rgb(255, 181, 74)
-			}
-			.evalute-wrap .content {
-				padding: 8px 0;
-				font-size: 14px;
-			}
-			.evalute-wrap .time {
-				text-align: right;
-				font-size: 12px;
-				color: #999;
-			}
 			
-			.tab-header ul {
-				display: flex;
-				line-height: 40px;
-				border-bottom: 1px solid #e8e8e8;
-			}
-			.tab-header ul li {
-				flex: 1;
-				text-align: center;
-				font-size: 14px;
-				background-color: #fff;
-				position: relative;
-			}
-			.tab-header ul li:not(:first-child)::before {
-				content: ' ';
-				height: 60%;
-				width: 1px;
-				background: #e4e4e4;
-				position: absolute;
-				left: 0;
-				top: 50%;
-				transform: translateY(-50%);
-			}
-			.tab-header ul li.cur {
-				color: #F5222D;
-			}
-			.tab-content-wrap {
-				overflow: hidden;
-				position: relative;
-				background: #fff;
-			}
-			.tab-content-wrap .tab-content {
-				position: absolute;
-				padding: 0;
-				top: 0;
-				width: 100%;
-				max-width: 640px;
-			}
-			.tab-content-wrap .tab-content:nth-child(1) {
-				left: 0;
-			}
-			.tab-content-wrap .tab-content:nth-child(2) {
-				left: 100%;
-			}
-			.tab-content-wrap .tab-content:nth-child(3) {
-				left: 200%;
-			}
-			.tab-content-wrap .tab-content img {
-				border: 0 none;
-				vertical-align: top;
-			}
-			.page-footer-wrap {
-				position: fixed;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				height: 50px;
-				background-color: #FFFFFF;
-				display: flex;
-				max-width: 600px;
-				margin: 0 auto;
-			}
-			.page-footer-wrap .btn-wrap {
-				flex: 1;
-				display: flex;
-			}
-			.page-footer-wrap .btn-wrap span, .popup-layer-btn-wrap .btn-wrap span {
-				flex: 1;
-				font-size: 14px;
-				color: #FFFFFF;
-				line-height: 50px;
-				text-align: center;
-			}
-			.btn-wrap .btn-addCart {
-				background-color: #ff9600;
-			}
-			.btn-wrap .btn-buyNow {
-				background-color: #F5222D;
-			}
-			.page-footer-wrap .icon-btn-wrap {
-				display: flex;
-			}
-			.page-footer-wrap .icon-btn-wrap .icon-btn {
-				flex: 1;
-				padding: 5px;
-				color: #999;
-				text-align: center;
-			}
-			.page-footer-wrap .icon-btn-wrap .iconfont {
-				display: block;
-				font-size: 16px;
-			}
-			.page-footer-wrap .icon-btn-wrap span {
-				font-size: 12px;
-			}
-			
-			.operate-mask-wrap .operate-mask {
-				position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				z-index: 1500;
-				background-color: rgb(0, 0, 0);
-				opacity: 0.5;
-			}
-			.popup-layer {
-				position: fixed;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				background-color: #FFFFFF;
-				z-index: 1501;
-				max-width: 600px;
-				margin: 0 auto;
-			}
-			.popup-layer .goods-info-header {
-				display: flex;
-				padding: 10px 10px 0;
-			}
-			.popup-layer .goods-info-header .img-wrap {
-				height: 80px;
-				width: 80px;
-				border-radius: 5px;
-				border: 1px solid #ccc;
-				box-shadow: 0 1px 4px #aeaeae;
-			}
-			.popup-layer .goods-info-header .img-wrap img {
-				width: 100%;
-			}
-			.popup-layer .goods-info-header .info-wrap {
-				margin-left: 15px;
-			}
-			.popup-layer .goods-info-header .info-wrap span {
-				display: block;
-				font-size: 14px;
-				margin-top: 10px;
-			}
-			.popup-layer .popup-layer-btn-wrap .btn-wrap {
-				display: flex;
-			}
-			.quantity-operate-wrap {
-				display: flex;
-				padding: 20px 10px;
-			}
-			.quantity-operate-wrap .operate-wrap {
-				flex: 1;
-				text-align: right;
-			}
-			.quantity-operate-wrap .operate-wrap input {
-				width: 2rem;
-				text-align: center;
-				border: none;
-				border-bottom: 1px solid #5d5d5d;
-			}
-			
-			.logo-footer {
-				padding: 25px 0 75px 0;
-				text-align: center;
-				background-color: #FFF;
-			}
-			.logo-footer span {
-				font-size: 36px;
-				font-weight: 600;
-			}
 		</style>
 	</head>
 	<body>
-		<!-- https://3.swiper.com.cn -->
-		<div class="swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE1(1).jpg" />
+		<div id="app">
+			<!-- https://3.swiper.com.cn -->
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE1(1).jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE5_0(1).jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE3_0(1).jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE4_0(1).jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE6_0(1).jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE2(1).jpg" />
+					</div>
 				</div>
-				<div class="swiper-slide">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE5_0(1).jpg" />
-				</div>
-				<div class="swiper-slide">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE3_0(1).jpg" />
-				</div>
-				<div class="swiper-slide">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE4_0(1).jpg" />
-				</div>
-				<div class="swiper-slide">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE6_0(1).jpg" />
-				</div>
-				<div class="swiper-slide">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE2(1).jpg" />
-				</div>
+				<div class="swiper-pagination"></div>
 			</div>
-			<div class="swiper-pagination"></div>
-		</div>
-		<div class="goods-info-wrap">
-			<div class="goods-name">(智利)巴斯克精选红葡萄酒14%vol 750ml原瓶进口</div>
-			<div class="price-wrap"><span class="price">￥408.00</span></div>
-		</div>
-		<div class="sku-select-wrap">
-			<span class="title">已选</span>
-			<span>数量: 1</span>
-			<i class="iconfont iconenter fr"></i>
-		</div>
-		<div class="evalute-wrap">
-			<div class="evalute-header">
-				<label>评价</label>
+			<div class="goods-info-wrap">
+				<div class="goods-name">(智利)巴斯克精选红葡萄酒14%vol 750ml原瓶进口</div>
+				<div class="price-wrap"><span class="price" style="font-size: 1rem;"><label style="font-size: .625rem;">￥</label>408.00</span></div>
+			</div>
+			<div class="sku-select-wrap mt-10">
+				<span class="title">已选</span>
+				<span>数量: 1</span>
 				<i class="iconfont iconenter fr"></i>
-				<span class="fs-12 fr">共<i>100</i>条</span>
 			</div>
-			<div class="evalute-list">
-				<div class="evalute">
-					<div class="evalute-info-wrap">
-						<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
-						<span class="nickname ellipsis">celery</span>
-						<span class="rate-container">
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-						</span>
-						<span class="time">2019-04-27</span>
+			<div class="evalute-wrap mt-10">
+				<div class="evalute-header">
+					<label>评价</label>
+					<i class="iconfont iconenter fr"></i>
+					<span class="fs-12 fr">共<i>100</i>条</span>
+				</div>
+				<div class="evalute-list">
+					<div class="evalute">
+						<div class="evalute-info-wrap">
+							<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
+							<span class="nickname ellipsis">celery</span>
+							<span class="rate-container">
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+							</span>
+							<span class="time">2019-04-27</span>
+						</div>
+						<div class="content">
+							这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+						</div>
 					</div>
-					<div class="content">
-						这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+					<div class="evalute">
+						<div class="evalute-info-wrap">
+							<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
+							<span class="nickname ellipsis">celery</span>
+							<span class="rate-container">
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+								<i class="iconfont iconiconfontxingxing"></i>
+							</span>
+							<span class="time">2019-04-27</span>
+						</div>
+						<div class="content">
+							这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+						</div>
+						<!-- <div class="time">2019-04-27 11:15</div> -->
 					</div>
 				</div>
-				<div class="evalute">
-					<div class="evalute-info-wrap">
-						<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
-						<span class="nickname ellipsis">celery</span>
-						<span class="rate-container">
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-							<i class="iconfont iconiconfontxingxing"></i>
-						</span>
-						<span class="time">2019-04-27</span>
+			</div>
+			
+			<div class="desc-wrap mt-10">
+				<div class="tab-header">
+					<ul>
+						<li class="cur">商品介绍</li>
+						<li>规格参数</li>
+					</ul>
+				</div>
+				<div class="tab-content-wrap">
+					<div style="transform: translate3d(0px, 0px, 0px);transition: all 0.3s ease 0s;width: 100%;">
+						<div class="tab-content">
+							tab1 内容
+						</div>
+						<div class="tab-content">
+							<span>tab2 内容</span>
+						</div>
 					</div>
-					<div class="content">
-						这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+				</div>
+			</div>
+			
+			<div class="logo-footer">
+				<span>logo</span>
+			</div>
+			
+			<div class="page-footer-wrap">
+				<div class="icon-btn-wrap">
+					<div class="icon-btn">
+						<i class="iconfont iconshouye"></i>
+						<span>首页</span>
 					</div>
-					<!-- <div class="time">2019-04-27 11:15</div> -->
+					<div class="icon-btn">
+						<i class="iconfont icongouwuche"></i>
+						<span>购物车</span>
+					</div>
+				</div>
+				<div class="btn-wrap">
+					<span class="btn-addCart">加入购物车</span>
+					<span class="btn-buyNow">立即购买</span>
 				</div>
 			</div>
 		</div>
 		
-		<div class="desc-wrap mt-10">
-			<div class="tab-header">
-				<ul>
-					<li class="cur">商品介绍</li>
-					<li>规格参数</li>
-				</ul>
-			</div>
-			<div class="tab-content-wrap">
-				<div style="transform: translate3d(0px, 0px, 0px);transition: all 0.3s ease 0s;width: 100%;">
-					<div class="tab-content">
-						tab1 内容
-					</div>
-					<div class="tab-content">
-						<span>tab2 内容</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="logo-footer">
-			<span>logo</span>
-		</div>
-		
-		<div class="page-footer-wrap">
-			<div class="icon-btn-wrap">
-				<div class="icon-btn">
-					<i class="iconfont icongouwuche"></i>
-					<span>购物车</span>
-				</div>
-			</div>
-			<div class="btn-wrap">
-				<span class="btn-addCart">加入购物车</span>
-				<span class="btn-buyNow">立即购买</span>
-			</div>
-		</div>
-		
-		<div class="operate-mask-wrap" style="display: none;">
+		<div class="operate-mask-wrap">
 			<div class="operate-mask">
 			</div>
 			<div class="popup-layer">
@@ -390,16 +157,20 @@
 							<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE1(1).jpg" />
 						</div>
 						<div class="info-wrap">
-							<span>价格: <i class="price">￥311.12</i></span>
-							<span>库存: <i>99</i></span>
+							<span><i class="price" style="font-size: 1rem;">￥311.12</i></span>
+						</div>
+						<div class="close">
+							<i class="iconfont iconguanbi2"></i>
 						</div>
 					</div>
 					<div class="quantity-operate-wrap">
-						<label>数量</label>
+						<label>购买数量</label>
 						<div class="operate-wrap">
-							<button class="btn-minus">-</button>
-							<input value="1" />
-							<button class="btn-plus">+</button>
+							<div class="number-wrap">
+								<button class="decrease disabled">-</button>
+								<input value="1" type="number" />
+								<button class="increase">+</button>
+							</div>
 						</div>
 					</div>
 					<div class="popup-layer-btn-wrap">
@@ -424,15 +195,18 @@
 			var quantity = 1
 			var maxQuantity = 10
 			
+			var operateMaskWrap = document.querySelector(".operate-mask-wrap")
+			
 			$(".sku-select-wrap").click(function() {
-				$(".operate-mask-wrap").show()
+				operateMaskWrap.classList.add('show')
 			})
 			$(".page-footer-wrap .btn-wrap .btn-addCart, .page-footer-wrap .btn-wrap .btn-buyNow").click(function() {
-				$(".operate-mask-wrap").show()
+				operateMaskWrap.classList.add('show')
 			})
-			$(".operate-mask").click(function() {
-				$(".operate-mask-wrap").hide()
+			$(".operate-mask, .popup-layer .close").click(function() {
+				operateMaskWrap.classList.remove('show')
 			})
+			
 			
 			$(".btn-plus").click(function() {
 				if (quantity >= maxQuantity) return
