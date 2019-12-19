@@ -275,7 +275,7 @@
 
 .popup-layer .goods-info-header {
 	display: flex;
-	padding: 10px 0 10px 126px;
+	padding: 1rem 0 1rem 126px;
 	position: relative;
 	min-height: 5rem;
 }

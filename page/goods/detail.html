@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="../../css/base.css" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_gmsui192rfw.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
-		<link rel="stylesheet" href="../../css/goodsdetail.css?t=2" />
+		<link rel="stylesheet" href="../../css/goodsdetail.css?t=3" />
 		<style>
 			html {
 				font-size: 18px;
@@ -237,7 +237,8 @@
 				this.classList.add("cur")
 				var cur = $(".tab-content")[index]
 				$(".tab-content-wrap>div")[0].style.transform="translate3d(" + (-cur.offsetWidth * index) +"px, 0px, 0px)"
-				$(".tab-content-wrap")[0].style.height = cur.clientHeight + "px"
+				var tabContentWrapHeight = window.screen.availHeight > cur.clientHeight ? window.screen.availHeight : cur.clientHeight
+				$(".tab-content-wrap")[0].style.height = tabContentWrapHeight + "px"
 			})
 			
 			
