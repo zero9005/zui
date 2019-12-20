@@ -4,29 +4,31 @@
 		<meta charset="utf-8">
 		<title>购物车</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../../css/base.css" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_ze0mq2ftxk.css" />
+		<link rel="stylesheet" href="../../css/base.css?t=3" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_gmsui192rfw.css" />
 		<style>
-			body {
-				background-color: #F5F5F5;
-				max-width: 600px;
-				margin: 0 auto;
-			}
 
+			html {
+				font-size: 18px;
+			}
+			body {
+				background-color: #f7f7f7;
+				max-width: 600px;
+				margin:0 auto;
+			}
 			img {
 				width: 100%;
 			}
-
 			.cart-page {
-				position: fixed;
 				height: 100%;
 			}
 
 			.item-wrap {
 				display: flex;
-				padding: 5px 5px 5px 0;
+				/* padding: 5px 5px 5px 0; */
 				position: relative;
 				background-color: #FFFFFF;
+				padding: .625rem;
 			}
 
 			.item-wrap:not(:first-child) {
@@ -35,7 +37,7 @@
 
 			.item-wrap .select-wrap,
 			.cart-status-wrap .select-wrap {
-				flex: 0 0 30px;
+				flex: 0 0 24px;
 				position: relative;
 			}
 			.cart-status-wrap .select-wrap {
@@ -49,8 +51,12 @@
 			.cart-status-wrap .select-wrap .select-status-wrap1 {
 				position: absolute;
 				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+				left: 0;
+				transform: translateY(-50%);
+			}
+			
+			.select-wrap .iconfont {
+				color: #999;
 			}
 
 			.item-wrap .select-wrap.selected .unselect-icon,
@@ -71,30 +77,28 @@
 			}
 
 			.item-wrap .img-wrap {
-				flex: 0 0 70px;
-				padding: 8px 0;
+				flex: 0 0 4rem;
+				margin: .5rem .5rem .5rem 0;
 			}
 
 			.item-wrap .img-wrap img {
-				height: 70px;
-				width: 70px;
+				height: 72px;
+				width: 72px;
 			}
 
 			.item-wrap .info-wrap {
 				flex: 1;
-				margin-left: 10px;
-				padding-right: 8px;
 			}
 
 			.item-wrap .info-wrap .name {
 				margin-top: 5px;
-				font-size: 12px;
+				font-size: .75rem;
 				font-weight: 500;
 			}
 
 			.item-wrap .info-wrap .props {
 				display: inline-block;
-				font-size: 12px;
+				font-size: .625rem;
 				color: #5d5d5d;
 			}
 
@@ -109,51 +113,88 @@
 				height: 25px;
 				/* font-size: 16px; */
 				line-height: 25px;
+				font-size: .875rem;
+				font-weight: 700;
 			}
-			.operate-wrap {
-				display: inline-block;
+			.number-wrap {
+				width: 100px;
+				height: 36px;
+				border-radius: 3px;
+				float: right;
 			}
-			.operate-wrap input {
-				width: 2rem;
-				text-align: center;
+			.number-wrap button, .number-wrap input[type=number] {
+				float: left;
+			}
+			.number-wrap button.btn-decrease {
+				border-right: 1px solid #fff;
+			}
+			.number-wrap button.btn-increase {
+				border-left: 1px solid #fff;
+			}
+			.number-wrap button {
 				border: none;
-				border-bottom: 1px solid #5d5d5d;
+				outline: 0;
+				height: 34px;
+				width: 30px;
+				font-size: 24px;
+				border: 1px solid #f5f5f5;
+				background-color: #f5f5f5;
+			}
+			.number-wrap button.disabled {
+				color: #cfcfcf;
+			}
+			.number-wrap input[type=number] {
+				height: 34px;
+				width: 36px;
+				text-align: center;
+				font-size: 13px;
+				font-weight: 700;
+				border: 1px solid #f5f5f5;
+				background-color: #f5f5f5;
+				box-sizing: border-box;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				-o-appearance: none;
+				appearance: none;
+				margin: 0;
 			}
 			.cart-status-wrap {
 				position: absolute;
 				bottom: 0;
 				left: 0;
 				right: 0;
-				height: 40px;
-				line-height: 40px;
 				display: flex;
 				background-color: #FFFFFF;
+				height: 60px;
+				line-height: 60px;
 			}
 			.cart-status-wrap .select-wrap {
-				flex: 0 0 80px;
+				flex: 0 0 60px;
 				position: relative;
+				padding-left: .625rem;
 				/* padding-left: 17px; */
 			}
+			.cart-status-wrap .select-wrap i {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+			}
 			.cart-status-wrap .select-wrap span {
-				font-size: 12px;
-				color: #5D5D5D;
-				position: absolute;
-				left: 23px;
-				height: 40px;
-				line-height: 40px;
+				font-size: .625rem;
 			}
 			.cart-status-wrap .price-console-wrap {
 				flex: 1;
 				margin-right: 10px;
 				text-align: right;
+				font-size: .875rem;
 			}
 			.cart-status-wrap .btn-wrap {
-				flex: 0 0 90px;
+				flex: 0 0 120px;
+				font-size: .875rem;
 			}
 			.cart-status-wrap .btn-wrap span {
 				display: block;
 				background-color: #CCC;
-				font-size: 14px;
 				text-align: center;
 				color: #ffffff;
 				pointer-events: none;
@@ -165,82 +206,134 @@
 		</style>
 	</head>
 	<body>
-		<div class="cart-page">
-			<div class="item-wrap">
-				<div class="select-wrap">
-					<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
-					<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
+		<div id="app">
+			<div class="page-header-navbar">
+				<div class="icon-box ui-flex">
+					<i class="iconfont iconreturn"></i>
 				</div>
-				<div class="img-wrap">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
+				<div class="center">
+					<span>购物车</span>
 				</div>
-				<div class="info-wrap">
-					<span class="name ellipsis-2">
-						700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
-					</span>
-					<span class="props">
-						规格：1支
-					</span>
-					<div class="goods-line">
-						<span class="price-wrap"><span class="fs-12">￥</span>311.12</span>
-						<div class="operate-wrap" data-id="1" data-max="8" data-price = "311.12">
-							<button class="btn-minus">-</button>
-							<input value="1" />
-							<button class="btn-plus">+</button>
-						</div>
-					</div>
+				
+				<div class="navbar-item right">
+					<a href="javascript:void(0)">管理</a>
 				</div>
+				
 			</div>
-
-			<div class="item-wrap">
-				<div class="select-wrap">
-					<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
-					<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
-				</div>
-				<div class="img-wrap">
-					<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg" />
-				</div>
-				<div class="info-wrap">
-					<span class="name ellipsis-2">
-						700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口
-					</span>
-					<span class="props">
-					</span>
-					<div class="goods-line">
-						<span class="price-wrap"><span class="fs-12">￥</span>408.88</span>
-						<div class="operate-wrap" data-id="2" data-max="10" data-price="408.88">
-							<button class="btn-minus">-</button>
-							<input value="1" />
-							<button class="btn-plus">+</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="cart-status-wrap">
-				<div class="select-wrap">
-					<div>
+			<div class="cart-page">
+				
+				<div class="item-wrap" v-for="item in items">
+					<div class="select-wrap" :class="{'selected' : item.selected}">
 						<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
 						<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
 					</div>
-					<span>
-						全选
-					</span>
+					<div class="img-wrap">
+						<img :src="item.imgUrl" />
+					</div>
+					<div class="info-wrap">
+						<span class="name ellipsis-2">
+							{{item.name}}
+						</span>
+						<span class="props">
+							{{item.props}}
+						</span>
+						<div class="goods-line">
+							<span class="price-wrap"><span class="fs-12">￥</span>{{item.price}}</span>
+							<div class="operate-wrap number-wrap" :data-id="item.id" data-max="10" :data-price="item.price">
+								<button class="btn-decrease" :class="{'disabled' : item.quantity<=1}" @click="decrease(item)">-</button>
+								<input :value="item.quantity" type="number" />
+								<button class="btn-increase" @click="increase(item)">+</button>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="price-console-wrap">
-					<span class="fs-14">总计: <i class="price-wrap"><span class="fs-12">￥</span><span class="price">0.00</span></i></span>
+			
+				<div class="cart-status-wrap">
+					<div class="select-wrap ui-flex" >
+						<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
+						<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
+						<span>全选</span>
+					</div>
+					<div class="price-console-wrap">
+						<span class="">总计: <i class="price-wrap"><span style="font-size: .625rem;">￥</span><span class="price" style="font-size: .875rem;font-weight: 700;">{{calTotal}}</span></i></span>
+					</div>
+					<div class="btn-wrap" :class="{selected : calTotalQuantity > 0}">
+						<span class="btn-submit">去结算<i>{{calTotalQuantity > 0 ? '(' + calTotalQuantity + ')' : ''}}</i></span>
+					</div>
 				</div>
-				<div class="btn-wrap">
-					<span class="btn-submit">去结算<i></i></span>
-				</div>
+			
 			</div>
-
 		</div>
+		
 
 		<script src="../../js/jquery-2.1.3.min.js"></script>
+		<script src="../../js/vue.min.js"></script>
 		<script>
 			$(function() {
-				$(".btn-plus").click(function() {
+				
+				new Vue({
+					el: "#app",
+					data() {
+						return {
+							items: [
+								{
+									id: 1,
+									name: "700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口",
+									imgUrl: "http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg",
+									price: 311.12,
+									quantity: 3,
+									selected: false
+								},
+								{
+									id: 2,
+									name: "700ml 轩尼诗v·s·o·p干邑白兰地 40%vol(法国)原瓶进口",
+									imgUrl: "http://imgwm.dddingjiu.com/uploads/images/wine/%E4%B8%BB%E5%9B%BE2%E6%9C%89%E8%89%B2.jpg",
+									price: 408.88,
+									quantity: 2,
+									selected: true
+								}
+							]
+							
+						}
+					},
+					created() {
+						
+					},
+					methods: {
+						increase(item) {
+							item.quantity = item.quantity + 1
+						},
+						decrease(item) {
+							if (item.quantity <= 1) return
+							item.quantity = item.quantity - 1
+						}
+					},
+					computed: {
+						calTotalQuantity() {
+							var quantity = 0
+							for (var i = 0; i < this.items.length; i++) {
+								var item = this.items[i]
+								if (item.selected) {
+									quantity = quantity + item.quantity
+								}
+							}
+							return quantity
+						},
+						calTotal() {
+							var total = 0.00
+							for (var i = 0; i < this.items.length; i++) {
+								var item = this.items[i]
+								if (item.selected) {
+									total = total + item.price * item.quantity
+								}
+							}
+							return total
+						}
+					}
+					
+				})
+				
+				$(".btn-increase1").click(function() {
 					var id = this.parentNode.dataset.id
 					var oldValue = parseInt(this.parentNode.children[1].value)
 					var maxValue = parseInt(this.parentNode.dataset.max)
@@ -250,7 +343,7 @@
 					this.parentNode.children[1].value = oldValue + 1
 					checkCartSelectedStatus()
 				})
-				$(".btn-minus").click(function() {
+				$(".btn-decrease2").click(function() {
 					var id = this.parentNode.dataset.id
 					var oldValue = parseInt(this.parentNode.children[1].value)
 					var maxValue = parseInt(this.parentNode.dataset.max)

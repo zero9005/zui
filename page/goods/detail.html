@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="../../css/base.css" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_gmsui192rfw.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
-		<link rel="stylesheet" href="../../css/goodsdetail.css?t=3" />
+		<link rel="stylesheet" href="../../css/goodsdetail.css?t=11" />
 		<style>
 			html {
 				font-size: 18px;
@@ -22,6 +22,63 @@
 			}
 			.swiper-slide {
 				font-size:0;
+			}
+			
+			.evalute-btn {
+				display: inline-block;
+				border-radius: 20px;
+				border: 1px solid #e4e4e4;
+				font-size: .75rem;
+				padding: 5px;
+				line-height: 1.5rem;
+				padding: 0 5px 0 10px;
+			}
+			
+			.evalute-panel {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 666;
+				background: #f7f7f7;
+				transition: transform .3s cubic-bezier(0, 0, .25, 1) 80ms;
+				-webkit-transition: -webkit-transform .3s cubic-bezier(0, 0, .25, 1) 80ms;
+				transform: translateX(100%);
+				-webkit-transform: translateX(100%);
+			}
+			
+			.evalute-panel .evalute-panel-header {
+				line-height: 2.4rem;
+				font-size: .875rem;
+				position: relative;
+				background: #fff;
+			}
+			
+			.evalute-panel .evalute-panel-header::after {
+				content: '';
+				height: 1px;
+				width: 100%;
+				background: #e4e4e4;
+				transform: scaleY(.5);
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+			
+			.evalute-panel .evalute-panel-header .icon-box {
+				width: 40px;
+				justify-content: center;
+				position: absolute;
+			}
+			
+			.evalute-panel .evalute-panel-header .iconfont {
+				font-size: 1rem;
+				font-weight: 700;
+			}
+			.evalute-panel .evalute-panel-header .evalute-panel-title {
+				margin: 0 70px;
+				text-align: center;
 			}
 			
 		</style>
@@ -54,18 +111,22 @@
 			</div>
 			<div class="goods-info-wrap">
 				<div class="goods-name">(智利)巴斯克精选红葡萄酒14%vol 750ml原瓶进口</div>
-				<div class="price-wrap"><span class="price" style="font-size: 1rem;"><label style="font-size: .625rem;">￥</label>408.00</span></div>
+				<div class="price-wrap"><span class="price" style="font-size: 1.2rem;"><label style="font-size: .625rem;">￥</label>408.00</span></div>
 			</div>
-			<div class="sku-select-wrap mt-10">
+			<div class="wrap-line sku-select-wrap mt-10 ui-flex">
 				<span class="title">已选</span>
-				<span>数量: 1</span>
-				<i class="iconfont iconenter fr"></i>
+				<div class="flex-1" style="margin-left: 1rem;">
+					<span>数量: 1</span>
+					<i class="iconfont iconenter fr"></i>
+				</div>
 			</div>
 			<div class="evalute-wrap mt-10">
-				<div class="evalute-header">
+				<div class="wrap-line evalute-header ui-flex">
 					<label>评价</label>
-					<i class="iconfont iconenter fr"></i>
-					<span class="fs-12 fr">共<i>100</i>条</span>
+					<div class="flex-1 line-right evalute-status">
+						<span class="" style="font-size: .625rem;">共<i>100</i>条</span>
+						<i class="iconfont iconenter"></i>
+					</div>
 				</div>
 				<div class="evalute-list">
 					<div class="evalute">
@@ -103,13 +164,16 @@
 						</div>
 						<!-- <div class="time">2019-04-27 11:15</div> -->
 					</div>
+					<div class="wrap-line tac">
+						<a href="javascript:void(0)" class="evalute-btn evalute-status-btn">查看全部评价<i class="iconfont iconenter"></i></a>
+					</div>
 				</div>
 			</div>
 			
 			<div class="desc-wrap mt-10">
 				<div class="tab-header">
 					<ul>
-						<li class="cur">商品介绍</li>
+						<li class="cur">详情</li>
 						<li>规格参数</li>
 					</ul>
 				</div>
@@ -125,8 +189,8 @@
 				</div>
 			</div>
 			
-			<div class="logo-footer">
-				<span>logo</span>
+			<div class="tac mt-40 mb-80" style="font-size: .875rem;">
+				全民酒仓 | <span style="font-size: .75rem;">随时随地，想喝就喝</span>
 			</div>
 			
 			<div class="page-footer-wrap">
@@ -145,42 +209,96 @@
 					<span class="btn-buyNow">立即购买</span>
 				</div>
 			</div>
-		</div>
 		
-		<div class="operate-mask-wrap">
-			<div class="operate-mask">
-			</div>
-			<div class="popup-layer">
-				<div class="popup-content-wrap">
-					<div class="goods-info-header">
-						<div class="img-wrap">
-							<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE1(1).jpg" />
-						</div>
-						<div class="info-wrap">
-							<span><i class="price" style="font-size: 1rem;">￥311.12</i></span>
-						</div>
-						<div class="close">
-							<i class="iconfont iconguanbi2"></i>
-						</div>
-					</div>
-					<div class="quantity-operate-wrap">
-						<label>购买数量</label>
-						<div class="operate-wrap">
-							<div class="number-wrap">
-								<button class="decrease disabled">-</button>
-								<input value="1" type="number" />
-								<button class="increase">+</button>
+			<div class="operate-mask-wrap">
+				<div class="operate-mask">
+				</div>
+				<div class="popup-layer">
+					<div class="popup-content-wrap">
+						<div class="goods-info-header">
+							<div class="img-wrap">
+								<img src="http://imgwm.dddingjiu.com/uploads/images/wine/%E8%BD%AE%E6%92%AD%E5%9B%BE1(1).jpg" />
+							</div>
+							<div class="info-wrap">
+								<span><i class="price" style="font-size: 1rem;">￥311.12</i></span>
+							</div>
+							<div class="close">
+								<i class="iconfont iconguanbi2"></i>
 							</div>
 						</div>
-					</div>
-					<div class="popup-layer-btn-wrap">
-						<div class="btn-wrap">
-							<span class="btn-addCart">加入购物车</span>
-							<span class="btn-buyNow">立即购买</span>
+						<div class="quantity-operate-wrap">
+							<label>购买数量</label>
+							<div class="operate-wrap">
+								<div class="number-wrap">
+									<button class="decrease disabled">-</button>
+									<input value="1" type="number" />
+									<button class="increase">+</button>
+								</div>
+							</div>
+						</div>
+						<div class="popup-layer-btn-wrap">
+							<div class="btn-wrap">
+								<span class="btn-addCart">加入购物车</span>
+								<span class="btn-buyNow">立即购买</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			<div class="evalute-panel">
+				<div class="evalute-panel-header">
+					<div class="icon-box ui-flex back">
+						<i class="iconfont iconreturn"></i>
+					</div>
+					<div class="evalute-panel-title">
+						商品评价
+					</div>
+				</div>
+				
+				<div class="evalute-wrap mt-10">
+					<div class="evalute-list">
+						<div class="evalute">
+							<div class="evalute-info-wrap">
+								<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
+								<span class="nickname ellipsis">celery</span>
+								<span class="rate-container">
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+								</span>
+								<span class="time">2019-04-27</span>
+							</div>
+							<div class="content">
+								这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+							</div>
+						</div>
+						<div class="evalute">
+							<div class="evalute-info-wrap">
+								<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
+								<span class="nickname ellipsis">celery</span>
+								<span class="rate-container">
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+									<i class="iconfont iconiconfontxingxing"></i>
+								</span>
+								<span class="time">2019-04-27</span>
+							</div>
+							<div class="content">
+								这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
+							</div>
+							<!-- <div class="time">2019-04-27 11:15</div> -->
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+			
 		</div>
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
@@ -237,7 +355,7 @@
 				this.classList.add("cur")
 				var cur = $(".tab-content")[index]
 				$(".tab-content-wrap>div")[0].style.transform="translate3d(" + (-cur.offsetWidth * index) +"px, 0px, 0px)"
-				var tabContentWrapHeight = window.screen.availHeight > cur.clientHeight ? window.screen.availHeight : cur.clientHeight
+				var tabContentWrapHeight = window.screen.availHeight > cur.clientHeight ? (window.screen.availHeight - 180) : cur.clientHeight
 				$(".tab-content-wrap")[0].style.height = tabContentWrapHeight + "px"
 			})
 			
@@ -257,6 +375,24 @@
 			window.onload = function(){
 				$(".tab-content-wrap")[0].style.height =  $content.clientHeight + "px";
 			}
+			
+			var evalutePanel = document.querySelector('.evalute-panel')
+			
+			document.querySelector('.evalute-status').addEventListener('click', function() {
+				evalutePanel.style.transform = 'translateX(0)'
+				evalutePanel.style.webkitTransform = 'translateX(0)'
+			})
+			
+			document.querySelector('.evalute-status-btn').addEventListener('click', function() {
+				evalutePanel.style.transform = 'translateX(0)'
+				evalutePanel.style.webkitTransform = 'translateX(0)'
+			})
+			
+			document.querySelector('.evalute-panel-header .back').addEventListener('click', function() {
+				evalutePanel.style.transform = ''
+				evalutePanel.style.webkitTransform = ''
+			})
+			
 		</script>
 	</body>
 </html>

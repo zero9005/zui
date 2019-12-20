@@ -85,19 +85,19 @@ a, a:hover, a:visited, a:active, a:hover {
 	border-width: 0 1px 1px 0;
 	padding: 5px;
 }
-.right {
+.arrow0.right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
-.left {
+.arrow0.left {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
-.up {
+.arrow0.up {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
 }
-.down {
+.arrow0.down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
@@ -115,7 +115,7 @@ a, a:hover, a:visited, a:active, a:hover {
 	word-break: break-word;
 }
 .price, .price-wrap {
-	color: #F5222D;
+	color: var(--primary-color);
 }
 .price .price-label {
 	font-size: 10px;
@@ -157,25 +157,40 @@ a, a:hover, a:visited, a:active, a:hover {
 .page-header-navbar {
 	height: 45px;
 	line-height: 45px;
-	background: #FFFFFF;
-	border-bottom: 1px solid #e8e8e8;
-	display: flex;
+	font-size: .875rem;
+	position: relative;
+	background: #fff;
+}
+.page-header-navbar::after {
+	content: '';
+	height: 1px;
+	width: 100%;
+	background: #e4e4e4;
+	transform: scaleY(.5);
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 .page-header-navbar .center {
-	width: 50%;
+	margin: 0 70px;
 	text-align: center;
-	font-size: .875rem;
+}
+.page-header-navbar .icon-box {
+	width: 40px;
+	justify-content: center;
+	position: absolute;
 }
 .page-header-navbar .navbar-item {
-	flex: 0 0 25%;
-	padding-right: 10px;
-	font-size: 12px;
+	width: 40px;
+	justify-content: center;
+	position: absolute;
+	font-size: .625rem;
 }
 .page-header-navbar .navbar-item:first-child {
-	padding-left: 10px;
 }
-.page-header-navbar .navbar-item:last-child {
-	text-align: right;
+.page-header-navbar .navbar-item.right {
+	top: 0;
+	right: 0;
 }
 input[type=checkbox] {
 	vertical-align: middle;
@@ -282,4 +297,25 @@ input[type=checkbox] {
 }
 .price {
 	color: var(--primary-color);
+}
+
+.wrap-line {
+	padding: 0 .625rem;
+	font-size: .875rem;
+	line-height: 2.4rem;
+	position: relative;
+	background: #fff;
+}
+.wrap-line input {
+	width: 100%;
+	padding-left: .5rem;
+	outline: none;
+	border: none;
+}
+.wrap-line .line-right {
+	flex: 1;
+	color: #666;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
