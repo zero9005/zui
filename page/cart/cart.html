@@ -327,7 +327,7 @@
 									total = total + item.price * item.quantity
 								}
 							}
-							return total
+							return total.toFixed(2)
 						}
 					}
 					
@@ -378,7 +378,7 @@
 					checkCartSelectedStatus()
 				})
 
-				$(".operate-wrap input").change(function() {
+				$(".operate-wrap input123").change(function() {
 					var inputValue = this.value
 					if (isNaN(inputValue) || inputValue < 1) {
 						this.value = 1
