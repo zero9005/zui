@@ -1,0 +1,30 @@
+.items-box .items-wrap {
+	padding: 0 0.625rem;
+	position: relative;
+}
+
+.items-box .img-wrap {
+	flex: 0 0 80px;
+	padding: .5rem .5rem .5rem 0;
+	box-sizing: content-box;
+}
+
+.items-box .img-wrap img {
+	width: 100%;
+}
+
+.items-box .info-wrap {
+	margin: .625rem 0;
+	font-size: .75rem;
+	position: relative;
+}
+
+.items-box .info-wrap .props {
+	font-size: .625rem;
+}
+
+.box-bottom {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}

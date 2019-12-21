@@ -181,16 +181,16 @@ a, a:hover, a:visited, a:active, a:hover {
 	position: absolute;
 }
 .page-header-navbar .navbar-item {
-	width: 40px;
 	justify-content: center;
 	position: absolute;
-	font-size: .625rem;
+	font-size: .75rem;
 }
 .page-header-navbar .navbar-item:first-child {
 }
 .page-header-navbar .navbar-item.right {
 	top: 0;
 	right: 0;
+	padding-right: .625rem;
 }
 input[type=checkbox] {
 	vertical-align: middle;
@@ -318,4 +318,27 @@ input[type=checkbox] {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+}
+
+.item-wrap .select-wrap {
+	flex: 0 0 24px;
+	position: relative;
+}
+.item-wrap .select-wrap .iconfont {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	color: #999;
+}
+.item-wrap .select-wrap .selected-icon {
+	display: none;
+	color: var(--primary-color);
+}
+.item-wrap .select-wrap.selected .unselect-icon {
+	display: none;
+}
+.item-wrap .select-wrap.selected .selected-icon {
+	display: inline-block;
+	color: var(--primary-color);
 }

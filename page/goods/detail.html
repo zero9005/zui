@@ -47,38 +47,9 @@
 				transform: translateX(100%);
 				-webkit-transform: translateX(100%);
 			}
-			
-			.evalute-panel .evalute-panel-header {
-				line-height: 2.4rem;
-				font-size: .875rem;
-				position: relative;
-				background: #fff;
-			}
-			
-			.evalute-panel .evalute-panel-header::after {
-				content: '';
-				height: 1px;
-				width: 100%;
-				background: #e4e4e4;
-				transform: scaleY(.5);
-				position: absolute;
-				bottom: 0;
-				left: 0;
-			}
-			
-			.evalute-panel .evalute-panel-header .icon-box {
-				width: 40px;
-				justify-content: center;
-				position: absolute;
-			}
-			
-			.evalute-panel .evalute-panel-header .iconfont {
-				font-size: 1rem;
-				font-weight: 700;
-			}
-			.evalute-panel .evalute-panel-header .evalute-panel-title {
-				margin: 0 70px;
-				text-align: center;
+			.evalute-panel.show {
+				transform: translateX(0);
+				-webkit-transform: translateX(0);
 			}
 			
 		</style>
@@ -247,11 +218,11 @@
 			</div>
 			
 			<div class="evalute-panel">
-				<div class="evalute-panel-header">
+				<div class="page-header-navbar">
 					<div class="icon-box ui-flex back">
 						<i class="iconfont iconreturn"></i>
 					</div>
-					<div class="evalute-panel-title">
+					<div class="center">
 						商品评价
 					</div>
 				</div>
@@ -379,18 +350,15 @@
 			var evalutePanel = document.querySelector('.evalute-panel')
 			
 			document.querySelector('.evalute-status').addEventListener('click', function() {
-				evalutePanel.style.transform = 'translateX(0)'
-				evalutePanel.style.webkitTransform = 'translateX(0)'
+				evalutePanel.classList.add('show')
 			})
 			
 			document.querySelector('.evalute-status-btn').addEventListener('click', function() {
-				evalutePanel.style.transform = 'translateX(0)'
-				evalutePanel.style.webkitTransform = 'translateX(0)'
+				evalutePanel.classList.add('show')
 			})
 			
-			document.querySelector('.evalute-panel-header .back').addEventListener('click', function() {
-				evalutePanel.style.transform = ''
-				evalutePanel.style.webkitTransform = ''
+			document.querySelector('.evalute-panel .back').addEventListener('click', function() {
+				evalutePanel.classList.remove('show')
 			})
 			
 		</script>

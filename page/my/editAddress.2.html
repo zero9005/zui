@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>编辑地址</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link href="../../css/base.css" rel="stylesheet" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_qfl0bzltrq9.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_gmsui192rfw.css" />
 		<style>
 			html {
 				font-size: 18px;
@@ -21,11 +21,10 @@
 				line-height: 1.75rem;
 				background-color: #FFF;
 				border-bottom: 1px solid #e8e8e8;
-				font-size: .875rem;
+				font-size: .75rem;
 			}
 			.address-edit-wrap .form-cell label {
 				flex: 0 0 70px;
-				font-weight: 600;
 				/* font-size: 13px; */
 			}
 			.address-edit-wrap .form-cell input[type=text] {
@@ -63,23 +62,28 @@
 		<div class="address-edit-wrap">
 			<div class="form-cell">
 				<label>收货人</label>
-				<input type="text" placeholder="请输入收货人" />
+				<input type="text" placeholder="请填写收货人姓名" />
 			</div>
 			<div class="form-cell">
 				<label>联系号码</label>
-				<input type="text" placeholder="请输入手机号码" />
+				<input type="text" placeholder="请填写收货人手机号" />
 			</div>
 			<div class="form-cell">
-				<label>所在地区</label>
-				<input type="text" placeholder="请选择所在地区" />
+				<label>收货地址</label>
+				<!-- <input type="text" placeholder="点击选择" readonly="readonly"  /> -->
+				<div class="flex-1" style="color: #757575;">
+					<i class="iconfont icondizhi"></i>
+					点击选择
+				</div>
+				<i class="iconfont iconenter" style="color: #757575;"></i>
 			</div>
 			<div class="form-cell">
-				<label>门牌号</label>
-				<input type="text" placeholder="请输入门牌号" />
+				<label>详细地址</label>
+				<input type="text" placeholder="详细地址,例：12栋5楼501" />
 			</div>
 			<div class="form-cell">
-				<label>默认地址</label>
-				<div style="flex: 1;text-align: right;">
+				<label style="flex: 1;">设置默认地址<div style="font-size: .625rem;line-height: 1.2em;">提醒: 每次下单会默认推荐使用该地址</div></label>
+				<div>
 					<input type="checkbox" class="m-switch" />
 				</div>
 			</div>

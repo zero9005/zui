@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>购物车</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../../css/base.css?t=3" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="../../css/base.css?t=4" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_gmsui192rfw.css" />
 		<style>
 
@@ -77,7 +77,7 @@
 			}
 
 			.item-wrap .img-wrap {
-				flex: 0 0 4rem;
+				flex: 0 0 80px;
 				margin: .5rem .5rem .5rem 0;
 			}
 
@@ -169,7 +169,7 @@
 				line-height: 60px;
 			}
 			.cart-status-wrap .select-wrap {
-				flex: 0 0 60px;
+				flex: 0 0 70px;
 				position: relative;
 				padding-left: .625rem;
 				/* padding-left: 17px; */
@@ -180,7 +180,8 @@
 				align-items: center;
 			}
 			.cart-status-wrap .select-wrap span {
-				font-size: .625rem;
+				font-size: .75rem;
+				margin-left: 8px;
 			}
 			.cart-status-wrap .price-console-wrap {
 				flex: 1;
@@ -203,6 +204,21 @@
 				background-color: #F5222D;
 				pointer-events: inherit;
 			}
+			.cart-status-wrap .edit-wrap {
+				flex: 1;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				padding-right: .625rem;
+			}
+			.cart-status-wrap .edit-wrap span {
+				font-size: .75rem;
+				border: 1px solid var(--primary-color);
+				color: var(--primary-color);
+				padding: 5px 10px;
+				line-height: 1em;
+				border-radius: 13px;
+			}
 		</style>
 	</head>
 	<body>
@@ -216,14 +232,14 @@
 				</div>
 				
 				<div class="navbar-item right">
-					<a href="javascript:void(0)">管理</a>
+					<span @click="editable = !editable">{{editable ? '完成' : '管理'}}</span>
 				</div>
 				
 			</div>
 			<div class="cart-page">
 				
 				<div class="item-wrap" v-for="item in items">
-					<div class="select-wrap" :class="{'selected' : item.selected}">
+					<div class="select-wrap" :class="{'selected' : item.selected}" @click="item.selected = !item.selected">
 						<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
 						<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
 					</div>
@@ -249,16 +265,19 @@
 				</div>
 			
 				<div class="cart-status-wrap">
-					<div class="select-wrap ui-flex" >
+					<div class="select-wrap ui-flex" :class="{'selected' : selecteAll}" @click="selectAll" >
 						<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
 						<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
 						<span>全选</span>
 					</div>
-					<div class="price-console-wrap">
+					<div class="price-console-wrap" v-if="!editable">
 						<span class="">总计: <i class="price-wrap"><span style="font-size: .625rem;">￥</span><span class="price" style="font-size: .875rem;font-weight: 700;">{{calTotal}}</span></i></span>
 					</div>
-					<div class="btn-wrap" :class="{selected : calTotalQuantity > 0}">
-						<span class="btn-submit">去结算<i>{{calTotalQuantity > 0 ? '(' + calTotalQuantity + ')' : ''}}</i></span>
+					<div class="btn-wrap" :class="{selected : calTotalQuantity > 0}" v-if="!editable">
+						<span class="btn-submit" @click="submit">去结算<i>{{calTotalQuantity > 0 ? '(' + calTotalQuantity + ')' : ''}}</i></span>
+					</div class="btn-wrap">
+					<div class="flex-1 edit-wrap" v-if="editable">
+						<span @click="remove">删除</span>
 					</div>
 				</div>
 			
@@ -292,8 +311,9 @@
 									quantity: 2,
 									selected: true
 								}
-							]
-							
+							],
+							editable: false,
+							selecteAll: false
 						}
 					},
 					created() {
@@ -306,6 +326,34 @@
 						decrease(item) {
 							if (item.quantity <= 1) return
 							item.quantity = item.quantity - 1
+						},
+						remove() {
+							for (var i = 0; i < this.items.length; i++) {
+								var item = this.items[i]
+								if (item.selected) {
+									console.log("remove item, id: " + item.id)
+								}
+							}
+						},
+						selectAll() {
+							this.selecteAll = !this.selecteAll
+							for (var i = 0; i < this.items.length; i++) {
+								var item = this.items[i]
+								item.selected = this.selecteAll ? true : false 
+							}
+						},
+						checkSelectedAll() {
+							for (var i = 0; i < this.items.length; i++) {
+								var item = this.items[i]
+								if (!item.selected) {
+									this.selecteAll = false
+									return
+								}
+							}
+							this.selecteAll = true
+						},
+						submit() {
+							console.log("click submit")
 						}
 					},
 					computed: {
@@ -327,104 +375,14 @@
 									total = total + item.price * item.quantity
 								}
 							}
+							this.checkSelectedAll()
 							return total.toFixed(2)
 						}
 					}
 					
 				})
-				
-				$(".btn-increase1").click(function() {
-					var id = this.parentNode.dataset.id
-					var oldValue = parseInt(this.parentNode.children[1].value)
-					var maxValue = parseInt(this.parentNode.dataset.max)
-					if (oldValue + 1 > maxValue) {
-						return
-					}
-					this.parentNode.children[1].value = oldValue + 1
-					checkCartSelectedStatus()
-				})
-				$(".btn-decrease2").click(function() {
-					var id = this.parentNode.dataset.id
-					var oldValue = parseInt(this.parentNode.children[1].value)
-					var maxValue = parseInt(this.parentNode.dataset.max)
-					if (oldValue <= 1) {
-						return
-					}
-					this.parentNode.children[1].value = oldValue - 1
-					checkCartSelectedStatus()
-				})
 
-				$(".item-wrap .select-wrap").click(function() {
-					if (this.classList.contains("selected")) {
-						this.classList.remove("selected")
-					} else {
-						this.classList.add("selected")
-					}
-					checkCartSelectedStatus()
-				})
 				
-				$(".cart-status-wrap .select-wrap").click(function() {
-					var isSelectedAll = !this.classList.contains("selected")
-					var selectItems = $(".item-wrap .select-wrap")
-					for (var i=0; i < selectItems.length; i++) {
-						var selectItem = selectItems[i]
-						if (isSelectedAll && !selectItem.classList.contains("selected")) {
-							selectItem.classList.add("selected")
-						}
-						if (!isSelectedAll && selectItem.classList.contains("selected")) {
-							selectItem.classList.remove("selected")
-						}
-					}
-					checkCartSelectedStatus()
-				})
-
-				$(".operate-wrap input123").change(function() {
-					var inputValue = this.value
-					if (isNaN(inputValue) || inputValue < 1) {
-						this.value = 1
-						return
-					}
-					var maxValue = parseInt(this.parentNode.dataset.max)
-					if (inputValue > maxValue) {
-						this.value = maxValue
-					}
-					checkCartSelectedStatus()
-				})
-				
-				$(".cart-status-wrap .btn-submit").click(function() {
-					console.log("点击了 去结算")
-				})
-				
-				function checkCartSelectedStatus() {
-					var selectItems = $(".item-wrap .select-wrap")
-					var selectedItems = $(".item-wrap .select-wrap.selected")
-					if (selectItems.length == selectedItems.length) {
-						$(".cart-status-wrap .select-wrap")[0].classList.add("selected")
-					} else {
-						$(".cart-status-wrap .select-wrap")[0].classList.remove("selected")
-					}
-					if (selectedItems.length > 0) {
-						$(".cart-status-wrap .btn-wrap")[0].classList.add("selected")
-					} else {
-						$(".cart-status-wrap .btn-wrap")[0].classList.remove("selected")
-					}
-					var total = 0.00
-					var quantity = 0
-					for (var i = 0; i < selectedItems.length; i++) {
-						var selectedItem = selectedItems[i]
-						var itemPrice = parseFloat($(selectedItem.parentNode).find('.operate-wrap')[0].dataset.price)
-						var itemQuantity = parseInt($(selectedItem.parentNode).find('.operate-wrap input')[0].value)
-						total = total + itemPrice * itemQuantity
-						quantity = quantity + itemQuantity
-					}
-					$(".price-console-wrap .price").text(total.toFixed(2))
-					if (quantity > 0) {
-						$(".cart-status-wrap .btn-submit i").text("(" +  quantity + ")")
-					} else {
-						$(".cart-status-wrap .btn-submit i").text("")
-					}
-				}
-
 			})
 		</script>
 	</body>

@@ -2,9 +2,10 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>订单确认</title>
+		<title>确认订单</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="../../css/base.css?t=1" />
+		<link rel="stylesheet" href="../../css/orderitems.css?t=1" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_aptwasu8wsr.css"/>
 		<style>
 			html {
@@ -70,30 +71,7 @@
 				transform-origin: 0 0;
 				transform: scaleY(.5);
 			}
-			.items-box .items-wrap {
-				padding: 0 0.625rem;
-				position: relative;
-			}
-			.items-box .img-wrap {
-				flex: 0 0 4rem;
-				margin: .5rem .5rem .5rem 0;
-			}
-			.items-box .img-wrap img {
-				width: 100%;
-			}
-			.items-box .info-wrap {
-				margin: .625rem 0;
-				font-size: .75rem;
-				position: relative;
-			}
-			.items-box .info-wrap .props {
-				font-size: .625rem;
-			}
-			.box-bottom {
-				position: absolute;
-				bottom: 0;
-				width: 100%;
-			}
+			
 			.cal-panel {
 				background: #fff;
 			}
@@ -110,6 +88,38 @@
 			.btns-wrap {
 				padding: 1rem .625rem;
 			}
+			
+			.coupons-panel {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 666;
+				background: #f7f7f7;
+				transition: transform .3s cubic-bezier(0, 0, .25, 1) 80ms;
+				-webkit-transition: -webkit-transform .3s cubic-bezier(0, 0, .25, 1) 80ms;
+				transform: translateX(100%);
+				-webkit-transform: translateX(100%);
+			}
+			.coupons-panel.show {
+				transform: translateX(0);
+				-webkit-transform: translateX(0);
+			}
+			
+			.coupons-panel .item-wrap {
+				margin: .625rem;
+				background: #fff;
+				padding: .625rem;
+				border-radius: 6px;
+			}
+			
+			.coupons-wrap {
+				overflow: scroll;
+				height: 100%;
+				padding-bottom: 50px;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -190,7 +200,7 @@
 			<div class="mt-10">
 				<div class="wrap-line ui-flex">
 					<div>优惠券</div>
-					<div class="line-right">无可用<i class="iconfont iconenter"></i></div>
+					<div class="line-right" @click="doShowCouponsPanel">{{coupon ? coupon.name : '无可用'}}<i class="iconfont iconenter"></i></div>
 				</div>
 			</div>
 			<div class="mt-10 cal-panel">
@@ -218,6 +228,40 @@
 			<div class="tac mt-40 mb-80" style="font-size: .875rem;">
 				全民酒仓 | <span style="font-size: .75rem;">随时随地，想喝就喝</span>
 			</div>
+			
+			<div class="coupons-panel" :class="{'show' : showCouponsPanel}">
+				<div class="page-header-navbar">
+					<div class="icon-box ui-flex back" @click="showCouponsPanel = false">
+						<i class="iconfont iconreturn"></i>
+					</div>
+					<div class="center">
+						选择优惠券
+					</div>
+					<div class="navbar-item right" @click="showCouponsPanel = false">
+						完成
+					</div>
+				</div>
+				
+				<div class="coupons-wrap">
+					<div class="item-wrap ui-flex" v-for="c in coupons" @click="selectCoupon(c)">
+						<div class="select-wrap" :class="{'selected' : coupon && coupon.id == c.id}">
+							<i class="iconfont iconRaidobox-weixuan unselect-icon"></i>
+							<i class="iconfont iconzhengquewancheng-yuankuang selected-icon"></i>
+						</div>
+						<div class="tac" style="color: #F5222D;margin: 0 5px;display: flex;flex-direction: column;justify-content: center;">
+							<div style="font-weight: 600;"><i style="font-size: .625rem;">￥</i>{{c.discount}}</div>
+							<div style="font-size: .625rem;">满{{c.minAmount}}可用</div>
+						</div>
+						<div class="flex-1" style="margin-left: .62rem;font-size: .75rem;">
+							<div>{{c.name}}</div>
+							<div style="background: #e4e4e4;color:#666; margin: 5px 0; padding:0 5px;display: inline-block;font-size: .625rem;">{{c.typeName}}</div>
+							<div style="font-size: .625rem;color: #999;">2019-12-21 00:00 - 2019-12-31 23:59</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
 		</div>
 		
 		
@@ -227,38 +271,115 @@
 				el: '#app',
 				data() {
 					return {
-						address: {}
+						address: {},
+						coupons: [{
+								id: 1,
+								name: '19元优惠券',
+								discount: 19.00,
+								minAmount: 19.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 2,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 29.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 3,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 4,
+								name: '39元优惠券',
+								discount: 39.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 5,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 29.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 6,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 7,
+								name: '39元优惠券',
+								discount: 39.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							},{
+								id: 8,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 29.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 9,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 10,
+								name: '39元优惠券',
+								discount: 39.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 11,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 29.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 12,
+								name: '29元优惠券',
+								discount: 29.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							}, {
+								id: 13,
+								name: '39元优惠券',
+								discount: 39.00,
+								minAmount: 39.01,
+								typeName: '通用优惠券'
+							}
+						],
+						coupon: null,
+						showCouponsPanel: false
 					}
 				},
 				created() {
 					this.$nextTick(() => {
-						//this.setItemBoxMarginTop()
+						this.listCoupons()
 					})
 				},
 				methods: {
-					setItemBoxMarginTop() {
-						var marginTop = document.querySelector('.address-wrap').offsetHeight + 10
-						document.querySelector('.items-box').style.marginTop = marginTop + 'px'
+					listCoupons() {
+						for (var i = 0; i < this.coupons.length; i++) {
+							var coupon = this.coupons[i]
+							if (this.coupon == null || coupon.discount > this.coupon.discount) {
+								this.coupon = coupon
+							}
+						}
+					},
+					doShowCouponsPanel() {
+						if (!this.coupons || this.coupons.length == 0) return
+						this.showCouponsPanel = true
+					},
+					selectCoupon(coupon) {
+						if (this.coupon != null && this.coupon.id == coupon.id) this.coupon = null
+						else this.coupon = coupon
 					}
 				}
 			})
-			
-			var needToNoteAddress = false
-			window.onscroll = function() {
-				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-				if (scrollTop > 50) {
-					if (needToNoteAddress) return
-					needToNoteAddress = true
-				} else {
-					if (!needToNoteAddress) return
-					needToNoteAddress = false
-				} 
-				if (needToNoteAddress) {
-					document.querySelector('.address-wrap').classList.add('note')
-				} else {
-					document.querySelector('.address-wrap').classList.remove('note')
-				}
-			}
 			
 		</script>
 		
