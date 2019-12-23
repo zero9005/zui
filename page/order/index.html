@@ -5,7 +5,7 @@
 		<title>我的订单</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../css/base.css" />
-		<link rel="stylesheet" href="../../css/orderitems.css?t=1" />
+		<link rel="stylesheet" href="../../css/orderitems.css?t=2" />
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_s2ccd3zktl.css"/>
 		<style>
 			html {
@@ -76,6 +76,7 @@
 				margin: .625rem;
 				background: #fff;
 				border-radius: 6px;
+				overflow: scroll;
 			}
 			.order-wrap .order-header-info {
 				padding: .625rem;
@@ -102,6 +103,16 @@
 			.item-wrap.wrap2 {
 				position: relative;
 			}
+			
+			.item-wrap.wrap2 {
+				padding: .5rem .5rem .5rem 0;
+				display: inline-block;
+			}
+			.item-wrap.wrap2 .img-wrap {
+				padding: 0;
+				width: 80px;
+			}
+			
 			.item-wrap.wrap2 .quantity {
 				position: absolute;
 				right: 0;
@@ -111,8 +122,6 @@
 				background: #666;
 				padding: 0 2px;
 			}
-			
-			
 			
 			.btns-bottom-wrap {
 				width: 100%;
@@ -179,8 +188,8 @@
 						<div style="font-size: .625rem;">{{order.statusName}}</div>
 					</div>
 					<div class="items-box">
-						<div class="items-wrap ui-flex">
-							<div class="item-wrap ui-flex" v-for="item in order.items" v-if="order.items.length == 1">
+						<div class="items-wrap ui-flex" v-if="order.items.length == 1">
+							<div class="item-wrap ui-flex" v-for="item in order.items">
 								<div class="img-wrap">
 									<img :src="item.imgUrl" />
 								</div>
@@ -194,14 +203,17 @@
 								</div>
 							</div>
 							
-							<div class="item-wrap wrap2" v-for="item in order.items" v-if="order.items.length > 1">
-								<div class="img-wrap" style="width: 4rem;position: relative;">
+						</div>
+						
+						<div class="items-wrap" v-if="order.items.length > 1">
+							<div class="item-wrap wrap2" v-for="item in order.items" >
+								<div class="img-wrap" style="position: relative;">
 									<img :src="item.imgUrl" />
 									<span class="quantity">X{{item.quantity}}</span>
 								</div>
 							</div>
-							
 						</div>
+						
 						<div class="pay-info">{{order.status == 0 && order.paid == 0 ? '应付':'实付'}}金额：<span class="color-000">￥{{order.status == 0 ? order.total : order.paid}}</span></div>
 					</div>
 					<div class="btns-bottom-wrap tar">
