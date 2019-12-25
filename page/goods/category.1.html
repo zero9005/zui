@@ -4,10 +4,150 @@
 		<meta charset="utf-8">
 		<title>分类</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1161948_740loedctnl.css" />
+		<style>
+			html {
+				font-size: 18px;
+			}
+			body {
+				background-color: #fff;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.search-input-wrap {
+				margin: 8px .625rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				background: #e4e4e4;
+				padding: 5px;
+				position: relative;
+			}
+			.search-input-wrap .iconfont {
+				color: #999;
+				font-size: .875rem;
+			}
+			.search-input-wrap .input-wrap {
+				flex: 1;
+				margin-left: 6px;
+			}
+			.search-input-wrap .input-wrap input {
+				width: 100%;
+				border: none;
+				outline: none;
+				height: 1.3rem;
+				line-height: 1.3rem;
+				background: inherit;
+			}
+			.items-opts-wrap,.items-opts-wrap .tab-wrap {
+				position: relative;
+			}
+			.items-opts-wrap .tab-wrap::before, .items-opts-wrap .tab-wrap::after,.header-opt-panel div::after {
+				content: '';
+				height: 1px;
+				background: #e4e4e4;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				transform: scaleY(.5);
+			}
+			.items-opts-wrap .tab-wrap::before {
+				top: 0;
+			}
+			.items-opts-wrap .tab-wrap::after, .header-opt-panel div::after {
+				bottom: 0;
+			}
+			.items-opts-wrap .tab-wrap div {
+				text-align: center;
+				font-size: .75rem;
+				line-height: 40px;
+				color: #999;
+			}
+			.items-opts-wrap .tab-wrap div.active, .header-opt-panel div.active {
+				color: var(--primary-color);
+			}
+			.header-opt-panel {
+				position: absolute;
+				top: 40px;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			}
+			.header-opt-panel div {
+				padding: .625rem;
+				position: relative;
+				font-size: .75rem;
+			}
+		</style>
 	</head>
 	<body>
-		<div>
-			
+		<div id="app">
+			<div class="search-input-wrap">
+				<i class="iconfont iconsearch"></i>
+				<div class="input-wrap">
+					<form action="/search">
+						<input placeholder="大家都在搜 巴斯克" id="searchInput" v-model="searchVal" />
+					</form>
+				</div>
+				<i class="iconfont iconguanbi2fill" style="font-size: 1rem; color: #b7b7b7;margin-right: 5px;" v-if="searchVal.trim() != ''" @click="searchVal = ''"></i>
+			</div>
+			<div class="items-wrap">
+				<div class="items-opts-wrap">
+					<div class="tab-wrap ui-flex">
+						<div class="flex-1 active" @click="showCategory = !showCategory">{{curCategory == null ? '全部' : curCategory.name}}</div>
+						<div class="flex-1">销量</div>
+						<div class="flex-1">价格</div>
+					</div>
+					<div class="header-opt-panel" v-show="showCategory">
+						<div :class="{active : curCategory == null}"@click="setCategory(null)">全部</div>
+						<div v-for="category in categories" :class="{active : curCategory != null && curCategory.id == category.id}" @click="setCategory(category)">{{category.name}}</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		
+		<script src="../../js/vue.min.js"></script>
+		<script>
+			new Vue({
+				el: "#app",
+				data() {
+					return {
+						searchVal: '',
+						showCategory: false,
+						curCategory: null,
+						categories: [{
+							id: 1,
+							name: '葡萄酒'
+						}, {
+							id: 2,
+							name: '白酒'
+						}, {
+							id: 3,
+							name: '洋酒'
+						}, {
+							id: 4,
+							name: '威士忌'
+						}, {
+							id: 5,
+							name: "清酒"
+						}, {
+							id: 6,
+							name: "啤酒"
+						}
+						]
+					}
+				},
+				created() {
+					
+				},
+				methods:{
+					setCategory(category) {
+						this.curCategory = category
+						this.showCategory = false
+					}
+				}
+			})
+		</script>
 	</body>
 </html>
