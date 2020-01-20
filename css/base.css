@@ -25,6 +25,7 @@ a, a:hover, a:visited, a:active, a:hover {
 .hide {
 	display: none;
 }
+
 .fs-12 {
 	font-size: 12px;
 }
@@ -33,6 +34,12 @@ a, a:hover, a:visited, a:active, a:hover {
 }
 .fs-16 {
 	font-size: 16px;
+}
+.fs-18 {
+	font-size: 18px;
+}
+.fw-700 {
+	font-weight: 700;
 }
 .clearfix:after {
 	content:' ';
@@ -261,6 +268,9 @@ input[type=checkbox] {
 	border-radius: 5px;
 	outline: none;
 }
+.btn.primary {
+	background: var(--primary-color);
+}
 .btn.large {
 	width: 100%;
 	font-size: 0.875rem;
@@ -271,8 +281,23 @@ input[type=checkbox] {
 	color: #F0F0F0;
 	pointer-events: none;
 }
+.line-bottom-border::after {
+  content: '';
+  height: 1px;
+  width: 100%;
+  background: #e4e4e4;
+  transform: scaleY(0.5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 .ui-flex {
 	display: flex;
+}
+.flex-center {
+	align-items: center;
+	justify-items: center;
+	justify-content: center;
 }
 .flex-1 {
 	flex: 1;
@@ -294,6 +319,12 @@ input[type=checkbox] {
 }
 .color-999 {
 	color: #999;
+}
+.bg-fff {
+	background: #fff;
+}
+.bg-f7 {
+	background: #F7F7F7;
 }
 .price {
 	color: var(--primary-color);

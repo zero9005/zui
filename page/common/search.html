@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>搜索</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../css/base.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1548694_t8jqwwvpuym.css" />
+		<style>
+			html {
+				font-size: 18px;
+			}
+			body {
+				max-width: 600px;
+				margin: 0 auto;
+				background: #f7f7f7;
+			}
+			.search-header-box {
+				position: relative;
+				z-index: 99;
+			}
+			.search-header-box .icon-box {
+				flex: 0 0 40px;
+			}
+			.search-input-wrap {
+				margin: .625rem 0;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				background: #f7f7f7;
+				border-radius: 15px;
+			}
+			.search-input-wrap .iconfont {
+				color: #999;
+				font-size: .75rem;
+				margin-left: .625rem;
+			}
+			.search-input-wrap .input-wrap {
+				flex: 1;
+				margin-left: .625rem;
+			}
+			.search-input-wrap .input-wrap input {
+				width: 100%;
+				border: none;
+				outline: none;
+				height: 1.3rem;
+				line-height: 1.3rem;
+				background: inherit;
+			}
+			.search-header-box .btn-box button {
+				padding: 5px 10px;
+				margin: .625rem;
+			}
+			.recent-search, .hot-search {
+				padding-top: 15px;
+				padding-left: 13px;
+			}
+			.recent-search p, .hot-search p {
+				font-size: .875rem;
+				line-height: 1rem;
+				height: 1rem;
+				color: #232326;
+				float: left;
+				width: 100px;
+				padding-left: 1px;
+			}
+			.recent-search .recent-search-tags, .hot-search .hot-search-tags {
+				padding-right: 2px;
+				overflow: hidden;
+				font-size: .75rem;
+				text-align: center;
+			}
+			.recent-search .recent-search-head, .hot-search .hot-search-head {
+				padding: 0 15px 11px 0;
+			}
+			.recent-search-tags span, .hot-search-tags span {
+				display: block;
+				max-width: 100%;
+				overflow: hidden;
+				padding-right: 10px;
+				padding-bottom: 10px;
+				float: left;
+			}
+			.recent-search-tags span a, .hot-search-tags span a {
+				height: 1.6rem;
+				line-height: 1.6rem;
+				border-radius: 3px;
+				display: block;
+				width: 100%;
+				color: #686868;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				background-color: #f7f7f7;
+				padding-left: 13px;
+				padding-right: 13px;
+				overflow: hidden;
+				box-sizing: border-box;
+			}
+			.association-normal {
+				list-style: none;
+				padding-left: 12px;
+				position: relative;
+			}
+			.association-normal li {
+				height: 42px;
+				display: block;
+				position: relative;
+				padding-right: 12px;
+				list-style: none;
+			}
+			.association-normal li a {
+				display: -webkit-box;
+				display: box;
+				height: 2rem;
+				line-height: 2rem;
+				overflow: hidden;
+				-webkit-box-align: center;
+				box-align: center;
+			}
+			.association-normal li a .association-product-name {
+				display: block;
+				color: #232326;
+				font-size: .75rem;
+				padding-top: 1px;
+				padding-bottom: 1px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				-webkit-box-flex: 1;
+				box-flex: 1;
+			}
+			.association-normal li a .association-product-btn {
+				color: #686868;
+				font-size: .75rem;
+				display: block;
+				height: 1.5rem;
+				padding-left: 10px;
+				padding-right: 10px;
+				background-color: #f7f7f7;
+				border-radius: 3px;
+				line-height: 1.5rem;
+				margin-top: .25rem;
+				margin-right: 10px;
+			}
+			.goods-list-wrap {
+				padding: 0 .625rem;
+			}
+			.goods-wrap {
+				position: relative;
+			}
+			.goods-wrap img {
+				width: 100%;
+			}
+			.goods-wrap .img-wrap {
+				flex: 0 0 100px;
+				padding: .5rem .5rem .5rem 0;
+				box-sizing: content-box;
+			}
+			.goods-wrap .info-wrap {
+				margin: .625rem 0;
+				font-size: .75rem;
+			}
+			.goods-wrap .info-wrap .price-wrap {
+				margin-top: .625rem;
+			}
+			.filter-wrap {
+				position: sticky;
+				position: -webkit-sticky;
+				top: 0;
+				z-index: 99;
+			}
+			.filter-items {
+			}
+			.filter-items>div {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				justify-items: center;
+				justify-content: center;
+				font-size: .875rem;
+				line-height: 24px;
+				padding: 10px 0;
+			}
+			.filter-items>div span {
+				font-size: .75rem;
+			}
+			.filter-items>div span .iconfont {
+				font-size: 12px;
+				color: #999;
+			}
+			.filter-items>div.active, .filter-items>div.active .iconfont, .filter-wrap .active-label {
+				color: var(--primary-color);
+			}
+			.filter-wrap .item-options {
+				background: #fff;
+				font-size: .75rem;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				transform: translateY(100%);
+				display: none;
+			}
+			.filter-wrap .item-options.show, .filter-mask.show, .filter-options-wrap.show, .show .filter-mask {
+				display: block;
+			}
+			.filter-wrap .item-options>div {
+				padding: .625rem;
+				position: relative;
+			}
+			.filter-mask, .filter-options-wrap {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				
+			}
+			.filter-mask {
+				background: rgba(0, 0, 0, .3);
+				z-index: 98;
+				width: 100%;
+				display: none;
+			}
+			.filter-options-wrap.show {
+				width: 100%;
+			}
+			.filter-options-wrap .filter-mask {
+				position: absolute;
+			}
+			.filter-options-wrap .filter-options-panel {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				width: 80%;
+				background: #F7F7F7;
+				z-index: 99;
+				transition: transform .3s cubic-bezier(0, 0, .25, 1) 80ms;
+				-webkit-transition: -webkit-transform .3s cubic-bezier(0, 0, .25, 1) 80ms;
+				transform: translateX(100%);
+				-webkit-transform: translateX(100%);
+			}.filter-options-wrap.show .filter-options-panel {
+				transform: translateX(0);
+				-webkit-transform: translateX(0);
+				overflow: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="search-header-box bg-fff ui-flex">
+				<div class="ui-flex flex-center icon-box" style="">
+					<i class="iconfont iconreturn"></i>
+				</div>
+				<div class="search-input-wrap flex-1">
+					<i class="iconfont iconsearch"></i>
+					<div class="input-wrap">
+						<form action="/search">
+							<input :placeholder="'大家都在搜 ' + defaultSearchKey" id="searchInput" v-model="searchVal" @input="inputSearchVal" autocomplete="off" />
+						</form>
+					</div>
+					<i class="iconfont iconguanbi2fill" style="font-size: 1rem; color: #b7b7b7;margin-right: 5px;" v-if="searchVal.trim() != ''" @click="searchVal = ''"></i>
+				</div>
+				<div class="btn-box ui-flex flex-center">
+					<button class="btn primary" @click="toSearch">搜索</button>
+				</div>
+			</div>
+			
+			<div class="recent-search bg-fff" v-show="searchTips.length == 0 && goodsList.length == 0">
+				<div class="recent-search-head clearfix" v-if="recentSearchKeys.length > 0">
+					<p>最近搜索</p>
+				</div>
+				<div class="recent-search-tags">
+					<span v-for="recentSearchKey in recentSearchKeys">
+						<a href="javascript:void(0);" @click="search(recentSearchKey)">{{recentSearchKey}}</a>
+					</span>
+				</div>
+			</div>
+			<div class="hot-search bg-fff"  v-show="searchTips.length == 0 && goodsList.length == 0">
+				<div class="hot-search-head clearfix" v-if="hotSearchKeys.length > 0">
+					<p>热门搜索</p>
+				</div>
+				<div class="hot-search-tags">
+					<span v-for="hotSearchKey in hotSearchKeys">
+						<a href="javascript:void(0);" @click="search(recentSearchKey)">{{hotSearchKey}}</a>
+					</span>
+					
+				</div>
+			</div>
+			<ul class="association-normal bg-fff"  v-show="searchTips.length > 0">
+				<li v-for="tip in searchTips">
+					<a href="javascript:void(0);" @click="search(tip.keyword)">
+						<span class="association-product-name">{{tip.keyword}}</span>
+						<span class="association-product-btn" style="display: none;"></span>
+					</a>
+				</li>
+			</ul>
+			<div class="filter-wrap" v-if="goodsList.length>0">
+				<div class="filter-items ui-flex bg-fff line-bottom-border">
+					<div :class="{'active':currentSortCondition!=null}"  @click="showSortConditionOpt = !showSortConditionOpt">
+						<span>
+							{{currentSortCondition!=null?currentSortCondition.name:'综合'}}
+							<i class="iconfont iconcaret-down" v-if="!showSortConditionOpt"></i>
+							<i class="iconfont iconcaret-up" v-if="showSortConditionOpt"></i>
+						</span>
+					</div>
+					<div @click="setSoldSortCondition" :class="{'active' : soldSortCondition.active}">
+						<span>{{soldSortCondition.name}}</span>
+					</div>
+					<div @click="showFilterWrap=true">
+						<span>筛选
+							<i class="iconfont iconshaixuan"></i>
+						</span>
+					</div>
+				</div>
+				<div class="item-options" :class="{'show':showSortConditionOpt}">
+					<div class="ui-flex line-bottom-border" v-for="sortCondition in sortConditions" @click="setCurrentSortCondition(sortCondition)">
+						<span>{{sortCondition.name}}</span>
+						<div class="flex-1 tar active-label" v-if="currentSortCondition && currentSortCondition.type == sortCondition.type">
+							<i class="iconfont icondagou"></i>
+						</div>
+					</div>
+				</div>
+				<div class="filter-options-wrap" :class="{'show':showFilterWrap}">
+					<div class="filter-options-panel">
+						
+					</div>
+					<div class="filter-mask" @click="showFilterWrap=false">
+						
+					</div>
+				</div>
+				
+			</div>
+			<div class="filter-mask" :class="{'show':showSortConditionOpt}" @click="showSortConditionOpt=false">
+				
+			</div>
+			
+			<div class="goods-list-wrap bg-fff">
+				<div v-for="goods in goodsList" class="goods-wrap ui-flex line-bottom-border">
+					<div class="img-wrap">
+						<img :src="goods.imgUrl" />
+					</div>
+					<div class="info-wrap flex-1">
+						<div>{{goods.name}}</div>
+						<div class="price-wrap">
+							<span class="fs-12">￥</span><span class="price fs-18">{{goods.price}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		<script src="../../js/app.js"></script>
+		<script src="../../js/vue.js"></script>
+		<script>
+			//var searchInput = document.getElementById('searchInput')
+			// searchInput.onpropertychange = function(e) {
+			// 	console.log(searchInput.value)
+			// }
+			// searchInput.oninput = function() {
+			// 	console.log(searchInput.value)
+			// }
+			var _this
+			new Vue({
+				el: "#app",
+				data() {
+					return {
+						searchVal: '',
+						searchTips: [],
+						defaultSearchKey: '',
+						recentSearchKeys: [],
+						hotSearchKeys: [],
+						page: {
+							page: 1,
+							size: 10
+						},
+						goodsList: [],
+						totalPages: 0,
+						totalElements: 0,
+						showSortConditionOpt: false,
+						sortConditions: [
+						  {
+							type: 0,
+							name: "综合",
+							sort: ''
+						  },
+						  {
+							type: 1,
+							name: "最新上架",
+							sort: 'createTime desc'
+						  },
+						  {
+							type: 2,
+							name: "价格最低",
+							sort: 'price asc'
+						  },
+						  {
+							type: 3,
+							name: "价格最高",
+							sort: 'price desc'
+						  }
+						],
+						currentSortCondition: null,
+						soldSortCondition: {
+						  active: false,
+						  type: 4, 
+						  name: "销量",
+						  sort: 'sold desc'
+						},
+						showFilterWrap: false
+					}
+				},
+				created() {
+					_this = this
+					this.init()
+				},
+				methods: {
+					init: function() {
+						
+						var searchParam = App.getQueryString("search")
+						if (searchParam) {
+							this.searchVal = searchParam
+						}
+						if (this.searchVal.trim() != '') {
+							this.doSearch(this.searchVal)
+						}
+						
+						this.currentSortCondition = this.sortConditions[0]
+						this.sortConditions[0].active = true
+						
+						// recentSearchKeys
+						
+						var recentSearchKeys = JSON.parse(localStorage.getItem('recentSearchKeys') || [])
+						this.recentSearchKeys = recentSearchKeys
+												
+						this.getDefaultSearchKey()
+					},
+					getDefaultSearchKey: function() {
+						App.http({
+							url : "http://capi.wm.dddingjiu.com/api/goods/getDefaultSearchKey",
+							success: function(res) {
+								if (res.resultCode == 0) {
+									_this.defaultSearchKey = res.data
+								}
+							}
+						})
+				    },
+					listSearchTips: function(key) {
+						App.http({
+							url: "http://capi.wm.dddingjiu.com/api/goods/listSearchTips",
+							data: {
+								key: key
+							},
+							success: function(res) {
+								if (res.resultCode == 0) {
+									if (res.resultCode == 0) {
+										_this.searchTips = res.data
+									}
+								}
+							}
+						})
+					},
+					search: function(key) {
+						if (!key || key.trim() == '') {
+							console.log("搜索内容不能为空！")
+							return
+						}
+						var recentSearchKeys = JSON.parse(localStorage.getItem("recentSearchKeys") || [])
+						for (var i = 0; i < recentSearchKeys.length; i++) {
+						  var recentSearchKey = recentSearchKeys[i]
+						  if (recentSearchKey == key) {
+							recentSearchKeys.splice(i, 1)
+						  }
+						}
+						recentSearchKeys.unshift(key)
+						localStorage.setItem("recentSearchKeys", JSON.stringify(recentSearchKeys))
+						_this.recentSearchKeys = recentSearchKeys
+						window.location.href = 'search.html?search=' + key
+					},
+					doSearch: function(key) {
+						var data = Object.assign({}, this.page)
+						data.sk = key
+						
+						if (this.soldSortCondition.active) {
+							data.sortStr = this.soldSortCondition.sort
+						} else if (this.currentSortCondition != null) {
+							data.sortStr = this.currentSortCondition.sort
+						}
+						
+						App.http({
+							url: "http://capi.wm.dddingjiu.com/api/goods/pSearch",
+							method: 'post',
+							data: data,
+							success: function(res) {
+								if (res.resultCode == 0) {
+									var goodsList = res.data.page == 1 ? [] : _this.goodsList
+									_this.goodsList = goodsList.concat(res.data.data)
+									_this.totalElements = res.data.totalElements
+									_this.totalPages = res.data.totalPages
+								}
+							}
+						})
+					},
+					toSearch: function() {
+						this.search(this.searchVal)
+					},
+					inputSearchVal: function(e) {
+						var inputVal = e.target.value
+						if (inputVal.trim() == '') return
+						this.listSearchTips(inputVal)
+					},
+					setCurrentSortCondition: function(sortCondition) {
+						this.currentSortCondition = sortCondition
+						this.showSortConditionOpt = false
+						this.soldSortCondition.active = false
+						this.doSearch(this.searchVal)
+					},
+					setSoldSortCondition: function() {
+						this.showSortConditionOpt = false
+						this.soldSortCondition.active = true
+						this.currentSortCondition = null
+						this.doSearch(this.searchVal)
+					}
+				},
+				watch:{
+					searchVal: function(newVal) {
+						this.searchTips = []
+						this.goodsList = []
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>
