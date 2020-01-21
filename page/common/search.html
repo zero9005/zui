@@ -244,6 +244,63 @@
 				-webkit-transform: translateX(0);
 				overflow: auto;
 			}
+			.wrap-line {
+				font-size: .75rem;
+			}
+			.price-ranges-wrap {
+				padding: .625rem 0;
+			}
+			.price-ranges-wrap>div:not(:last-child) {
+				margin-right: .625rem;
+			}
+			.price-ranges-wrap .selected {
+				color: var(--primary-color);
+				border: 1px solid var(--primary-color);
+				background: #fff;
+			}
+			.filter-options-panel .btns-bottom-wrap {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				font-size: .75rem;
+			}
+			.filter-options-panel .btns-bottom-wrap>div:first-child {
+				margin: .625rem 0;
+				padding: 0 .625rem;
+				position: relative;
+			}
+			.filter-options-panel .btns-bottom-wrap>div:first-child::after {
+				content: '';
+				width: 1px;
+				height: 100%;
+				background: #e4e4e4;
+				position: absolute;
+				right: 0;
+			}
+			.filter-options-panel .btns-bottom-wrap>div:not(:first-child) {
+				padding: .625rem;
+			}
+			.filter-options-panel .btns-bottom-wrap>div.primary {
+				color: #fff;
+				background: var(--primary-color);
+			}
+			.filter-options-panel .categories-wrap {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 100;
+			}
+			.categories-wrap .category-wrap {
+				padding: .625rem;
+				position: relative;
+				font-size: .75rem;
+			}
+			.categories-wrap .category-wrap.selected {
+				color: var(--primary-color);
+			}
 		</style>
 	</head>
 	<body>
@@ -323,8 +380,58 @@
 				</div>
 				<div class="filter-options-wrap" :class="{'show':showFilterWrap}">
 					<div class="filter-options-panel">
+						<div class="wrap-line ui-flex" @click="setShowFilterCategoryWrap">
+							<div>分类</div>
+							<div class="flex-1 tar color-999">{{currentCategory==null?'全部分类':currentCategory.name}}<i class="iconfont iconenter"></i></div>
+						</div>
+						<div class="wrap-line mt-10" style="padding-bottom: .625rem;">
+							<div>价格区间</div>
+							<div class="ui-flex tac color-666" style="line-height: 1.6rem;">
+								<input placeholder="最低价" type="number" @blur="setMinPrice" v-model="minPrice" class="tac bg-f7">
+								<div style="flex: 0 0 20px;">-</div>
+								<input placeholder="最高价" type="number" @blur="setMaxPrice" v-model="maxPrice" class="tac bg-f7">
+							</div>
+							<div class="ui-flex price-ranges-wrap tac color-666 fs-12">
+								<div v-for="(priceRange,idx) in priceRanges" class="flex-1 bg-f7" style="line-height: 1.6rem;">
+									<div :class="{'selected':currentPriceRangeIndex==idx}" @click="setPriceRange" :data-idx="idx">{{priceRange.minprice}}-{{priceRange.maxprice}}</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="btns-bottom-wrap ui-flex tac bg-fff">
+							<div style="flex: 0 0 60px;" @click="showFilterWrap=false">
+								<i class="iconfont iconguanbi1 color-999" style="font-size: 20px;"></i>
+							</div>
+							<div class="flex-1 ui-flex flex-center" @click="resetFilterConditions">
+								重置
+							</div>
+							<div class="flex-1 ui-flex flex-center primary" @click="reRearch">
+								确定
+							</div>
+						</div>
+						
+						<div class="categories-wrap bg-f7" v-if="showFilterCategoryWrap">
+							<div class="category-wrap line-bottom-border ui-flex bg-fff" :class="{'selected':currentCategory==null}" @click="setCategory(null)">
+								<div>全部分类</div>
+								<div class="flex-1 tar" v-if="currentCategory==null">
+									<i class="iconfont icondagou"></i>
+								</div>
+							</div>
+							<div v-for="category in categories" class="category-wrap line-bottom-border ui-flex bg-fff"  
+							:class="{'selected':currentCategory!=null&&currentCategory.id==category.id}"
+							@click="setCategory(category)">
+								<div>{{category.name}}</div>
+								<div class="flex-1 tar" v-if="currentCategory!=null&&currentCategory.id==category.id">
+									<i class="iconfont icondagou"></i>
+								</div>
+							</div>
+							<div class="btns-bottom-wrap tac bg-fff">
+								<div>返回</div>
+							</div>
+						</div>
 						
 					</div>
+					
 					<div class="filter-mask" @click="showFilterWrap=false">
 						
 					</div>
@@ -409,7 +516,27 @@
 						  name: "销量",
 						  sort: 'sold desc'
 						},
-						showFilterWrap: false
+						showFilterWrap: false,
+						minPrice: '',
+						maxPrice: '',
+						priceRanges: [
+						  {
+							minprice: 78,
+							maxprice: 194
+						  },
+						  {
+							minprice: 194,
+							maxprice: 485
+						  },
+						  {
+							minprice: 485,
+							maxprice: 1575
+						  }
+						],
+						currentPriceRangeIndex: null,
+						categories: [],
+						currentCategory: null,
+						showFilterCategoryWrap: false
 					}
 				},
 				created() {
@@ -432,10 +559,12 @@
 						
 						// recentSearchKeys
 						
-						var recentSearchKeys = JSON.parse(localStorage.getItem('recentSearchKeys') || [])
+						var recentSearchKeys = localStorage.getItem('recentSearchKeys')
+						recentSearchKeys = recentSearchKeys ? JSON.parse(recentSearchKeys) : []
 						this.recentSearchKeys = recentSearchKeys
 												
 						this.getDefaultSearchKey()
+						this.listCategories()
 					},
 					getDefaultSearchKey: function() {
 						App.http({
@@ -462,12 +591,24 @@
 							}
 						})
 					},
+					listCategories: function() {
+						App.http({
+							url: "http://capi.wm.dddingjiu.com/api/goods/categories",
+							success: function(res) {
+								if (res.resultCode == 0) {
+									_this.categories = res.data
+								}
+							}
+						})
+					},
 					search: function(key) {
 						if (!key || key.trim() == '') {
 							console.log("搜索内容不能为空！")
 							return
 						}
-						var recentSearchKeys = JSON.parse(localStorage.getItem("recentSearchKeys") || [])
+						var recentSearchKeys = localStorage.getItem('recentSearchKeys')
+						recentSearchKeys = recentSearchKeys ? JSON.parse(recentSearchKeys) : []
+						
 						for (var i = 0; i < recentSearchKeys.length; i++) {
 						  var recentSearchKey = recentSearchKeys[i]
 						  if (recentSearchKey == key) {
@@ -489,6 +630,17 @@
 							data.sortStr = this.currentSortCondition.sort
 						}
 						
+						if (this.minPrice != '') {
+							data.minPrice = this.minPrice
+						}
+						if (this.maxPrice != '') {
+							data.maxPrice = this.maxPrice
+						}
+						
+						if (this.currentCategory != null) {
+							data.categoryId = this.currentCategory.id
+						}
+						
 						App.http({
 							url: "http://capi.wm.dddingjiu.com/api/goods/pSearch",
 							method: 'post',
@@ -506,6 +658,9 @@
 					toSearch: function() {
 						this.search(this.searchVal)
 					},
+					reRearch: function() {
+						this.doSearch(this.searchVal)
+					},
 					inputSearchVal: function(e) {
 						var inputVal = e.target.value
 						if (inputVal.trim() == '') return
@@ -522,6 +677,49 @@
 						this.soldSortCondition.active = true
 						this.currentSortCondition = null
 						this.doSearch(this.searchVal)
+					},
+					setPriceRange: function(e) {
+						var idx = e.target.dataset.idx
+						var priceRange = this.priceRanges[idx]
+						this.minPrice = priceRange.minprice
+						this.maxPrice = priceRange.maxprice
+						this.currentPriceRangeIndex = idx
+					},
+					setMinPrice: function(e) {
+						var minPrice = parseFloat(e.target.value)
+						var maxPrice = this.maxPrice
+						if (maxPrice && maxPrice < minPrice) {
+							var tmp = minPrice
+							minPrice = maxPrice
+							maxPrice = tmp
+						}
+						this.minPrice = minPrice
+						this.maxPrice = maxPrice
+						this.currentPriceRangeIndex = null
+					},
+					setMaxPrice: function(e) {
+						var maxPrice = parseFloat(e.target.value)
+						var minPrice = this.minPrice
+						if (minPrice && minPrice>maxPrice) {
+							var tmp = minPrice
+							minPrice = maxPrice
+							maxPrice = tmp
+						}
+						this.minPrice = minPrice
+						this.maxPrice = maxPrice
+						this.currentPriceRangeIndex = null
+					},
+					resetFilterConditions: function() {
+						this.currentCategory = null
+						this.minPrice = ''
+						this.maxPrice = ''
+					},
+					setShowFilterCategoryWrap: function() {
+						this.showFilterCategoryWrap = true
+					},
+					setCategory: function(category) {
+						this.currentCategory = category
+						this.showFilterCategoryWrap = false
 					}
 				},
 				watch:{

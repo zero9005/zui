@@ -23,32 +23,32 @@
 	color: #999;
 }
 
-.evalute-wrap {
+.evaluate-wrap {
 	background-color: #FFFFFF;
 	font-size: .75rem;
 }
 
-.evalute-wrap .evalute-header {
+.evaluate-wrap .evaluate-header {
 	position: relative;
 	/* padding: 10px; */
 	/* line-height: 16px; */
 	/* border-bottom: 1px solid #ccc; */
 }
 
-.evalute-wrap .evalute-header label {}
+.evaluate-wrap .evaluate-header label {}
 
-.evalute-header span {
+.evaluate-header span {
 	display: inline-block;
 }
 
-.evalute-wrap .evalute {
+.evaluate-wrap .evaluate {
 	position: relative;
 	padding: .625rem;
 	/* border-bottom: 1px solid #ccc; */
 }
 
-.evalute-wrap .evalute-header:after,
-.evalute-wrap .evalute::after {
+.evaluate-wrap .evaluate-header:after,
+.evaluate-wrap .evaluate::after {
 	content: '';
 	height: 1px;
 	width: 100%;
@@ -59,12 +59,12 @@
 	transform: scaleY(.5);
 }
 
-.evalute-wrap .evalute-info-wrap {
+.evaluate-wrap .info-wrap {
 	display: flex;
 	line-height: 30px;
 }
 
-.evalute-wrap .evalute-info-wrap .avatar {
+.evaluate-wrap .info-wrap .avatar {
 	flex: 0 0 30px;
 	height: 30px;
 	width: 30px;
@@ -73,29 +73,26 @@
 	vertical-align: middle;
 }
 
-.evalute-wrap .evalute-info-wrap .nickname {
+.evaluate-wrap .info-wrap .nickname {
 	max-width: 3rem;
 	margin: 0 6px 0 8px;
 }
 
-.evalute-wrap .evalute-info-wrap .rate-container {
+.evaluate-wrap .info-wrap .rates {
 	flex: 1;
-}
-
-.evalute-wrap .evalute-info-wrap .time {
-	line-height: 30px;
-}
-
-.evalute-wrap .evalute-info-wrap .rate-container .iconfont {
 	color: rgb(255, 181, 74)
 }
 
-.evalute-wrap .content {
-	padding: 8px 0;
+.evaluate-wrap .info-wrap .time {
+	line-height: 30px;
+}
+
+.evaluate-wrap .content {
+	padding-top: .625rem;
 	font-size: .75rem;
 }
 
-.evalute-wrap .time {
+.evaluate-wrap .time {
 	text-align: right;
 	font-size: .625rem;
 	color: #999;

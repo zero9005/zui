@@ -24,7 +24,7 @@
 				font-size:0;
 			}
 			
-			.evalute-btn {
+			.evaluate-btn {
 				display: inline-block;
 				border-radius: 20px;
 				border: 1px solid #e4e4e4;
@@ -34,7 +34,7 @@
 				padding: 0 5px 0 10px;
 			}
 			
-			.evalute-panel {
+			.evaluate-panel {
 				position: fixed;
 				top: 0;
 				right: 0;
@@ -47,11 +47,16 @@
 				transform: translateX(100%);
 				-webkit-transform: translateX(100%);
 			}
-			.evalute-panel.show {
+			.evaluate-panel.show {
 				transform: translateX(0);
 				-webkit-transform: translateX(0);
 			}
-			
+			.desc-wrap .tab-header {
+				position: sticky;
+				position: -webkit-sticky;
+				top: 0;
+				z-index: 99;
+			}
 		</style>
 	</head>
 	<body>
@@ -91,20 +96,20 @@
 					<i class="iconfont iconenter fr"></i>
 				</div>
 			</div>
-			<div class="evalute-wrap mt-10">
-				<div class="wrap-line evalute-header ui-flex">
+			<div class="evaluate-wrap mt-10">
+				<div class="wrap-line evaluate-header ui-flex">
 					<label>评价</label>
-					<div class="flex-1 line-right evalute-status">
+					<div class="flex-1 line-right evaluate-status">
 						<span class="" style="font-size: .625rem;">共<i>100</i>条</span>
 						<i class="iconfont iconenter"></i>
 					</div>
 				</div>
-				<div class="evalute-list">
-					<div class="evalute">
-						<div class="evalute-info-wrap">
+				<div class="evaluate-list">
+					<div class="evaluate">
+						<div class="info-wrap">
 							<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
 							<span class="nickname ellipsis">celery</span>
-							<span class="rate-container">
+							<span class="rates">
 								<i class="iconfont iconiconfontxingxing"></i>
 								<i class="iconfont iconiconfontxingxing"></i>
 								<i class="iconfont iconiconfontxingxing"></i>
@@ -117,11 +122,11 @@
 							这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
 						</div>
 					</div>
-					<div class="evalute">
-						<div class="evalute-info-wrap">
+					<div class="evaluate">
+						<div class="info-wrap">
 							<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
 							<span class="nickname ellipsis">celery</span>
-							<span class="rate-container">
+							<span class="rates">
 								<i class="iconfont iconiconfontxingxing"></i>
 								<i class="iconfont iconiconfontxingxing"></i>
 								<i class="iconfont iconiconfontxingxing"></i>
@@ -136,7 +141,7 @@
 						<!-- <div class="time">2019-04-27 11:15</div> -->
 					</div>
 					<div class="wrap-line tac">
-						<a href="javascript:void(0)" class="evalute-btn evalute-status-btn">查看全部评价<i class="iconfont iconenter"></i></a>
+						<a href="javascript:void(0)" class="evaluate-btn evaluate-status-btn">查看全部评价<i class="iconfont iconenter"></i></a>
 					</div>
 				</div>
 			</div>
@@ -217,7 +222,7 @@
 				</div>
 			</div>
 			
-			<div class="evalute-panel">
+			<div class="evaluate-panel">
 				<div class="page-header-navbar">
 					<div class="icon-box ui-flex back">
 						<i class="iconfont iconreturn"></i>
@@ -227,13 +232,13 @@
 					</div>
 				</div>
 				
-				<div class="evalute-wrap mt-10">
-					<div class="evalute-list">
-						<div class="evalute">
-							<div class="evalute-info-wrap">
+				<div class="evaluate-wrap mt-10">
+					<div class="evaluate-list">
+						<div class="evaluate">
+							<div class="info-wrap">
 								<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
 								<span class="nickname ellipsis">celery</span>
-								<span class="rate-container">
+								<span class="rates">
 									<i class="iconfont iconiconfontxingxing"></i>
 									<i class="iconfont iconiconfontxingxing"></i>
 									<i class="iconfont iconiconfontxingxing"></i>
@@ -246,11 +251,11 @@
 								这里是评价的内容啦！看上面的5个星星就知道肯定是好评啦~
 							</div>
 						</div>
-						<div class="evalute">
-							<div class="evalute-info-wrap">
+						<div class="evaluate">
+							<div class="info-wrap">
 								<img class="avatar" src="http://thirdwx.qlogo.cn/mmopen/u6icsnia94iaZWmLzP0IJjZ3HeHu9zGoicusWaPFyLNHa1FRlGN4rNqjKLqCibTJNq3G4pWUY51NDr2OiaiclnD6qbtnRKoibwkrv5H9/132" />
 								<span class="nickname ellipsis">celery</span>
-								<span class="rate-container">
+								<span class="rates">
 									<i class="iconfont iconiconfontxingxing"></i>
 									<i class="iconfont iconiconfontxingxing"></i>
 									<i class="iconfont iconiconfontxingxing"></i>
@@ -347,18 +352,18 @@
 				$(".tab-content-wrap")[0].style.height =  $content.clientHeight + "px";
 			}
 			
-			var evalutePanel = document.querySelector('.evalute-panel')
+			var evaluatePanel = document.querySelector('.evaluate-panel')
 			
-			document.querySelector('.evalute-status').addEventListener('click', function() {
-				evalutePanel.classList.add('show')
+			document.querySelector('.evaluate-status').addEventListener('click', function() {
+				evaluatePanel.classList.add('show')
 			})
 			
-			document.querySelector('.evalute-status-btn').addEventListener('click', function() {
-				evalutePanel.classList.add('show')
+			document.querySelector('.evaluate-status-btn').addEventListener('click', function() {
+				evaluatePanel.classList.add('show')
 			})
 			
-			document.querySelector('.evalute-panel .back').addEventListener('click', function() {
-				evalutePanel.classList.remove('show')
+			document.querySelector('.evaluate-panel .back').addEventListener('click', function() {
+				evaluatePanel.classList.remove('show')
 			})
 			
 		</script>
