@@ -570,7 +570,7 @@
 						App.http({
 							url : "http://capi.wm.dddingjiu.com/api/goods/getDefaultSearchKey",
 							success: function(res) {
-								if (res.resultCode == 0) {
+								if (res.code == 0) {
 									_this.defaultSearchKey = res.data
 								}
 							}
@@ -583,10 +583,8 @@
 								key: key
 							},
 							success: function(res) {
-								if (res.resultCode == 0) {
-									if (res.resultCode == 0) {
-										_this.searchTips = res.data
-									}
+								if (res.code == 0) {
+									_this.searchTips = res.data
 								}
 							}
 						})
@@ -595,7 +593,7 @@
 						App.http({
 							url: "http://capi.wm.dddingjiu.com/api/goods/categories",
 							success: function(res) {
-								if (res.resultCode == 0) {
+								if (res.code == 0) {
 									_this.categories = res.data
 								}
 							}
@@ -646,7 +644,7 @@
 							method: 'post',
 							data: data,
 							success: function(res) {
-								if (res.resultCode == 0) {
+								if (res.code == 0) {
 									var goodsList = res.data.page == 1 ? [] : _this.goodsList
 									_this.goodsList = goodsList.concat(res.data.data)
 									_this.totalElements = res.data.totalElements

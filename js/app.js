@@ -24,19 +24,17 @@
 		}
 		urlStr = urlStr.substring(0, urlStr.length - 1)
 		
-		var type = options.type || 'get'
-		type = type.toLocaleLowerCase()
+		var method = options.method || 'get'
+		method = method.toLocaleLowerCase()
 		var async = options.async || true
 		
 		var url = options.url
 		
-		if (type === 'get') {
+		if (method === 'get' && urlStr) {
 			url = url + '?' + urlStr
-		} else if (type === 'post') {
-			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-		}
+		} 
 		
-		xhr.open(type, url, async)
+		xhr.open(method, url, async)
 		
 		if (options.headers) {
 			for (var key in options.headers) {
@@ -44,9 +42,12 @@
 			}
 		}
 		
-		if (type === 'get') {
+		if (method === 'get') {
 			xhr.send()
 		} else {
+			if (method === 'post') {
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+			}
 			xhr.send(urlStr)
 		}
 	}
