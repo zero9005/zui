@@ -168,6 +168,7 @@
 	display: flex;
 	max-width: 600px;
 	margin: 0 auto;
+	z-index: 100;
 }
 
 .page-footer-wrap .btn-wrap {

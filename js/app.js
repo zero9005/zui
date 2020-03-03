@@ -12,7 +12,9 @@
 				if (contentType && contentType.indexOf('json') > -1) {
 					response = JSON.parse(response)
 				} 
-				options.success(response)
+				if (options.success && typeof options.success === 'function') {
+					options.success(response)
+				}
 			} else if (xhr.readyState == 4 && xhr.status != 200) {
 				options.error()
 			}
@@ -36,9 +38,9 @@
 		
 		xhr.open(method, url, async)
 		
-		if (options.headers) {
-			for (var key in options.headers) {
-				xhr.setRequestHeader(key, options.headers[key])
+		if (options.header) {
+			for (var key in options.header) {
+				xhr.setRequestHeader(key, options.header[key])
 			}
 		}
 		
