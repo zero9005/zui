@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>loading</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			.wx_loading {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 1000;
+				background-color: transparent;
+			}
+			.wx_loading_inner {
+				text-align: center;
+				background-color: rgba(0, 0, 0, .5);
+				color: #fff;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 140px;
+				border-radius: 6px;
+				font-size: 14px;
+				padding: 58px 0 10px;
+			}
+			.wx_loading_icon {
+				position: absolute;
+				top: 15px;
+				left: 50%;
+				/* transform: translateX(-50%); */
+				margin-left: -16px;
+				width: 24px;
+				height: 24px;
+				border: 2px solid #fff;
+				border-radius: 24px;
+				-webkit-animation: gif 1s infinite linear;
+				animation: gif 1s infinite linear;
+				clip: rect(0 auto 12px 0);
+			}
+			@keyframes gif{
+				0% {
+					transform: rotate(0deg);
+				}
+				100%{
+					transform: rotate(1turn);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wx_loading">
+			<div class="wx_loading_inner">
+				<i class="wx_loading_icon"></i>
+				<span>请求加载中...</span>
+			</div>
+		</div>
+	</body>
+</html>
